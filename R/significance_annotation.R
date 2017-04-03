@@ -72,6 +72,29 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                   }
 )
 
+
+#' Create significance layer
+#'
+#' @param comparisons A list of length-2 vectors.
+#'   The entries in the vector are either the names of 2 values on the x-axis
+#'   or the 2 integers that correspond to the index of the columns of interest
+#' @param test the name of the statistical test that is applied to the values of the 2 columns (e.g. t.test, wilcox.test etc.)
+#' @param test.args additional arguments for the test method
+#' @param annotations character vector with alternative annotations, if not null test is ignored
+#' @param map_signif_level boolean value, if the p-value are directly written as annotation or asterisks are used instead.
+#'   Alternatively one can provide a named numeric vector to create custom mappings from p-values to annotation:
+#'   For example: c("***"=0.001, "**"=0.01, "*"=0.05)
+#' @param y_position numeric vector with the precise locations of the bars
+#' @param margin_top numeric vector how much higher that the maximum value that bars start as fraction of total height
+#' @param step_increase numeric vector with the increase in fraction of total height for every additional comparison to
+#'   minimize overlap.
+#' @param tip_length numeric vector with the fraction of total height that the bar goes down to indicate the precise column
+#' @examples
+#' library(ggplot2)
+#' ggplot(mpg, aes(class, hwy)) +
+#'  geom_boxplot() +
+#'  geom_signif(comparisons = list(c("compact", "pickup"), c("subcompact", "suv")))
+#' @export
 stat_signif <- function(mapping = NULL, data = NULL,
                     position = "identity", na.rm = FALSE, show.legend = NA,
                     inherit.aes = TRUE, comparisons=NULL, test="wilcox.test", test.args=NULL,
@@ -123,6 +146,8 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                            }
 )
 
+#' @rdname stat_signif
+#' @export
 geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                         position = "identity", na.rm = FALSE, show.legend = NA,
                         inherit.aes = TRUE, comparisons=NULL, test="wilcox.test", test.args=NULL,
