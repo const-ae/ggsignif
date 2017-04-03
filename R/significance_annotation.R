@@ -76,7 +76,7 @@ stat_signif <- function(mapping = NULL, data = NULL,
                     position = "identity", na.rm = FALSE, show.legend = NA,
                     inherit.aes = TRUE, comparisons=NULL, test="wilcox.test", test.args=NULL,
                     annotations=NULL, map_signif_level=FALSE,y_position=NULL,
-                    margin_top=0.05, step_increase=0.02, tip_length=0.03,
+                    margin_top=0.05, step_increase=0, tip_length=0.03,
                     ...) {
   ggplot2::layer(
     stat = SignifAnnot, data = data, mapping = mapping, geom = "signif",
