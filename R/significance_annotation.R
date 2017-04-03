@@ -101,7 +101,7 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                grid::textGrob(
                                  label=as.character(data$p.value),
                                  x=mean(c(coords$x[1], tail(coords$xend, n=1))),
-                                 y=max(c(coords$y, coords$yend)),
+                                 y=max(c(coords$y, coords$yend))+0.01,
                                  default.units = "native",
                                  hjust = data$hjust, vjust = data$vjust,
                                  rot = data$angle,
