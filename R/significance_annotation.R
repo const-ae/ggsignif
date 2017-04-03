@@ -1,6 +1,6 @@
 
 
-SignifAnnot <- ggplot2::ggproto("SignifAnnot", ggplot2::Stat,
+StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                   required_aes = c("x", "y", "group"),
                   setup_params = function(data, params) {
                     if(any(data$group == -1)|| any(data$group != data$x)){
@@ -79,7 +79,7 @@ stat_signif <- function(mapping = NULL, data = NULL,
                     margin_top=0.05, step_increase=0, tip_length=0.03,
                     ...) {
   ggplot2::layer(
-    stat = SignifAnnot, data = data, mapping = mapping, geom = "signif",
+    stat = StatSignif, data = data, mapping = mapping, geom = "signif",
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
     params = list(comparisons=comparisons, test=test, test.args=test.args,
                   annotations=annotations, map_signif_level=map_signif_level,y_position=y_position,
@@ -89,7 +89,7 @@ stat_signif <- function(mapping = NULL, data = NULL,
 }
 
 
-GeomSignif <- ggplot2::ggproto("GeomSignifAnnot", ggplot2::Geom,
+GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                            required_aes = c("x", "xend", "y", "yend", "p.value"),
                            default_aes = ggplot2::aes(shape = 19, colour = "black", size = 3.88, angle = 0, hjust = 0.5,
                                              vjust = 0, alpha = NA, family = "", fontface = 1, lineheight = 1.2),
@@ -123,13 +123,22 @@ GeomSignif <- ggplot2::ggproto("GeomSignifAnnot", ggplot2::Geom,
                            }
 )
 
-geom_signif <- function(mapping = NULL, data = NULL, stat = "identity",
-                              position = "identity", na.rm = FALSE, show.legend = NA,
-                              inherit.aes = TRUE, ...) {
+geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
+                        position = "identity", na.rm = FALSE, show.legend = NA,
+                        inherit.aes = TRUE, comparisons=NULL, test="wilcox.test", test.args=NULL,
+                        annotations=NULL, map_signif_level=FALSE,y_position=NULL,
+                        margin_top=0.05, step_increase=0, tip_length=0.03, ...) {
+  params <- list(na.rm = na.rm, ...)
+  if (identical(stat, "signif")) {
+    params <- c(params, list(comparisons=comparisons, test=test, test.args=test.args,
+                   annotations=annotations, map_signif_level=map_signif_level,y_position=y_position,
+                   margin_top=margin_top, step_increase=step_increase,
+                   tip_length=tip_length))
+  }
   layer(
-    geom = GeomSignif, mapping = mapping,  data = data, stat = stat,
+    stat = StatSignif, geom = GeomSignif, mapping = mapping,  data = data,
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
-    params = list(na.rm = na.rm, ...)
+    params = params
   )
 }
 
