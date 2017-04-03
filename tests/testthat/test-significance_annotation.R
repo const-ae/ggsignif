@@ -2,12 +2,15 @@
 
 library(ggplot2)
 
-test_that("the correct columns are used", {
+test_that("the plotting works", {
   print(
     ggplot(mpg, aes(x=manufacturer, y=displ)) +
       geom_boxplot()  +
-      stat_signif(comparisons=list(c("audi", "ford"), c("dodge", "nissan")),
-                  test=t.test) +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1))
+      stat_signif(comparisons=list(c("audi", "ford"), c("hyundai", "nissan")),
+                  # annotations=c("Interesting", "Too far apart"),
+                  map_signif_level=TRUE,
+                  test=t.test, vjust=-0.1, margin_top=0.02, step_increase=0, tip_length=0.01) +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+      facet_wrap(~ as.factor(year), scale="free")
   )
 })
