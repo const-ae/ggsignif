@@ -3,7 +3,6 @@
 library(ggplot2)
 
 test_that("the plotting works", {
-  skip("for now...")
   print(
     ggplot(mpg, aes(x=manufacturer, y=displ)) +
       geom_boxplot()  +
@@ -17,7 +16,6 @@ test_that("the plotting works", {
 })
 
 test_that("geom works as well as stat works", {
-  skip("for now...")
   print(
     ggplot(mpg, aes(x=manufacturer, y=displ)) +
       geom_boxplot()  +
@@ -33,7 +31,6 @@ test_that("geom works as well as stat works", {
 
 
 test_that("non-sense fails", {
-  skip("for now...")
   expect_error(print(
     ggplot(mpg, aes(y=hwy, x=displ, group=manufacturer)) +
       geom_point()  +
