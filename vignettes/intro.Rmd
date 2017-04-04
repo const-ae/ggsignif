@@ -29,7 +29,7 @@ library(ggplot2)
 library(ggsignif)
 ```
 
-Second and last step, plot your data
+Second step: plot your data
 
 ```{r fig.width = 6, fig.height = 4.8}
 ggplot(iris, aes(x=Species, y=Sepal.Length)) + 
@@ -38,7 +38,12 @@ ggplot(iris, aes(x=Species, y=Sepal.Length)) +
               map_signif_level=TRUE)
 ```
 
+That's it, it is really simple!
+
 ## Advanced options
+
+Sometimes one might need more advanced control over the display. Following the patterns of other ggplot layers, 
+one just provides the data and necessary aesthetics and the layer takes care of the rest.
 
 ```{r fig.width = 6, fig.height = 4.8}
 dat <- data.frame(Group = c("S1", "S1", "S2", "S2"),
@@ -56,3 +61,25 @@ ggplot(dat, aes(Group, Value)) +
   scale_fill_manual(values = c("grey80", "grey20"))
     
 ```
+
+For more detailed documentation of the available parameters see the man page for the geom_signif function (`> ?geom_signif`).
+
+# Bugs, Comments or Questions?
+
+If you have any problems with the package, just file an issue at https://github.com/Artjom-Metro/ggsignif.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
