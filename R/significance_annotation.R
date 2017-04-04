@@ -165,7 +165,7 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                    margin_top=margin_top, step_increase=step_increase,
                    tip_length=tip_length))
   }
-  layer(
+  ggplot2::layer(
     stat = stat, geom = GeomSignif, mapping = mapping,  data = data,
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
     params = params
