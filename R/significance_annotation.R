@@ -161,7 +161,7 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                    tip_length=tip_length))
   }
   layer(
-    stat = StatSignif, geom = GeomSignif, mapping = mapping,  data = data,
+    stat = stat, geom = GeomSignif, mapping = mapping,  data = data,
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
     params = params
   )
