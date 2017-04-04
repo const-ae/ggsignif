@@ -64,7 +64,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                                    xend=c(min(comp[1],comp[2]),max(comp[1],comp[2]),max(comp[1],comp[2])),
                                    y=c(y_pos - y_scale_range*tip_length[i], y_pos, y_pos),
                                    yend=c(y_pos, y_pos, y_pos-y_scale_range*tip_length[i]),
-                                   p.value=test_result)
+                                   annotation=test_result)
                       }
                     })
 
@@ -113,7 +113,7 @@ stat_signif <- function(mapping = NULL, data = NULL,
 
 
 GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
-                           required_aes = c("x", "xend", "y", "yend", "p.value"),
+                           required_aes = c("x", "xend", "y", "yend", "annotation"),
                            default_aes = ggplot2::aes(shape = 19, colour = "black", size = 3.88, angle = 0, hjust = 0.5,
                                              vjust = 0, alpha = NA, family = "", fontface = 1, lineheight = 1.2),
                            draw_key = ggplot2::draw_key_point,
@@ -122,7 +122,7 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                              coords <- coord$transform(data, panel_params)
                              grid::gList(
                                grid::textGrob(
-                                 label=as.character(data$p.value),
+                                 label=as.character(data$annotation),
                                  x=mean(c(coords$x[1], tail(coords$xend, n=1))),
                                  y=max(c(coords$y, coords$yend))+0.01,
                                  default.units = "native",
