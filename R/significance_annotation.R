@@ -102,10 +102,15 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #'   to the paired geom/stat.
 #' @inheritParams ggplot2::layer
 #' @examples
+#' \dontrun{
 #' library(ggplot2)
+#' library(ggsignif)
 #' ggplot(mpg, aes(class, hwy)) +
 #'  geom_boxplot() +
-#'  geom_signif(comparisons = list(c("compact", "pickup"), c("subcompact", "suv")))
+#'  geom_signif(comparisons = list(c("compact", "pickup"),
+#'                                 c("subcompact", "suv")))
+#' }
+#'
 #' @export
 stat_signif <- function(mapping = NULL, data = NULL,
                     position = "identity", na.rm = FALSE, show.legend = NA,

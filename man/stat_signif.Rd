@@ -88,8 +88,13 @@ layer, as a string.}
 Create significance layer
 }
 \examples{
+\dontrun{
 library(ggplot2)
+library(ggsignif)
 ggplot(mpg, aes(class, hwy)) +
  geom_boxplot() +
- geom_signif(comparisons = list(c("compact", "pickup"), c("subcompact", "suv")))
+ geom_signif(comparisons = list(c("compact", "pickup"),
+                                c("subcompact", "suv")))
+}
+
 }
