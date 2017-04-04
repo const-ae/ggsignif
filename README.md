@@ -13,6 +13,7 @@ to the plot.
 
 ``` r
 library(ggplot2)
+library(ggsignif)
 ggplot(mpg, aes(class, hwy)) +
    geom_boxplot() +
    geom_signif(comparisons = list(c("compact", "midsize"), c("minivan", "suv")),
