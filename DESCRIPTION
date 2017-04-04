@@ -1,11 +1,12 @@
 Package: ggsignif
 Type: Package
-Title: Easily add significance bars to your ggplots
+Title: Significance Bars for 'ggplot2'
 Version: 0.1.0
 Authors@R: person("Constantin", "Ahlmann-Eltze", email = "artjom31415@googlemail.com", role = c("aut", "cre"))
-Description: This package provides an easy way to indicate if two groups are significantly different.
-  Commonly this is shown with a by a bar on top connecting the groups of interest which itself is annoted with the level of significance (NS, *, **, ***).
-  The package provides a single layer (geom_signif) that takes the groups for comparison and the test (t.test, wilcox etc.) and adds the annotation
+Description: Enrich your ggplots with group-wise comparisons.
+  This package provides an easy way to indicate if two groups are significantly different.
+  Commonly this is shown by a bar on top connecting the groups of interest which itself is annoted with the level of significance (NS, *, **, ***).
+  The package provides a single layer (geom_signif) that takes the groups for comparison and the test (t.test, wilcox etc.) as arguments and adds the annotation
   to the plot.
 URL: https://github.com/Artjom-Metro/ggsignif
 License: GPL-3
