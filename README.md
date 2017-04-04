@@ -11,6 +11,14 @@ to the plot.
 
 ## Example
 
+Install package
+
+```r
+devtools::install_github("Artjom-Metro/ggsignif")
+```
+
+Plot significance
+
 ``` r
 library(ggplot2)
 library(ggsignif)
