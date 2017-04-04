@@ -49,7 +49,12 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                               temp_value
                             }
                           }else{
-                            as.character(signif(p_value, digits=2))
+                            if(p_value < 2.2e-16){
+                              "< 2.2e-16"
+                            }else{
+                              as.character(signif(p_value, digits=2))
+                            }
+
                           }
                         }else{
                           annotations[i]
