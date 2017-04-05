@@ -1,7 +1,7 @@
 Package: ggsignif
 Type: Package
 Title: Significance Bars for 'ggplot2'
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: person("Constantin", "Ahlmann-Eltze", email = "artjom31415@googlemail.com", role = c("aut", "cre"))
 Description: Enrich your ggplots with group-wise comparisons.
   This package provides an easy way to indicate if two groups are significantly different.
