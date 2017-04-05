@@ -14,6 +14,9 @@ to the plot.
 Install package
 
 ```r
+install.packages("ggsignif")
+
+# Or for the latest development version
 devtools::install_github("Artjom-Metro/ggsignif")
 ```
 
