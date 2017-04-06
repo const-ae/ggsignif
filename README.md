@@ -32,3 +32,6 @@ ggplot(mpg, aes(class, hwy)) +
 ```
 
 ![Result Plot](https://github.com/Artjom-Metro/ggsignif/blob/master/tests/example.png)
+
+
+For further details go the [CRAN page](https://cran.r-project.org/web/packages/ggsignif/index.html) and check the examples in the [vignette](https://cran.r-project.org/web/packages/ggsignif/vignettes/intro.html).
