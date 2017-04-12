@@ -40,7 +40,6 @@ test_that("non-sense fails", {
 
 
 test_that("geom_signif with identity works", {
-
   dat <- data.frame(Group = c("S1", "S1", "S2", "S2"),
                     Sub   = c("A", "B", "A", "B"),
                     Value = c(3,5,7,8))
@@ -54,5 +53,19 @@ test_that("geom_signif with identity works", {
                   aes(x=x,xend=xend, y=y, yend=y, annotation=annotation)) +
       geom_signif(comparisons=list(c("S1", "S2")), annotations="***", y_position = 9.3, tip_length = 0) +
       scale_fill_manual(values = c("grey80", "grey20"))
+  )
+})
+
+test_that("loading the psych packages does not lead to an error", {
+  library(ggplot2)
+  library(ggsignif)
+
+  library(psych)
+
+  print(
+    ggplot(iris, aes(x=Species, y=Sepal.Length)) +
+      geom_boxplot() +
+      geom_signif(comparisons = list(c("versicolor", "virginica")),
+                  map_signif_level=TRUE)
   )
 })

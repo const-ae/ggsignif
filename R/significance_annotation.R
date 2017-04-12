@@ -146,7 +146,7 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                  hjust = data$hjust, vjust = data$vjust,
                                  rot = data$angle,
                                  gp = grid::gpar(
-                                   col = alpha(data$colour, data$alpha),
+                                   col = scales::alpha(data$colour, data$alpha),
                                    fontsize = data$size * .pt,
                                    fontfamily = data$family,
                                    fontface = data$fontface,
