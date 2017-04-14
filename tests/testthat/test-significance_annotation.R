@@ -69,3 +69,22 @@ test_that("loading the psych packages does not lead to an error", {
                   map_signif_level=TRUE)
   )
 })
+
+
+
+test_that("you can change the linetype", {
+  print(
+    ggplot(iris, aes(x=Species, y=Sepal.Length)) +
+      geom_boxplot() +
+      geom_signif(comparisons = list(c("versicolor", "virginica")),
+                  map_signif_level=TRUE, linetype=3, alpha=1, color="blue", size=1, textsize=8)
+  )
+})
+
+
+
+
+
+
+
+

@@ -131,33 +131,37 @@ stat_signif <- function(mapping = NULL, data = NULL,
 
 GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                            required_aes = c("x", "xend", "y", "yend", "annotation"),
-                           default_aes = ggplot2::aes(shape = 19, colour = "black", size = 3.88, angle = 0, hjust = 0.5,
-                                             vjust = 0, alpha = NA, family = "", fontface = 1, lineheight = 1.2),
+                           default_aes = ggplot2::aes(shape = 19, colour = "black", textsize = 3.88, angle = 0, hjust = 0.5,
+                                             vjust = 0, alpha = NA, family = "", fontface = 1, lineheight = 1.2, linetype=1, size=0.5),
                            draw_key = ggplot2::draw_key_point,
 
                            draw_group = function(data, panel_params, coord) {
                              coords <- coord$transform(data, panel_params)
                              grid::gList(
                                grid::textGrob(
-                                 label=as.character(data$annotation),
+                                 label=as.character(coords$annotation),
                                  x=mean(c(coords$x[1], tail(coords$xend, n=1))),
                                  y=max(c(coords$y, coords$yend))+0.01,
                                  default.units = "native",
-                                 hjust = data$hjust, vjust = data$vjust,
-                                 rot = data$angle,
+                                 hjust = coords$hjust, vjust = coords$vjust,
+                                 rot = coords$angle,
                                  gp = grid::gpar(
-                                   col = scales::alpha(data$colour, data$alpha),
-                                   fontsize = data$size * .pt,
-                                   fontfamily = data$family,
-                                   fontface = data$fontface,
-                                   lineheight = data$lineheight
+                                   col = scales::alpha(coords$colour, coords$alpha),
+                                   fontsize = coords$textsize * .pt,
+                                   fontfamily = coords$family,
+                                   fontface = coords$fontface,
+                                   lineheight = coords$lineheight
                                  )
                                ),
                                grid::segmentsGrob(
                                  coords$x, coords$y,
                                  default.units = "native",
                                  coords$xend, coords$yend,
-                                 gp = grid::gpar(col = coords$colour)
+                                 gp = grid::gpar(
+                                   col = scales::alpha(coords$colour, coords$alpha),
+                                   lty = coords$linetype,
+                                   lwd = coords$size * .pt
+                                 )
                                )
                              )
                            }
