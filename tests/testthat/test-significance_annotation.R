@@ -77,7 +77,8 @@ test_that("you can change the linetype", {
     ggplot(iris, aes(x=Species, y=Sepal.Length)) +
       geom_boxplot() +
       geom_signif(comparisons = list(c("versicolor", "virginica")),
-                  map_signif_level=TRUE, linetype=3, alpha=1, color="blue", size=1, textsize=8)
+                  map_signif_level=TRUE, linetype=3, alpha=1, color="blue", size=1, textsize=8) +
+      ylim(c(NA, 8.5))
   )
 })
 
