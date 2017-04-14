@@ -83,6 +83,24 @@ test_that("you can change the linetype", {
 })
 
 
+test_that("identical annotations are plotted separetly", {
+  dat <- data.frame(Group = c("S1", "S1", "S2", "S2"),
+                    Sub   = c("A", "B", "A", "B"),
+                    Value = c(3,5,7,8))
+
+  print(
+    ggplot(dat, aes(Group, Value)) +
+      geom_bar(aes(fill = Sub), stat="identity", position="dodge", width=.5) +
+      geom_signif(comparisons=list(c("S1", "S2")), annotations="***",
+                  y_position = 9.3, tip_length = 0, vjust=0.4) +
+      geom_signif(stat="identity",
+                  data=data.frame(x=c(0.875, 1.875), xend=c(1.125, 2.125),
+                                  y=c(5.8, 8.5), annotation=c("**", "**")),
+                  aes(x=x,xend=xend, y=y, yend=y, annotation=annotation, group=c(1,2))) +
+      scale_fill_manual(values = c("grey80", "grey20"))
+  )
+
+})
 
 
 
