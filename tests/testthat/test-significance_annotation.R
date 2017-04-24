@@ -56,20 +56,6 @@ test_that("geom_signif with identity works", {
   )
 })
 
-test_that("loading the psych packages does not lead to an error", {
-  library(ggplot2)
-  library(ggsignif)
-
-  library(psych)
-
-  print(
-    ggplot(iris, aes(x=Species, y=Sepal.Length)) +
-      geom_boxplot() +
-      geom_signif(comparisons = list(c("versicolor", "virginica")),
-                  map_signif_level=TRUE)
-  )
-})
-
 
 
 test_that("you can change the linetype", {
