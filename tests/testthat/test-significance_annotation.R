@@ -102,6 +102,17 @@ test_that("identical annotations are plotted separetly", {
 
 })
 
+test_that("multiple comparisons can be made to the same element", {
+  library(ggplot2)
+  library(ggsignif)
+
+  print(
+    ggplot(data.frame(y=runif(100), x=sample(c("A", "B", "C", "D"), size = 100, replace = TRUE)),
+           aes(x = x, y=y)) +
+      geom_boxplot() +
+      geom_signif(comparisons = list(c(1,2), c(2,3), c(1,3), c(1,4), c(2,4), c(1,2)), step_increase = .1)
+  )
+})
 
 
 

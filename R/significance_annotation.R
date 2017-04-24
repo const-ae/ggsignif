@@ -69,7 +69,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                                    xend=c(min(comp[1],comp[2]),max(comp[1],comp[2]),max(comp[1],comp[2])),
                                    y=c(y_pos - y_scale_range*tip_length[i], y_pos, y_pos),
                                    yend=c(y_pos, y_pos, y_pos-y_scale_range*tip_length[i]),
-                                   annotation=test_result)
+                                   annotation=test_result, group=paste(c(comp, i), collapse = "-"))
                       }
                     })
 
