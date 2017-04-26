@@ -11,4 +11,4 @@
 
 # Initial Release (0.1.0)
 
-The package has been made publicly available on CRAN: https://cran.r-project.org/web/packages/ggsignif/index.html
+The package has been made publicly available on CRAN: https://CRAN.R-project.org/package=ggsignif
