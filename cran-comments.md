@@ -1,5 +1,10 @@
 
-New version with some bug fixes
+## Resubmission
+
+This is a resubmission. In this version I have:
+
+* Changed "geom_signif"" to "geom_signif()" as requested
+
 
 ## Test environments
 * linux ubuntu: r 3.4.0
