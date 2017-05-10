@@ -147,7 +147,7 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                  rot = coords$angle,
                                  gp = grid::gpar(
                                    col = scales::alpha(coords$colour, coords$alpha),
-                                   fontsize = coords$textsize * .pt,
+                                   fontsize = coords$textsize * ggplot2::.pt,
                                    fontfamily = coords$family,
                                    fontface = coords$fontface,
                                    lineheight = coords$lineheight
@@ -160,7 +160,7 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                  gp = grid::gpar(
                                    col = scales::alpha(coords$colour, coords$alpha),
                                    lty = coords$linetype,
-                                   lwd = coords$size * .pt
+                                   lwd = coords$size * ggplot2::.pt
                                  )
                                )
                              )
