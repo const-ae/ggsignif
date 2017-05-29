@@ -57,7 +57,8 @@ the default plot specification, e.g. \code{\link{borders}}.}
 The entries in the vector are either the names of 2 values on the x-axis
 or the 2 integers that correspond to the index of the columns of interest}
 
-\item{test}{the name of the statistical test that is applied to the values of the 2 columns (e.g. t.test, wilcox.test etc.)}
+\item{test}{the name of the statistical test that is applied to the values of the 2 columns (e.g. `t.test`, `wilcox.test` etc.).
+If you implement a custom test make sure that it returns a list that has an entry called `p.value`.}
 
 \item{test.args}{additional arguments for the test method}
 
@@ -83,6 +84,12 @@ to the paired geom/stat.}
 
 \item{stat}{The statistical transformation to use on the data for this
 layer, as a string.}
+
+\item{size}{change the width of the lines of the bracket}
+
+\item{textsize}{change the size of the text}
+
+\item{family}{change the font used for the text}
 }
 \description{
 Create significance layer

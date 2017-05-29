@@ -83,13 +83,17 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #' @param comparisons A list of length-2 vectors.
 #'   The entries in the vector are either the names of 2 values on the x-axis
 #'   or the 2 integers that correspond to the index of the columns of interest
-#' @param test the name of the statistical test that is applied to the values of the 2 columns (e.g. t.test, wilcox.test etc.)
+#' @param test the name of the statistical test that is applied to the values of the 2 columns (e.g. `t.test`, `wilcox.test` etc.).
+#'   If you implement a custom test make sure that it returns a list that has an entry called `p.value`.
 #' @param test.args additional arguments for the test method
 #' @param annotations character vector with alternative annotations, if not null test is ignored
 #' @param map_signif_level boolean value, if the p-value are directly written as annotation or asterisks are used instead.
 #'   Alternatively one can provide a named numeric vector to create custom mappings from p-values to annotation:
 #'   For example: c("***"=0.001, "**"=0.01, "*"=0.05)
 #' @param y_position numeric vector with the precise locations of the bars
+#' @param size change the width of the lines of the bracket
+#' @param textsize change the size of the text
+#' @param family change the font used for the text
 #' @param margin_top numeric vector how much higher that the maximum value that bars start as fraction of total height
 #' @param step_increase numeric vector with the increase in fraction of total height for every additional comparison to
 #'   minimize overlap.
