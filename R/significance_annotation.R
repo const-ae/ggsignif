@@ -12,7 +12,8 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                       params$y_position <- rep(params$y_position, length(params$comparisons))
                     if(length(params$margin_top) == 1) params$margin_top <- rep(params$margin_top, length(params$comparisons))
                     if(length(params$step_increase) == 1) params$step_increase <- rep(params$step_increase, length(params$comparisons))
-                    if(length(params$tip_length) == 1) params$tip_length <- rep(params$tip_length, length(params$comparisons))
+                    if(length(params$tip_length) == 1) params$tip_length <- rep(params$tip_length, length(params$comparisons) * 2)
+                    if(length(params$tip_length) == length(params$comparisons)) params$tip_length <- rep(params$tip_length, each=2)
                     if(! is.null(params$annotations) && length(params$annotations) == 1)
                       params$annotations <- rep(params$annotations, length(params$comparisons))
 
@@ -67,8 +68,8 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                         }
                         data.frame(x=c(min(comp[1],comp[2]),min(comp[1],comp[2]),max(comp[1],comp[2])),
                                    xend=c(min(comp[1],comp[2]),max(comp[1],comp[2]),max(comp[1],comp[2])),
-                                   y=c(y_pos - y_scale_range*tip_length[i], y_pos, y_pos),
-                                   yend=c(y_pos, y_pos, y_pos-y_scale_range*tip_length[i]),
+                                   y=c(y_pos - y_scale_range*tip_length[(i-1)*2+1], y_pos, y_pos),
+                                   yend=c(y_pos, y_pos, y_pos-y_scale_range*tip_length[(i-1)*2+2]),
                                    annotation=test_result, group=paste(c(comp, i), collapse = "-"))
                       }
                     })
