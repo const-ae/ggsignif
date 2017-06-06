@@ -17,7 +17,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                     if(! is.null(params$annotations) && length(params$annotations) == 1)
                       params$annotations <- rep(params$annotations, length(params$comparisons))
 
-                    if(params$map_signif_level == TRUE){
+                    if(all(params$map_signif_level == TRUE)){
                       params$map_signif_level <- c("***"=0.001, "**"=0.01, "*"=0.05)
                     }else if(is.numeric(params$map_signif_level)){
                       if(is.null(names(params$map_signif_level)) ){
