@@ -1,5 +1,9 @@
 
+# Version 0.3.0
 
+- Simplify setting brackets at custom locations with xmin, xmax and y_position
+- Extend documentation
+- Bug fixes
 
 # Version 0.2.0
 
