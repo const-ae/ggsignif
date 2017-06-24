@@ -119,6 +119,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #' @param size change the width of the lines of the bracket
 #' @param textsize change the size of the text
 #' @param family change the font used for the text
+#' @param vjust move the text up or down relative to the bracket
 #' @param margin_top numeric vector how much higher that the maximum value that bars start as fraction of total height
 #' @param step_increase numeric vector with the increase in fraction of total height for every additional comparison to
 #'   minimize overlap.
@@ -151,7 +152,7 @@ stat_signif <- function(mapping = NULL, data = NULL,
                     inherit.aes = TRUE, comparisons=NULL, test="wilcox.test", test.args=NULL,
                     annotations=NULL, map_signif_level=FALSE,y_position=NULL,xmin=NULL, xmax=NULL,
                     margin_top=0.05, step_increase=0, tip_length=0.03,
-                    size=0.5, textsize = 3.88, family="",
+                    size=0.5, textsize = 3.88, family="", vjust = 0,
                     ...) {
   ggplot2::layer(
     stat = StatSignif, data = data, mapping = mapping, geom = "signif",
@@ -209,7 +210,9 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                         position = "identity", na.rm = FALSE, show.legend = NA,
                         inherit.aes = TRUE, comparisons=NULL, test="wilcox.test", test.args=NULL,
                         annotations=NULL, map_signif_level=FALSE,y_position=NULL,xmin=NULL, xmax=NULL,
-                        margin_top=0.05, step_increase=0, tip_length=0.03, ...) {
+                        margin_top=0.05, step_increase=0, tip_length=0.03,
+                        size=0.5, textsize = 3.88, family="", vjust = 0,
+                        ...) {
   params <- list(na.rm = na.rm, ...)
   if (identical(stat, "signif")) {
     params <- c(params, list(comparisons=comparisons, test=test, test.args=test.args,
