@@ -1,6 +1,8 @@
 ggsignif
 ================
 
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif) [![Downloads](https://cranlogs.r-pkg.org/badges/last-month/ggsignif?color=brightgreen)](https://cran.r-project.org/package=ggsignif)
+
 Easily add significance bars to your ggplots
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
