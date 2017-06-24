@@ -30,8 +30,8 @@ test_that("geom works as well as stat works", {
 })
 
 
-test_that("non-sense fails", {
-  expect_error(print(
+test_that("non-sense gives warning", {
+  expect_warning(print(
     ggplot(mpg, aes(y=hwy, x=displ, group=manufacturer)) +
       geom_point()  +
       stat_signif(comparisons=list(c("audi", "ford"), c("hyundai", "nissan")))
@@ -101,6 +101,36 @@ test_that("multiple comparisons can be made to the same element", {
 })
 
 
+test_that("plots with xmin, xmax work", {
+  library(datasets)
 
+  data(airquality)
+  airquality$Month <- factor(airquality$Month,
+                             labels = c("May", "Jun", "Jul", "Aug", "Sep"))
+  airquality_trimmed <- airquality[which(airquality$Month == "Jul" |
+                                           airquality$Month == "Aug" |
+                                           airquality$Month == "Sep"), ]
+  airquality_trimmed$Temp.f <- factor(ifelse(airquality_trimmed$Temp > mean(airquality_trimmed$Temp), 1, 0),
+                                      labels = c("Low temp", "High temp"))
+
+  print(ggplot(airquality_trimmed, aes(x = Month, y = Ozone, fill = Temp.f)) +
+          geom_boxplot(alpha=0.7, width=0.4) +
+          geom_signif(y_position=150, xmin=c(0.9,1.9), xmax=c(1.1, 2.1),
+                      annotations=c("***", "NS"))+
+          scale_y_continuous(name = "Mean ozone in\nparts per billion",
+                             breaks = seq(0, 175, 25),
+                             limits=c(0, 175)) +
+          scale_x_discrete(name = "Month") +
+          ggtitle("Boxplot of mean ozone by month") +
+          theme_bw() +
+          theme(plot.title = element_text(size = 14, face = "bold"),
+                text = element_text(size = 12),
+                axis.title = element_text(face="bold"),
+                axis.text.x=element_text(size = 11),
+                legend.position = "bottom") +
+          scale_fill_brewer(palette = "Accent") +
+          labs(fill = "Temperature")
+  )
+})
 
 

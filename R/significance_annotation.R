@@ -3,19 +3,31 @@
 StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                   required_aes = c("x", "y", "group"),
                   setup_params = function(data, params) {
-                    if(any(data$group == -1)|| any(data$group != data$x)){
+                    # if(any(data$group == -1)|| any(data$group != data$x)){
+                    if(any(data$group == -1)){
                       stop("Can only handle data with groups that are plotted on the x-axis")
                     }
+
                     if (is.character(params$test)) params$test <- match.fun(params$test)
                     params$complete_data <- data
+                    if(is.null(params$xmin) != is.null(params$xmax) || length(params$xmin) != length(params$xmax))
+                      stop("If xmin or xmax is set, the other one also needs to be set and they need to contain the same number of values")
+                    if(!is.null(params$xmin) && !is.null(params$comparisons))
+                      stop("Set either the xmin, xmax values or the comparisons")
+                    if(!is.null(params$xmin) && is.null(params$y_position))
+                      stop("If xmin, xmax are defined also define y_position")
                     if(! is.null(params$y_position) && length(params$y_position) == 1)
-                      params$y_position <- rep(params$y_position, length(params$comparisons))
-                    if(length(params$margin_top) == 1) params$margin_top <- rep(params$margin_top, length(params$comparisons))
-                    if(length(params$step_increase) == 1) params$step_increase <- rep(params$step_increase, length(params$comparisons))
-                    if(length(params$tip_length) == 1) params$tip_length <- rep(params$tip_length, length(params$comparisons) * 2)
+                      params$y_position <- rep(params$y_position, max(length(params$comparisons), length(params$xmin)))
+                    if(length(params$margin_top) == 1) params$margin_top <- rep(params$margin_top, max(length(params$comparisons),length(params$xmin)))
+                    if(length(params$step_increase) == 1) params$step_increase <- rep(params$step_increase, max(length(params$comparisons),length(params$xmin)))
+                    if(length(params$tip_length) == 1) params$tip_length <- rep(params$tip_length, max(length(params$comparisons),length(params$xmin)) * 2)
                     if(length(params$tip_length) == length(params$comparisons)) params$tip_length <- rep(params$tip_length, each=2)
+                    if(length(params$tip_length) == length(params$xmin)) params$tip_length <- rep(params$tip_length, each=2)
                     if(! is.null(params$annotations) && length(params$annotations) == 1)
-                      params$annotations <- rep(params$annotations, length(params$comparisons))
+                      params$annotations <- rep(params$annotations, max(length(params$comparisons),length(params$xmin)))
+                    if(! is.null(params$annotations) && length(params$annotations) != max(length(params$comparisons),length(params$xmin)))
+                      stop(paste0("annotations contains a different number of elements (", length(params$annotations),
+                                  ") than comparisons or xmin (", max(length(params$comparisons),length(params$xmin)), ")."))
 
                     if(all(params$map_signif_level == TRUE)){
                       params$map_signif_level <- c("***"=0.001, "**"=0.01, "*"=0.05)
@@ -31,50 +43,60 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                     return(params)
                   },
                   compute_group = function(data, scales, comparisons, test, test.args, complete_data,
-                                           annotations, map_signif_level, y_position,
+                                           annotations, map_signif_level, y_position, xmax, xmin,
                                            margin_top, step_increase, tip_length) {
-                    i <- 0
-                    result <- lapply(comparisons, function(comp){
-                      i <<- i + 1
-                      # All entries in group should be the same
-                      if(scales$x$map(comp[1]) == data$group[1]){
-                        test_result <- if(is.null(annotations)){
-                          group_1 <- complete_data$y[complete_data$x == scales$x$map(comp[1]) & complete_data$PANEL == data$PANEL[1]]
-                          group_2 <- complete_data$y[complete_data$x == scales$x$map(comp[2]) & complete_data$PANEL == data$PANEL[1]]
-                          p_value <- do.call(test, c(list(group_1, group_2), test.args))$p.value
-                          if(is.numeric(map_signif_level)){
-                            temp_value <- names(which.min(map_signif_level[which(map_signif_level > p_value)]))
-                            if(is.null(temp_value)){
-                              "NS."
+                    if(! is.null(comparisons)){
+                      i <- 0
+                      result <- lapply(comparisons, function(comp){
+                        i <<- i + 1
+                        # All entries in group should be the same
+                        if(scales$x$map(comp[1]) == data$group[1]){
+                          test_result <- if(is.null(annotations)){
+                            group_1 <- complete_data$y[complete_data$x == scales$x$map(comp[1]) & complete_data$PANEL == data$PANEL[1]]
+                            group_2 <- complete_data$y[complete_data$x == scales$x$map(comp[2]) & complete_data$PANEL == data$PANEL[1]]
+                            p_value <- do.call(test, c(list(group_1, group_2), test.args))$p.value
+                            if(is.numeric(map_signif_level)){
+                              temp_value <- names(which.min(map_signif_level[which(map_signif_level > p_value)]))
+                              if(is.null(temp_value)){
+                                "NS."
+                              }else{
+                                temp_value
+                              }
                             }else{
-                              temp_value
+                              if(p_value < 2.2e-16){
+                                "< 2.2e-16"
+                              }else{
+                                as.character(signif(p_value, digits=2))
+                              }
+
                             }
                           }else{
-                            if(p_value < 2.2e-16){
-                              "< 2.2e-16"
-                            }else{
-                              as.character(signif(p_value, digits=2))
-                            }
-
+                            annotations[i]
                           }
-                        }else{
-                          annotations[i]
+                          y_scale_range <- (scales$y$range$range[2] - scales$y$range$range[1])
+                          y_pos <- if(is.null(y_position)){
+                            scales$y$range$range[2] + y_scale_range * margin_top[i] + y_scale_range * step_increase[i] * (i-1)
+                          }else{
+                            y_pos <- y_position[i]
+                          }
+                          data.frame(x=c(min(comp[1],comp[2]),min(comp[1],comp[2]),max(comp[1],comp[2])),
+                                     xend=c(min(comp[1],comp[2]),max(comp[1],comp[2]),max(comp[1],comp[2])),
+                                     y=c(y_pos - y_scale_range*tip_length[(i-1)*2+1], y_pos, y_pos),
+                                     yend=c(y_pos, y_pos, y_pos-y_scale_range*tip_length[(i-1)*2+2]),
+                                     annotation=test_result, group=paste(c(comp, i), collapse = "-"))
                         }
+                      })
+                      do.call(rbind, result)
+                    }else{
+                      if(data$x[1] == min(complete_data$x) & data$group[1] == min(complete_data$group)){
                         y_scale_range <- (scales$y$range$range[2] - scales$y$range$range[1])
-                        y_pos <- if(is.null(y_position)){
-                          scales$y$range$range[2] + y_scale_range * margin_top[i] + y_scale_range * step_increase[i] * (i-1)
-                        }else{
-                          y_pos <- y_position[i]
-                        }
-                        data.frame(x=c(min(comp[1],comp[2]),min(comp[1],comp[2]),max(comp[1],comp[2])),
-                                   xend=c(min(comp[1],comp[2]),max(comp[1],comp[2]),max(comp[1],comp[2])),
-                                   y=c(y_pos - y_scale_range*tip_length[(i-1)*2+1], y_pos, y_pos),
-                                   yend=c(y_pos, y_pos, y_pos-y_scale_range*tip_length[(i-1)*2+2]),
-                                   annotation=test_result, group=paste(c(comp, i), collapse = "-"))
+                        data.frame(x=c(xmin, xmin, xmax),
+                                   xend=c(xmin, xmax, xmax),
+                                   y=c(y_position - y_scale_range*tip_length[seq_len(length(tip_length))%% 2 == 1], y_position, y_position),
+                                   yend=c(y_position, y_position, y_position-y_scale_range*tip_length[seq_len(length(tip_length))%% 2 == 0]),
+                                   annotation=rep(annotations, times=3), group=rep(seq_along(xmin), times=3))
                       }
-                    })
-
-                    do.call(rbind, result)
+                    }
                   }
 )
 
@@ -91,7 +113,9 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #' @param map_signif_level boolean value, if the p-value are directly written as annotation or asterisks are used instead.
 #'   Alternatively one can provide a named numeric vector to create custom mappings from p-values to annotation:
 #'   For example: c("***"=0.001, "**"=0.01, "*"=0.05)
-#' @param y_position numeric vector with the precise locations of the bars
+#' @param xmin numeric vector with the positions of the left sides of the brackets
+#' @param xmax numeric vector with the positions of the right sides of the brackets
+#' @param y_position numeric vector with the y positions of the brackets
 #' @param size change the width of the lines of the bracket
 #' @param textsize change the size of the text
 #' @param family change the font used for the text
@@ -114,20 +138,27 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #'  geom_boxplot() +
 #'  geom_signif(comparisons = list(c("compact", "pickup"),
 #'                                 c("subcompact", "suv")))
+#'
+#' ggplot(mpg, aes(class, hwy)) +
+#'   geom_boxplot() +
+#'   geom_signif(annotations = c("First", "Second"),
+#'               y_position = c(30, 40), xmin=c(4,1), xmax=c(5,3))
 #' }
 #'
 #' @export
 stat_signif <- function(mapping = NULL, data = NULL,
                     position = "identity", na.rm = FALSE, show.legend = NA,
                     inherit.aes = TRUE, comparisons=NULL, test="wilcox.test", test.args=NULL,
-                    annotations=NULL, map_signif_level=FALSE,y_position=NULL,
+                    annotations=NULL, map_signif_level=FALSE,y_position=NULL,xmin=NULL, xmax=NULL,
                     margin_top=0.05, step_increase=0, tip_length=0.03,
+                    size=0.5, textsize = 3.88, family="",
                     ...) {
   ggplot2::layer(
     stat = StatSignif, data = data, mapping = mapping, geom = "signif",
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
     params = list(comparisons=comparisons, test=test, test.args=test.args,
-                  annotations=annotations, map_signif_level=map_signif_level,y_position=y_position,
+                  annotations=annotations, map_signif_level=map_signif_level,
+                  y_position=y_position,xmin=xmin, xmax=xmax,
                   margin_top=margin_top, step_increase=step_increase,
                   tip_length=tip_length, na.rm = na.rm, ...)
   )
@@ -177,12 +208,13 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
 geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                         position = "identity", na.rm = FALSE, show.legend = NA,
                         inherit.aes = TRUE, comparisons=NULL, test="wilcox.test", test.args=NULL,
-                        annotations=NULL, map_signif_level=FALSE,y_position=NULL,
+                        annotations=NULL, map_signif_level=FALSE,y_position=NULL,xmin=NULL, xmax=NULL,
                         margin_top=0.05, step_increase=0, tip_length=0.03, ...) {
   params <- list(na.rm = na.rm, ...)
   if (identical(stat, "signif")) {
     params <- c(params, list(comparisons=comparisons, test=test, test.args=test.args,
-                   annotations=annotations, map_signif_level=map_signif_level,y_position=y_position,
+                   annotations=annotations, map_signif_level=map_signif_level,
+                   y_position=y_position,xmin=xmin, xmax=xmax,
                    margin_top=margin_top, step_increase=step_increase,
                    tip_length=tip_length))
   }

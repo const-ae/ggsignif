@@ -9,14 +9,15 @@ stat_signif(mapping = NULL, data = NULL, position = "identity",
   na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
   comparisons = NULL, test = "wilcox.test", test.args = NULL,
   annotations = NULL, map_signif_level = FALSE, y_position = NULL,
-  margin_top = 0.05, step_increase = 0, tip_length = 0.03, ...)
+  xmin = NULL, xmax = NULL, margin_top = 0.05, step_increase = 0,
+  tip_length = 0.03, size = 0.5, textsize = 3.88, family = "", ...)
 
 geom_signif(mapping = NULL, data = NULL, stat = "signif",
   position = "identity", na.rm = FALSE, show.legend = NA,
   inherit.aes = TRUE, comparisons = NULL, test = "wilcox.test",
   test.args = NULL, annotations = NULL, map_signif_level = FALSE,
-  y_position = NULL, margin_top = 0.05, step_increase = 0,
-  tip_length = 0.03, ...)
+  y_position = NULL, xmin = NULL, xmax = NULL, margin_top = 0.05,
+  step_increase = 0, tip_length = 0.03, ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -68,7 +69,11 @@ If you implement a custom test make sure that it returns a list that has an entr
 Alternatively one can provide a named numeric vector to create custom mappings from p-values to annotation:
 For example: c("***"=0.001, "**"=0.01, "*"=0.05)}
 
-\item{y_position}{numeric vector with the precise locations of the bars}
+\item{y_position}{numeric vector with the y positions of the brackets}
+
+\item{xmin}{numeric vector with the positions of the left sides of the brackets}
+
+\item{xmax}{numeric vector with the positions of the right sides of the brackets}
 
 \item{margin_top}{numeric vector how much higher that the maximum value that bars start as fraction of total height}
 
@@ -77,6 +82,12 @@ minimize overlap.}
 
 \item{tip_length}{numeric vector with the fraction of total height that the bar goes down to indicate the precise column}
 
+\item{size}{change the width of the lines of the bracket}
+
+\item{textsize}{change the size of the text}
+
+\item{family}{change the font used for the text}
+
 \item{...}{other arguments passed on to \code{\link{layer}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
 \code{color = "red"} or \code{size = 3}. They may also be parameters
@@ -84,12 +95,6 @@ to the paired geom/stat.}
 
 \item{stat}{The statistical transformation to use on the data for this
 layer, as a string.}
-
-\item{size}{change the width of the lines of the bracket}
-
-\item{textsize}{change the size of the text}
-
-\item{family}{change the font used for the text}
 }
 \description{
 Create significance layer
@@ -102,6 +107,11 @@ ggplot(mpg, aes(class, hwy)) +
  geom_boxplot() +
  geom_signif(comparisons = list(c("compact", "pickup"),
                                 c("subcompact", "suv")))
+
+ggplot(mpg, aes(class, hwy)) +
+  geom_boxplot() +
+  geom_signif(annotations = c("First", "Second"),
+              y_position = c(30, 40), xmin=c(4,1), xmax=c(5,3))
 }
 
 }
