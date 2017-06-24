@@ -8,7 +8,7 @@ Description: Enrich your ggplots with group-wise comparisons.
   Commonly this is shown by a bar on top connecting the groups of interest which itself is annotated with the level of significance (NS, *, **, ***).
   The package provides a single layer (geom_signif()) that takes the groups for comparison and the test (t.test(), wilcox.text() etc.) as arguments and adds the annotation
   to the plot.
-URL: https://github.com/Artjom-Metro/ggsignif
+URL: https://github.com/const-ae/ggsignif
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
