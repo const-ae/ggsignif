@@ -42,8 +42,11 @@ That's it, it is really simple!
 
 ## Advanced options
 
-Sometimes one might need more advanced control over the display. Following the patterns of other ggplot layers, 
-one just provides the data and necessary aesthetics and the layer takes care of the rest.
+Sometimes one might need more advanced control over the display. To specify exactly where
+the bracket is drawn use the `y_position`, `xmin` and `xmax` parameters combined with
+a custom `annotations`. This is always necessary if `geom_signif` is combined with
+another layer that uses `position="dodge"`, because it changes the location of the 
+visual elements without updating the data.
 
 ```{r fig.width = 6, fig.height = 4.8}
 dat <- data.frame(Group = c("S1", "S1", "S2", "S2"),
@@ -52,12 +55,10 @@ dat <- data.frame(Group = c("S1", "S1", "S2", "S2"),
 
 ggplot(dat, aes(Group, Value)) +
   geom_bar(aes(fill = Sub), stat="identity", position="dodge", width=.5) +
-  geom_signif(stat="identity",
-              data=data.frame(x=c(0.875, 1.875), xend=c(1.125, 2.125),
-                              y=c(5.8, 8.5), annotation=c("**", "NS")),
-              aes(x=x,xend=xend, y=y, yend=y, annotation=annotation, group=c(1,2))) +
-  geom_signif(comparisons=list(c("S1", "S2")), annotations="***",
-              y_position = 9.3, tip_length = 0, vjust=0.4) +
+  geom_signif(y_position=c(5.3, 8.3), xmin=c(0.8, 1.8), xmax=c(1.2, 2.2),
+              annotation=c("**", "NS"), tip_length=0) +
+  geom_signif(comparisons=list(c("S1", "S2")),
+              y_position = 9.3, tip_length = 0, vjust=0.2) +
   scale_fill_manual(values = c("grey80", "grey20"))
     
 ```
@@ -66,7 +67,7 @@ For more detailed documentation of the available parameters see the man page for
 
 # Bugs, Comments or Questions?
 
-If you have any problems with the package, just file an issue at https://github.com/Artjom-Metro/ggsignif.
+If you have any problems with the package, just file an issue at https://github.com/const-ae/ggsignif.
 
 
 
