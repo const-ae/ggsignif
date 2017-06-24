@@ -1,20 +1,41 @@
-ggsignif
-================
+---
+title: ggsignif
+output: 
+  github_document
+---
 
 Easily add significance bars to your ggplots
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-Description
------------
 
-This package provides an easy way to indicate if two groups are significantly different. Commonly this is shown with a by a bar on top connecting the groups of interest which itself is annoted with the level of significance (NS, *, **, ***). The package provides a single layer (geom\_signif) that takes the groups for comparison and the test (t.test, wilcox etc.) and adds the annotation to the plot.
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  cache = TRUE,
+  fig.path = "README-fig/",
+  cache.path = "README-cache/",
+  message = FALSE,
+  warning = FALSE
+)
+```
 
-Example
--------
+
+
+
+
+## Description
+This package provides an easy way to indicate if two groups are significantly different.
+Commonly this is shown with a by a bar on top connecting the groups of interest which itself is annoted with the level of significance (NS, *, **, ***).
+The package provides a single layer (geom_signif) that takes the groups for comparison and the test (t.test, wilcox etc.) and adds the annotation
+to the plot.
+
+
+## Example
 
 Install package
 
-``` r
+```{r eval=FALSE}
 install.packages("ggsignif")
 
 # Or for the latest development version
@@ -23,7 +44,7 @@ devtools::install_github("const-ae/ggsignif")
 
 Plot significance
 
-``` r
+```{r simpe_comparison}
 library(ggplot2)
 library(ggsignif)
 ggplot(mpg, aes(class, hwy)) +
@@ -33,11 +54,10 @@ ggplot(mpg, aes(class, hwy)) +
   ylim(NA, 50)
 ```
 
-![](README-fig/simpe_comparison-1.png)
 
 Advanced Example
 
-``` r
+```{r dodge_comparison}
 # Calculate annotation
 anno <- t.test(iris[iris$Petal.Width > 1 & iris$Species == "versicolor", "Sepal.Width"], 
                iris[iris$Species == "virginica", "Sepal.Width"])$p.value
@@ -50,6 +70,5 @@ ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Petal.Width > 1)) +
               tip_length = c(0.2, 0.04))
 ```
 
-![](README-fig/dodge_comparison-1.png)
 
 For further details go the [CRAN page](https://CRAN.R-project.org/package=ggsignif) and check the examples in the [vignette](https://CRAN.R-project.org/package=ggsignif/vignettes/intro.html).

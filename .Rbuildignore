@@ -1,3 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 cran-comments.md
+^README\.Rmd$
+^README-cache
+^README-fig
