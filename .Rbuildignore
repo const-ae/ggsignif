@@ -3,4 +3,3 @@
 cran-comments.md
 ^README\.Rmd$
 ^README-cache
-^README-fig
