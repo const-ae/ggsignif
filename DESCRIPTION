@@ -1,7 +1,7 @@
 Package: ggsignif
 Type: Package
 Title: Significance Brackets for 'ggplot2'
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: person("Constantin", "Ahlmann-Eltze", email = "artjom31415@googlemail.com", role = c("aut", "cre"))
 Description: Enrich your 'ggplots' with group-wise comparisons.
   This package provides an easy way to indicate if two groups are significantly different.
