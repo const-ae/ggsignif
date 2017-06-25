@@ -15,8 +15,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   cache = TRUE,
-  fig.path = "README-fig/",
-  cache.path = "README-cache/",
+  fig.path = "tools/README-fig/",
+  cache.path = "tools/README-cache/",
   message = FALSE,
   warning = FALSE
 )

@@ -35,7 +35,7 @@ ggplot(mpg, aes(class, hwy)) +
   ylim(NA, 50)
 ```
 
-![](README-fig/simpe_comparison-1.png)
+![](tools/README-fig/simpe_comparison-1.png)
 
 Advanced Example
 
@@ -52,6 +52,6 @@ ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Petal.Width > 1)) +
               tip_length = c(0.2, 0.04))
 ```
 
-![](README-fig/dodge_comparison-1.png)
+![](tools/README-fig/dodge_comparison-1.png)
 
 For further details go the [CRAN page](https://CRAN.R-project.org/package=ggsignif) and check the examples in the [vignette](https://CRAN.R-project.org/package=ggsignif/vignettes/intro.html).
