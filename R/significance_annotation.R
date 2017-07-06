@@ -161,7 +161,8 @@ stat_signif <- function(mapping = NULL, data = NULL,
                   annotations=annotations, map_signif_level=map_signif_level,
                   y_position=y_position,xmin=xmin, xmax=xmax,
                   margin_top=margin_top, step_increase=step_increase,
-                  tip_length=tip_length, na.rm = na.rm, ...)
+                  tip_length=tip_length, size=size, textsize=textsize,
+                  family=family, vjust=vjust, na.rm = na.rm, ...)
   )
 }
 
@@ -219,7 +220,7 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                    annotations=annotations, map_signif_level=map_signif_level,
                    y_position=y_position,xmin=xmin, xmax=xmax,
                    margin_top=margin_top, step_increase=step_increase,
-                   tip_length=tip_length, size=size, textsize=textsize, 
+                   tip_length=tip_length, size=size, textsize=textsize,
                    family=family, vjust=vjust))
   }
   ggplot2::layer(
