@@ -11,7 +11,7 @@ stat_signif(mapping = NULL, data = NULL, position = "identity",
   annotations = NULL, map_signif_level = FALSE, y_position = NULL,
   xmin = NULL, xmax = NULL, margin_top = 0.05, step_increase = 0,
   tip_length = 0.03, size = 0.5, textsize = 3.88, family = "",
-  vjust = 0, ...)
+  vjust = 0, manual = FALSE, ...)
 
 geom_signif(mapping = NULL, data = NULL, stat = "signif",
   position = "identity", na.rm = FALSE, show.legend = NA,
@@ -19,7 +19,7 @@ geom_signif(mapping = NULL, data = NULL, stat = "signif",
   test.args = NULL, annotations = NULL, map_signif_level = FALSE,
   y_position = NULL, xmin = NULL, xmax = NULL, margin_top = 0.05,
   step_increase = 0, tip_length = 0.03, size = 0.5, textsize = 3.88,
-  family = "", vjust = 0, ...)
+  family = "", vjust = 0, manual = FALSE, ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -91,6 +91,9 @@ minimize overlap.}
 \item{family}{change the font used for the text}
 
 \item{vjust}{move the text up or down relative to the bracket}
+
+\item{manual}{boolean flag that indicates that the parameters are provided with a data.frame. This option is necessary if
+one wants to plot different annotations per facet.}
 
 \item{...}{other arguments passed on to \code{\link{layer}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like

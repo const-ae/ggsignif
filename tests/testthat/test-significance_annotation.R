@@ -134,3 +134,18 @@ test_that("plots with xmin, xmax work", {
 })
 
 
+test_that("manually annotated plots work", {
+  ggplot(data = diamonds,
+         aes(x = cut,
+             y = price)) +
+    geom_boxplot() +
+    geom_signif(data=data.frame(color=c("E", "E", "G"), annotations=c("123","abc", "xyz"), xmin=c(1,4,2), xmax=c(2,3,3)),
+                aes(annotations=annotations, xmin=xmin, xmax=xmax),
+                manual=TRUE,
+                y_position = 20000
+    ) +
+    facet_wrap(~ color) +
+    ylim(NA, 22000)
+})
+
+
