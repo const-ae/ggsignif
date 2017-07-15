@@ -251,6 +251,7 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                         ...) {
   params <- list(na.rm = na.rm, ...)
   if (identical(stat, "signif")) {
+    if(! is.null(data) & ! is.null(mapping) & ! manual) warning("You have set data and mapping, are you sure that manual = FALSE is correct?")
     if(manual){
       if(is.null(mapping$annotations)) stop("Manual mode only works if with 'annotations' is provided in mapping")
       if(! is.null(data) & ! is.null(mapping)){
