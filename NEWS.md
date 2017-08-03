@@ -1,4 +1,9 @@
 
+# Version 0.4.0
+
+- Fix bug that stoped textsize from working
+- Add manual=TRUE mode, which allows the parameters to be given as a data.frame
+
 # Version 0.3.0
 
 - Simplify setting brackets at custom locations with xmin, xmax and y_position
