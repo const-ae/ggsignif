@@ -44,7 +44,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                   },
                   compute_group = function(data, scales, comparisons, test, test.args, complete_data,
                                            annotations, map_signif_level, y_position, xmax, xmin,
-                                           margin_top, step_increase, tip_length, manual) {
+                                           margin_top, step_increase, tip_length, manual, FDR) {
 
                     if("annotations" %in% colnames(data)){
                       annotations <- data[["annotations"]]
@@ -75,6 +75,9 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                             group_1 <- complete_data$y[complete_data$x == scales$x$map(comp[1]) & complete_data$PANEL == data$PANEL[1]]
                             group_2 <- complete_data$y[complete_data$x == scales$x$map(comp[2]) & complete_data$PANEL == data$PANEL[1]]
                             p_value <- do.call(test, c(list(group_1, group_2), test.args))$p.value
+                            if(FDR==TRUE){
+                              p_value = p.adjust(p_value, method="fdr", n=length(comparisons))
+                            }
                             if(is.numeric(map_signif_level)){
                               temp_value <- names(which.min(map_signif_level[which(map_signif_level > p_value)]))
                               if(is.null(temp_value)){
@@ -154,6 +157,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #'   one wants to plot different annotations per facet.
 #' @param na.rm If \code{FALSE} (the default), removes missing values with
 #'    a warning.  If \code{TRUE} silently removes missing values.
+#' @param FDR logical. Should the p value be corrected for multiple testing? TRUE by default.
 #' @param ... other arguments passed on to \code{\link{layer}}. These are
 #'   often aesthetics, used to set an aesthetic to a fixed value, like
 #'   \code{color = "red"} or \code{size = 3}. They may also be parameters
@@ -181,7 +185,7 @@ stat_signif <- function(mapping = NULL, data = NULL,
                     annotations=NULL, map_signif_level=FALSE,y_position=NULL,xmin=NULL, xmax=NULL,
                     margin_top=0.05, step_increase=0, tip_length=0.03,
                     size=0.5, textsize = 3.88, family="", vjust = 0,
-                    manual=FALSE,
+                    manual=FALSE, FDR=TRUE,
                     ...) {
   if(manual){
     if(! is.null(data) & ! is.null(mapping)){
@@ -199,7 +203,7 @@ stat_signif <- function(mapping = NULL, data = NULL,
                   y_position=y_position,xmin=xmin, xmax=xmax,
                   margin_top=margin_top, step_increase=step_increase,
                   tip_length=tip_length, size=size, textsize=textsize,
-                  family=family, vjust=vjust, manual=manual, na.rm = na.rm, ...)
+                  family=family, vjust=vjust, manual=manual, FDR=FDR, na.rm = na.rm, ...)
   )
 }
 
@@ -250,7 +254,7 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                         annotations=NULL, map_signif_level=FALSE,y_position=NULL,xmin=NULL, xmax=NULL,
                         margin_top=0.05, step_increase=0, tip_length=0.03,
                         size=0.5, textsize = 3.88, family="", vjust = 0,
-                        manual=FALSE,
+                        manual=FALSE, FDR=TRUE,
                         ...) {
   params <- list(na.rm = na.rm, ...)
   if (identical(stat, "signif")) {
@@ -269,7 +273,7 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                    y_position=y_position,xmin=xmin, xmax=xmax,
                    margin_top=margin_top, step_increase=step_increase,
                    tip_length=tip_length, size=size, textsize=textsize,
-                   family=family, vjust=vjust, manual=manual))
+                   family=family, vjust=vjust, manual=manual, FDR=FDR))
   }
   ggplot2::layer(
     stat = stat, geom = GeomSignif, mapping = mapping,  data = data,
