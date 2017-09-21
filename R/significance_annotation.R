@@ -80,10 +80,14 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                                 temp_value
                               }
                             }else{
-                              if(p_value < 2.2e-16){
-                                "< 2.2e-16"
+                              if(is.numeric(p_value)){
+                                if(p_value < 2.2e-16){
+                                  "< 2.2e-16"
+                                }else{
+                                  as.character(signif(p_value, digits=2))
+                                }
                               }else{
-                                as.character(signif(p_value, digits=2))
+                                as.character(p_value)
                               }
 
                             }

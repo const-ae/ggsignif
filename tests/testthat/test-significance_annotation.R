@@ -148,4 +148,29 @@ test_that("manually annotated plots work", {
     ylim(NA, 22000)
 })
 
+test_that("test method which return text work", {
+  magnitude_test <- function(x,y, ...){
+    change <- mean(y)/mean(x)
+    p <- t.test(x,y)$p.value
+    stars <- if(p < 0.001)
+      "***"
+    else if(p < 0.01)
+      "**"
+    else if(p < 0.05)
+      "*"
+    else
+      ""
+    list(p.value=paste0(signif(change, digits=2),stars))
+  }
+
+  ggplot(mpg, aes(x=manufacturer, y=displ)) +
+    geom_boxplot()  +
+    stat_signif(comparisons=list(c("audi", "ford"), c("hyundai", "nissan")),
+                test=magnitude_test,
+                margin_top=0.02, step_increase=0, tip_length=0.01) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+    facet_wrap(~ as.factor(year), scale="free")
+
+})
+
 
