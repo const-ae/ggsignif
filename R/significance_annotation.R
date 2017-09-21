@@ -61,6 +61,9 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                     if("map_signif_level" %in% colnames(data)){
                       map_signif_level <- data[["map_signif_level"]]
                     }
+                    if("tip_length" %in% colnames(data)){
+                      tip_length <-  rep(data[["tip_length"]], each=2)
+                    }
 
                     if(! is.null(comparisons)){
                       i <- 0
