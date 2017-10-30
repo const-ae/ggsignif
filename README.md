@@ -9,7 +9,7 @@ Easily add significance bars to your ggplots
 Description
 -----------
 
-This package provides an easy way to indicate if two groups are significantly different. Commonly this is shown with a by a bar on top connecting the groups of interest which itself is annoted with the level of significance (NS, \*, \*\*, \*\*\*). The package provides a single layer (geom\_signif) that takes the groups for comparison and the test (t.test, wilcox etc.) and adds the annotation to the plot.
+This package provides an easy way to indicate if two groups are significantly different. Commonly this is shown by a bar on top connecting the groups of interest which itself is annoted with the level of significance (NS, \*, \*\*, \*\*\*). The package provides a single layer (geom\_signif) that takes the groups for comparison and the test (t.test, wilcox etc.) and adds the annotation to the plot.
 
 Example
 -------
@@ -39,7 +39,7 @@ ggplot(mpg, aes(class, hwy)) +
 
 Setting the precise location
 
-This is important if you use `position="dogde"`, because in that case I cannot calculate the correct position of the bars automatically.
+This is important if you use `position="dodge"`, because in that case I cannot calculate the correct position of the bars automatically.
 
 ``` r
 # Calculate annotation
@@ -58,7 +58,7 @@ ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Petal.Width > 1)) +
 
 Advanced Example
 
-Sometimes one needs to have a very fine tuned ability to set the location of the the significance bars in combination with `facet_wrap` or `facet_grid`. In those cases it you can set the flag `manual=TRUE` and provide the annoations as a data.frame:
+Sometimes one needs to have a very fine tuned ability to set the location of the the significance bars in combination with `facet_wrap` or `facet_grid`. In those cases it you can set the flag `manual=TRUE` and provide the annotations as a data.frame:
 
 ``` r
 annotation_df <- data.frame(color=c("E", "H"), 
