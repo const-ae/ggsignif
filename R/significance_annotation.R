@@ -145,6 +145,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #' @param map_signif_level boolean value, if the p-value are directly written as annotation or asterisks are used instead.
 #'   Alternatively one can provide a named numeric vector to create custom mappings from p-values to annotation:
 #'   For example: c("***"=0.001, "**"=0.01, "*"=0.05)
+#'   Alternatively, one can provide a function that takes a numeric argument (the p-value) and returns a string
 #' @param xmin numeric vector with the positions of the left sides of the brackets
 #' @param xmax numeric vector with the positions of the right sides of the brackets
 #' @param y_position numeric vector with the y positions of the brackets

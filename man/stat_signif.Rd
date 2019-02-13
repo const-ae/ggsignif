@@ -18,28 +18,28 @@ geom_signif(mapping = NULL, data = NULL, stat = "signif",
   inherit.aes = TRUE, comparisons = NULL, test = "wilcox.test",
   test.args = NULL, annotations = NULL, map_signif_level = FALSE,
   y_position = NULL, xmin = NULL, xmax = NULL, margin_top = 0.05,
-  step_increase = 0, tip_length = 0.03, size = 0.5, textsize = 3.88,
-  family = "", vjust = 0, manual = FALSE, ...)
+  step_increase = 0, tip_length = 0.03, size = 0.5,
+  textsize = 3.88, family = "", vjust = 0, manual = FALSE, ...)
 }
 \arguments{
-\item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
-\code{\link{aes_}}. If specified and \code{inherit.aes = TRUE} (the
+\item{mapping}{Set of aesthetic mappings created by \code{\link[=aes]{aes()}} or
+\code{\link[=aes_]{aes_()}}. If specified and \code{inherit.aes = TRUE} (the
 default), it is combined with the default mapping at the top level of the
 plot. You must supply \code{mapping} if there is no plot mapping.}
 
 \item{data}{The data to be displayed in this layer. There are three
-   options:
+options:
 
-   If \code{NULL}, the default, the data is inherited from the plot
-   data as specified in the call to \code{\link{ggplot}}.
+If \code{NULL}, the default, the data is inherited from the plot
+data as specified in the call to \code{\link[=ggplot]{ggplot()}}.
 
-   A \code{data.frame}, or other object, will override the plot
-   data. All objects will be fortified to produce a data frame. See
-   \code{\link{fortify}} for which variables will be created.
+A \code{data.frame}, or other object, will override the plot
+data. All objects will be fortified to produce a data frame. See
+\code{\link[=fortify]{fortify()}} for which variables will be created.
 
-   A \code{function} will be called with a single argument,
-   the plot data. The return value must be a \code{data.frame.}, and
-   will be used as the layer data.}
+A \code{function} will be called with a single argument,
+the plot data. The return value must be a \code{data.frame}, and
+will be used as the layer data.}
 
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
@@ -49,12 +49,14 @@ a warning.  If \code{TRUE} silently removes missing values.}
 
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
-\code{FALSE} never includes, and \code{TRUE} always includes.}
+\code{FALSE} never includes, and \code{TRUE} always includes.
+It can also be a named logical vector to finely select the aesthetics to
+display.}
 
 \item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
-the default plot specification, e.g. \code{\link{borders}}.}
+the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
 
 \item{comparisons}{A list of length-2 vectors.
 The entries in the vector are either the names of 2 values on the x-axis
@@ -69,7 +71,8 @@ If you implement a custom test make sure that it returns a list that has an entr
 
 \item{map_signif_level}{boolean value, if the p-value are directly written as annotation or asterisks are used instead.
 Alternatively one can provide a named numeric vector to create custom mappings from p-values to annotation:
-For example: c("***"=0.001, "**"=0.01, "*"=0.05)}
+For example: c("***"=0.001, "**"=0.01, "*"=0.05)
+Alternatively, one can provide a function that takes a numeric argument (the p-value) and returns a string}
 
 \item{y_position}{numeric vector with the y positions of the brackets}
 
