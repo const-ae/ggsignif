@@ -84,10 +84,10 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                               }
                             }else{
                               if(is.numeric(p_value)){
-                                if(p_value < 2.2e-16){
-                                  "< 2.2e-16"
+                                if(p_value < .Machine$double.eps){
+                                  sprintf("p < %.2e", .Machine$double.eps)
                                 }else{
-                                  as.character(signif(p_value, digits=2))
+                                  as.character(sprrintf("p = %.2g"), p_value)
                                 }
                               }else{
                                 as.character(p_value)
