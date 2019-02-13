@@ -29,7 +29,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                       stop(paste0("annotations contains a different number of elements (", length(params$annotations),
                                   ") than comparisons or xmin (", max(length(params$comparisons),length(params$xmin), 1), ")."))
 
-                    if(all(params$map_signif_level == TRUE)){
+                    if(all(is.logical(params$map_signif_level)) && all(params$map_signif_level == TRUE)){
                       params$map_signif_level <- c("***"=0.001, "**"=0.01, "*"=0.05)
                     }else if(is.numeric(params$map_signif_level)){
                       if(is.null(names(params$map_signif_level)) ){
@@ -82,12 +82,14 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                               }else{
                                 temp_value
                               }
+                            }else if(is.function(map_signif_level)){
+                              map_signif_level(p_value)
                             }else{
                               if(is.numeric(p_value)){
                                 if(p_value < .Machine$double.eps){
                                   sprintf("p < %.2e", .Machine$double.eps)
                                 }else{
-                                  as.character(sprrintf("p = %.2g"), p_value)
+                                  as.character(sprintf("p = %.2g"), p_value)
                                 }
                               }else{
                                 as.character(p_value)
