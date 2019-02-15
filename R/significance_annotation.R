@@ -215,7 +215,7 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                            required_aes = c("x", "xend", "y", "yend", "annotation"),
                            default_aes = ggplot2::aes(shape = 19, colour = "black", textsize = 3.88, angle = 0, hjust = 0.5,
                                              vjust = 0, alpha = NA, family = "", fontface = 1, lineheight = 1.2, linetype=1, size=0.5),
-                           draw_key = ggplot2::draw_key_point,
+                           draw_key = function(...){grid::nullGrob()},
 
                            draw_group = function(data, panel_params, coord) {
                              coords <- coord$transform(data, panel_params)
