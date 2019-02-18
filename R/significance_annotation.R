@@ -89,7 +89,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                                 if(p_value < .Machine$double.eps){
                                   sprintf("p < %.2e", .Machine$double.eps)
                                 }else{
-                                  as.character(sprintf("p = %.2g"), p_value)
+                                  as.character(sprintf("p = %.2g", p_value))
                                 }
                               }else{
                                 as.character(p_value)
