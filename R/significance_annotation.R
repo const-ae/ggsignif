@@ -89,7 +89,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                                 if(p_value < .Machine$double.eps){
                                   sprintf("p < %.2e", .Machine$double.eps)
                                 }else{
-                                  as.character(sprintf("p = %.2g", p_value))
+                                  as.character(sprintf("%.2g", p_value))
                                 }
                               }else{
                                 as.character(p_value)
@@ -174,6 +174,11 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #'  geom_boxplot() +
 #'  geom_signif(comparisons = list(c("compact", "pickup"),
 #'                                 c("subcompact", "suv")))
+#' ggplot(mpg, aes(class, hwy)) +
+#'  geom_boxplot() +
+#'  geom_signif(comparisons = list(c("compact", "pickup"),
+#'                                 c("subcompact", "suv")),
+#'              map_signif_level=function(p)sprintf("p = %.2g", p))
 #'
 #' ggplot(mpg, aes(class, hwy)) +
 #'   geom_boxplot() +
