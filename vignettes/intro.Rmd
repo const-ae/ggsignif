@@ -22,7 +22,7 @@ So I created this package which provides a single layer `geom_signif` which can 
 
 # How to use it?
 
-First load poth packages
+First load both packages
 
 ```{r}
 library(ggplot2)
