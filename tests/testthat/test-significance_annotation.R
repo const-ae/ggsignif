@@ -1,3 +1,4 @@
+context("Plotting tests")
 
 
 library(ggplot2)
@@ -13,6 +14,7 @@ test_that("the plotting works", {
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       facet_wrap(~ as.factor(year), scale="free")
   )
+  expect_equal(1,1)
 })
 
 test_that("geom works as well as stat works", {
@@ -27,6 +29,7 @@ test_that("geom works as well as stat works", {
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       facet_wrap(~ as.factor(year), scale="free")
   )
+  expect_equal(1,1)
 })
 
 
@@ -54,6 +57,7 @@ test_that("geom_signif with identity works", {
       geom_signif(comparisons=list(c("S1", "S2")), annotations="***", y_position = 9.3, tip_length = 0) +
       scale_fill_manual(values = c("grey80", "grey20"))
   )
+  expect_equal(1,1)
 })
 
 
@@ -66,6 +70,7 @@ test_that("you can change the linetype", {
                   map_signif_level=TRUE, linetype=3, alpha=1, color="blue", size=1, textsize=8) +
       ylim(c(NA, 8.5))
   )
+  expect_equal(1,1)
 })
 
 
@@ -85,19 +90,18 @@ test_that("identical annotations are plotted separetly", {
                   aes(x=x,xend=xend, y=y, yend=y, annotation=annotation, group=c(1,2))) +
       scale_fill_manual(values = c("grey80", "grey20"))
   )
-
+  expect_equal(1,1)
 })
 
 test_that("multiple comparisons can be made to the same element", {
-  library(ggplot2)
-  library(ggsignif)
-
+  set.seed(1)
   print(
     ggplot(data.frame(y=runif(100), x=sample(c("A", "B", "C", "D"), size = 100, replace = TRUE)),
            aes(x = x, y=y)) +
       geom_boxplot() +
       geom_signif(comparisons = list(c(1,2), c(2,3), c(1,3), c(1,4), c(2,4), c(1,2)), step_increase = .1)
   )
+  expect_equal(1,1)
 })
 
 
@@ -131,6 +135,7 @@ test_that("plots with xmin, xmax work", {
           scale_fill_brewer(palette = "Accent") +
           labs(fill = "Temperature")
   )
+  expect_equal(1,1)
 })
 
 
@@ -146,6 +151,7 @@ test_that("manually annotated plots work", {
     ) +
     facet_wrap(~ color) +
     ylim(NA, 22000)
+  expect_equal(1,1)
 })
 
 test_that("test method which return text work", {
@@ -170,7 +176,7 @@ test_that("test method which return text work", {
                 margin_top=0.02, step_increase=0, tip_length=0.01) +
     theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
     facet_wrap(~ as.factor(year), scale="free")
-
+  expect_equal(1,1)
 })
 
 

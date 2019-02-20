@@ -1,3 +1,4 @@
+context("Additional tests")
 
 library(ggplot2)
 
