@@ -29,7 +29,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                       stop(paste0("annotations contains a different number of elements (", length(params$annotations),
                                   ") than comparisons or xmin (", max(length(params$comparisons),length(params$xmin), 1), ")."))
 
-                    if(all(params$map_signif_level == TRUE)){
+                    if(all(is.logical(params$map_signif_level)) && all(params$map_signif_level == TRUE)){
                       params$map_signif_level <- c("***"=0.001, "**"=0.01, "*"=0.05)
                     }else if(is.numeric(params$map_signif_level)){
                       if(is.null(names(params$map_signif_level)) ){
@@ -82,12 +82,14 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                               }else{
                                 temp_value
                               }
+                            }else if(is.function(map_signif_level)){
+                              map_signif_level(p_value)
                             }else{
                               if(is.numeric(p_value)){
-                                if(p_value < 2.2e-16){
-                                  "< 2.2e-16"
+                                if(p_value < .Machine$double.eps){
+                                  sprintf("p < %.2e", .Machine$double.eps)
                                 }else{
-                                  as.character(signif(p_value, digits=2))
+                                  as.character(sprintf("%.2g", p_value))
                                 }
                               }else{
                                 as.character(p_value)
@@ -143,6 +145,7 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #' @param map_signif_level boolean value, if the p-value are directly written as annotation or asterisks are used instead.
 #'   Alternatively one can provide a named numeric vector to create custom mappings from p-values to annotation:
 #'   For example: c("***"=0.001, "**"=0.01, "*"=0.05)
+#'   Alternatively, one can provide a function that takes a numeric argument (the p-value) and returns a string
 #' @param xmin numeric vector with the positions of the left sides of the brackets
 #' @param xmax numeric vector with the positions of the right sides of the brackets
 #' @param y_position numeric vector with the y positions of the brackets
@@ -171,6 +174,11 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #'  geom_boxplot() +
 #'  geom_signif(comparisons = list(c("compact", "pickup"),
 #'                                 c("subcompact", "suv")))
+#' ggplot(mpg, aes(class, hwy)) +
+#'  geom_boxplot() +
+#'  geom_signif(comparisons = list(c("compact", "pickup"),
+#'                                 c("subcompact", "suv")),
+#'              map_signif_level=function(p)sprintf("p = %.2g", p))
 #'
 #' ggplot(mpg, aes(class, hwy)) +
 #'   geom_boxplot() +
@@ -212,7 +220,7 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                            required_aes = c("x", "xend", "y", "yend", "annotation"),
                            default_aes = ggplot2::aes(shape = 19, colour = "black", textsize = 3.88, angle = 0, hjust = 0.5,
                                              vjust = 0, alpha = NA, family = "", fontface = 1, lineheight = 1.2, linetype=1, size=0.5),
-                           draw_key = ggplot2::draw_key_point,
+                           draw_key = function(...){grid::nullGrob()},
 
                            draw_group = function(data, panel_params, coord) {
                              coords <- coord$transform(data, panel_params)
