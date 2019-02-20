@@ -1,7 +1,7 @@
 
 ## Test environments
 
-* linux ubuntu: r 3.4.1
+* linux ubuntu: r 3.5.2
 * win-builder (devel and release)
 
 ## R CMD check results
