@@ -4,3 +4,9 @@
 .Ruserdata
 inst/doc
 *cache
+
+revdep/checks
+revdep/library
+revdep/checks.noindex
+revdep/library.noindex
+revdep/data.sqlite
