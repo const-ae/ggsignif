@@ -117,6 +117,11 @@ ggplot(mpg, aes(class, hwy)) +
  geom_boxplot() +
  geom_signif(comparisons = list(c("compact", "pickup"),
                                 c("subcompact", "suv")))
+ggplot(mpg, aes(class, hwy)) +
+ geom_boxplot() +
+ geom_signif(comparisons = list(c("compact", "pickup"),
+                                c("subcompact", "suv")),
+             map_signif_level=function(p)sprintf("p = \%.2g", p))
 
 ggplot(mpg, aes(class, hwy)) +
   geom_boxplot() +
