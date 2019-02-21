@@ -91,4 +91,4 @@ For further details go the [CRAN page](https://CRAN.R-project.org/package=ggsign
 Maintenance
 -----------
 
-*This package is provided as is and I currently don't have any plans and the capacity to add any new features to it. If there is nonetheless a feature which you would like to see in the package, you are always welcome to submit pull request, which I will try to address as soon as possible. *
+*This package is provided as is and I currently don't have any plans and the capacity to add any new features to it. If there is nonetheless a feature which you would like to see in the package, you are always welcome to submit pull request, which I will try to address as soon as possible.*
