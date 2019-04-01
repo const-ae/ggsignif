@@ -270,8 +270,20 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
     if(manual){
       if(is.null(mapping$annotations)) stop("Manual mode only works if with 'annotations' is provided in mapping")
       if(! is.null(data) & ! is.null(mapping)){
-        if(! "x" %in% names(mapping)) mapping$x <- 1
-        if(! "y" %in% names(mapping)) mapping$y <- 1
+        if(! "x" %in% names(mapping)){
+          if("xmin" %in% names(mapping)){
+            mapping$x <- mapping$xmin
+          }else{
+            mapping$x <- xmin
+          }
+        }
+        if(! "y" %in% names(mapping)){
+          if("y_position" %in% names(mapping)){
+            mapping$y <- mapping$y_position
+          }else{
+            mapping$y <- y_position
+          }
+        }
       }else{
         stop("If manual mode is selected you need to provide the data and mapping parameters")
       }
