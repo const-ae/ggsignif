@@ -11,7 +11,7 @@ stat_signif(mapping = NULL, data = NULL, position = "identity",
   annotations = NULL, map_signif_level = FALSE, y_position = NULL,
   xmin = NULL, xmax = NULL, margin_top = 0.05, step_increase = 0,
   tip_length = 0.03, size = 0.5, textsize = 3.88, family = "",
-  vjust = 0, manual = FALSE, ...)
+  vjust = 0, parse = FALSE, manual = FALSE, ...)
 
 geom_signif(mapping = NULL, data = NULL, stat = "signif",
   position = "identity", na.rm = FALSE, show.legend = NA,
@@ -19,7 +19,8 @@ geom_signif(mapping = NULL, data = NULL, stat = "signif",
   test.args = NULL, annotations = NULL, map_signif_level = FALSE,
   y_position = NULL, xmin = NULL, xmax = NULL, margin_top = 0.05,
   step_increase = 0, tip_length = 0.03, size = 0.5,
-  textsize = 3.88, family = "", vjust = 0, manual = FALSE, ...)
+  textsize = 3.88, family = "", vjust = 0, parse = FALSE,
+  manual = FALSE, ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link[=aes]{aes()}} or
@@ -39,7 +40,8 @@ data. All objects will be fortified to produce a data frame. See
 
 A \code{function} will be called with a single argument,
 the plot data. The return value must be a \code{data.frame}, and
-will be used as the layer data.}
+will be used as the layer data. A \code{function} can be created
+from a \code{formula} (e.g. \code{~ head(.x, 10)}).}
 
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
@@ -94,6 +96,9 @@ minimize overlap.}
 \item{family}{change the font used for the text}
 
 \item{vjust}{move the text up or down relative to the bracket}
+
+\item{parse}{If `TRUE`, the labels will be parsed into expressions and
+displayed as described in `?plotmath`.}
 
 \item{manual}{boolean flag that indicates that the parameters are provided with a data.frame. This option is necessary if
 one wants to plot different annotations per facet.}

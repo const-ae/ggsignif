@@ -122,6 +122,9 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                         if(is.character(xmax)){
                           xmax <- scales$x$map(xmax)
                         }
+                        if("expression" %in% class(annotations)){
+                          stop("annotations must be a character vector. To use plotmath set parse=TRUE.")
+                        }
                         data.frame(x=c(xmin, xmin, xmax),
                                    xend=c(xmin, xmax, xmax),
                                    y=c(y_position - y_scale_range*tip_length[seq_len(length(tip_length))%% 2 == 1], y_position, y_position),
@@ -157,6 +160,8 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #' @param step_increase numeric vector with the increase in fraction of total height for every additional comparison to
 #'   minimize overlap.
 #' @param tip_length numeric vector with the fraction of total height that the bar goes down to indicate the precise column
+#' @param parse If `TRUE`, the labels will be parsed into expressions and
+#'   displayed as described in `?plotmath`.
 #' @param manual boolean flag that indicates that the parameters are provided with a data.frame. This option is necessary if
 #'   one wants to plot different annotations per facet.
 #' @param na.rm If \code{FALSE} (the default), removes missing values with
@@ -193,7 +198,7 @@ stat_signif <- function(mapping = NULL, data = NULL,
                     annotations=NULL, map_signif_level=FALSE,y_position=NULL,xmin=NULL, xmax=NULL,
                     margin_top=0.05, step_increase=0, tip_length=0.03,
                     size=0.5, textsize = 3.88, family="", vjust = 0,
-                    manual=FALSE,
+                    parse = FALSE, manual=FALSE,
                     ...) {
   if(manual){
     if(! is.null(data) & ! is.null(mapping)){
@@ -211,7 +216,7 @@ stat_signif <- function(mapping = NULL, data = NULL,
                   y_position=y_position,xmin=xmin, xmax=xmax,
                   margin_top=margin_top, step_increase=step_increase,
                   tip_length=tip_length, size=size, textsize=textsize,
-                  family=family, vjust=vjust, manual=manual, na.rm = na.rm, ...)
+                  family=family, vjust=vjust, parse=parse, manual=manual, na.rm = na.rm, ...)
   )
 }
 
@@ -222,11 +227,15 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                              vjust = 0, alpha = NA, family = "", fontface = 1, lineheight = 1.2, linetype=1, size=0.5),
                            draw_key = function(...){grid::nullGrob()},
 
-                           draw_group = function(data, panel_params, coord) {
+                           draw_group = function(data, panel_params, coord, parse=FALSE) {
+                             lab <- as.character(data$annotation)
+                             if (parse) {
+                               lab <- parse_safe(as.character(lab))
+                             }
                              coords <- coord$transform(data, panel_params)
                              grid::gList(
                                grid::textGrob(
-                                 label=as.character(coords$annotation),
+                                 label=lab,
                                  x=mean(c(coords$x[1], tail(coords$xend, n=1))),
                                  y=max(c(coords$y, coords$yend))+0.01,
                                  default.units = "native",
@@ -262,6 +271,7 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                         annotations=NULL, map_signif_level=FALSE,y_position=NULL,xmin=NULL, xmax=NULL,
                         margin_top=0.05, step_increase=0, tip_length=0.03,
                         size=0.5, textsize = 3.88, family="", vjust = 0,
+                        parse = FALSE,
                         manual=FALSE,
                         ...) {
   params <- list(na.rm = na.rm, ...)
@@ -293,7 +303,7 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                    y_position=y_position,xmin=xmin, xmax=xmax,
                    margin_top=margin_top, step_increase=step_increase,
                    tip_length=tip_length, size=size, textsize=textsize,
-                   family=family, vjust=vjust, manual=manual))
+                   family=family, vjust=vjust, parse=parse, manual=manual))
   }
   ggplot2::layer(
     stat = stat, geom = GeomSignif, mapping = mapping,  data = data,
