@@ -1,3 +1,8 @@
+# Version 0.6.0
+
+- Support plotmath expression and add new parameter `parse` to function. Fixes issue #64.
+  Thanks to @IndrajeetPatil for the idea.
+
 # Version 0.5.0
 
 - Fix typos in README.md (thanks to @SMargell)

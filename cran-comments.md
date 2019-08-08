@@ -1,8 +1,8 @@
 
 ## Test environments
-
-* linux ubuntu: r 3.5.2
-* win-builder (devel and release)
+* macOS Mojave: R 3.6.1
+* R-Hub (Fedora R-devel, Ubuntu R-release)
+* winbuilder (R-devel, R-release)
 
 ## R CMD check results
 
