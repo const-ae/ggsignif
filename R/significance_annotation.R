@@ -100,10 +100,10 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
                             annotations[i]
                           }
                           y_scale_range <- (scales$y$range$range[2] - scales$y$range$range[1])
-                          y_pos <- if(is.null(y_position)){
-                            scales$y$range$range[2] + y_scale_range * margin_top[i] + y_scale_range * step_increase[i] * (i-1)
+                          if(is.null(y_position)){
+                            y_pos <- scales$y$range$range[2] + y_scale_range * margin_top[i] + y_scale_range * step_increase[i] * (i-1)
                           }else{
-                            y_pos <- y_position[i]
+                            y_pos <- y_position[i] + y_scale_range * margin_top[i] + y_scale_range * step_increase[i] * (i-1)
                           }
                           data.frame(x=c(min(comp[1],comp[2]),min(comp[1],comp[2]),max(comp[1],comp[2])),
                                      xend=c(min(comp[1],comp[2]),max(comp[1],comp[2]),max(comp[1],comp[2])),
