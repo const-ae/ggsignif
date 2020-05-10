@@ -1,18 +1,23 @@
-ggsignif
-================
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif) [![Downloads](https://cranlogs.r-pkg.org/badges/last-month/ggsignif?color=brightgreen)](https://cran.r-project.org/package=ggsignif)
+# ggsignif <a href='https://github.com/const-ae/ggsignif'><img src='man/figures/logo.svg' align="right" height="209" /></a>
+
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif)
+[![Downloads](https://cranlogs.r-pkg.org/badges/last-month/ggsignif?color=brightgreen)](https://cran.r-project.org/package=ggsignif)
 
 Easily add significance bars to your ggplots
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-Description
------------
 
-This package provides an easy way to indicate if two groups are significantly different. Commonly this is shown by a bar on top connecting the groups of interest which itself is annotated with the level of significance (NS, \*, \*\*, \*\*\*). The package provides a single layer (geom\_signif) that takes the groups for comparison and the test (t.test, wilcox etc.) and adds the annotation to the plot.
+## Description
 
-Example
--------
+This package provides an easy way to indicate if two groups are
+significantly different. Commonly this is shown by a bar on top
+connecting the groups of interest which itself is annotated with the
+level of significance (NS, \*, \*\*, \*\*\*). The package provides a
+single layer (geom\_signif) that takes the groups for comparison and the
+test (t.test, wilcox etc.) and adds the annotation to the plot.
+
+## Example
 
 Install package
 
@@ -35,11 +40,12 @@ ggplot(mpg, aes(class, hwy)) +
   ylim(NA, 48)
 ```
 
-![](tools/README-fig/simpe_comparison-1.png)
+![](tools/README-fig/simpe_comparison-1.png)<!-- -->
 
 Setting the precise location
 
-This is important if you use `position="dodge"`, because in that case I cannot calculate the correct position of the bars automatically.
+This is important if you use `position="dodge"`, because in that case I
+cannot calculate the correct position of the bars automatically.
 
 ``` r
 # Calculate annotation
@@ -54,11 +60,14 @@ ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Petal.Width > 1)) +
               tip_length = c(0.2, 0.04))
 ```
 
-![](tools/README-fig/dodge_comparison-1.png)
+![](tools/README-fig/dodge_comparison-1.png)<!-- -->
 
 Advanced Example
 
-Sometimes one needs to have a very fine tuned ability to set the location of the the significance bars in combination with `facet_wrap` or `facet_grid`. In those cases it you can set the flag `manual=TRUE` and provide the annotations as a data.frame:
+Sometimes one needs to have a very fine tuned ability to set the
+location of the the significance bars in combination with `facet_wrap`
+or `facet_grid`. In those cases it you can set the flag `manual=TRUE`
+and provide the annotations as a data.frame:
 
 ``` r
 annotation_df <- data.frame(color=c("E", "H"), 
@@ -82,13 +91,19 @@ ggplot(diamonds, aes(x=cut, y=carat)) +
   ylim(NA, 5.3)
 ```
 
-![](tools/README-fig/faceted_comparison-1.png)
+![](tools/README-fig/faceted_comparison-1.png)<!-- -->
 
 You can ignore the warning about the missing aesthetics.
 
-For further details go the [CRAN page](https://CRAN.R-project.org/package=ggsignif) and check the examples in the [vignette](https://CRAN.R-project.org/package=ggsignif/vignettes/intro.html).
+For further details go the [CRAN
+page](https://CRAN.R-project.org/package=ggsignif) and check the
+examples in the
+[vignette](https://CRAN.R-project.org/package=ggsignif/vignettes/intro.html).
 
-Maintenance
------------
+## Maintenance
 
-*This package is provided as is and I currently don't have any plans and the capacity to add any new features to it. If there is nonetheless a feature which you would like to see in the package, you are always welcome to submit pull request, which I will try to address as soon as possible.*
+*This package is provided as is and I currently don’t have any plans and
+the capacity to add any new features to it. If there is nonetheless a
+feature which you would like to see in the package, you are always
+welcome to submit pull request, which I will try to address as soon as
+possible.*
