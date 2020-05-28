@@ -164,6 +164,9 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #'   displayed as described in `?plotmath`.
 #' @param manual boolean flag that indicates that the parameters are provided with a data.frame. This option is necessary if
 #'   one wants to plot different annotations per facet.
+#' @param extend_line Numeric that allows to shorten (negative values) or extend
+#'   (positive value) the horizontal line between groups for each comparison;
+#'   defaults to 0.
 #' @param na.rm If \code{FALSE} (the default), removes missing values with
 #'    a warning.  If \code{TRUE} silently removes missing values.
 #' @param ... other arguments passed on to \code{\link{layer}}. These are
@@ -233,16 +236,16 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                lab <- parse_safe(as.character(lab))
                              }
                              coords <- coord$transform(data, panel_params)
-                             if ( extend_line != 0 ) {
-                               # first vertical segment
-                               coords[1,1] <- coords[1,1] - extend_line
-                               coords[1,2] <- coords[1,2] - extend_line
+                             if ( extend_line != 0 & nrow(coords) == 3 ) {
+                               # left vertical segment
+                               coords[1,'x'] <- coords[1,'x'] - extend_line
+                               coords[1,'xend'] <- coords[1,'xend'] - extend_line
                                # horizontal line
-                               coords[2,1] <- coords[2,1] - extend_line
-                               coords[2,2] <- coords[2,2] + extend_line
-                               # second vertical segment
-                               coords[3,1] <- coords[3,1] + extend_line
-                               coords[3,2] <- coords[3,2] + extend_line
+                               coords[2,'x'] <- coords[2,'x'] - extend_line
+                               coords[2,'xend'] <- coords[2,'xend'] + extend_line
+                               # right vertical segment
+                               coords[3,'x'] <- coords[3,'x'] + extend_line
+                               coords[3,'xend'] <- coords[3,'xend'] + extend_line
                              }
                              grid::gList(
                                grid::textGrob(
