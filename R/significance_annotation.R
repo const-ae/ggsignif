@@ -236,16 +236,29 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                lab <- parse_safe(as.character(lab))
                              }
                              coords <- coord$transform(data, panel_params)
+                             message(str(coords))
                              if ( extend_line != 0 & nrow(coords) == 3 ) {
-                               # left vertical segment
-                               coords[1,'x'] <- coords[1,'x'] - extend_line
-                               coords[1,'xend'] <- coords[1,'xend'] - extend_line
-                               # horizontal line
-                               coords[2,'x'] <- coords[2,'x'] - extend_line
-                               coords[2,'xend'] <- coords[2,'xend'] + extend_line
-                               # right vertical segment
-                               coords[3,'x'] <- coords[3,'x'] + extend_line
-                               coords[3,'xend'] <- coords[3,'xend'] + extend_line
+                               if ( coords[2,'x'] < coords[2,'xend'] ) {
+                                # left vertical segment
+                                coords[1,'x'] <- coords[1,'x'] - extend_line
+                                coords[1,'xend'] <- coords[1,'xend'] - extend_line
+                                # horizontal line
+                                coords[2,'x'] <- coords[2,'x'] - extend_line
+                                coords[2,'xend'] <- coords[2,'xend'] + extend_line
+                                # right vertical segment
+                                coords[3,'x'] <- coords[3,'x'] + extend_line
+                                coords[3,'xend'] <- coords[3,'xend'] + extend_line
+                               } else if ( coords[2,'x'] > coords[2,'xend'] ) {
+                                # left vertical segment
+                                coords[1,'x'] <- coords[1,'x'] + extend_line
+                                coords[1,'xend'] <- coords[1,'xend'] + extend_line
+                                # horizontal line
+                                coords[2,'x'] <- coords[2,'x'] + extend_line
+                                coords[2,'xend'] <- coords[2,'xend'] - extend_line
+                                # right vertical segment
+                                coords[3,'x'] <- coords[3,'x'] - extend_line
+                                coords[3,'xend'] <- coords[3,'xend'] - extend_line
+                               }
                              }
                              grid::gList(
                                grid::textGrob(
