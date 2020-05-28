@@ -227,12 +227,23 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                              vjust = 0, alpha = NA, family = "", fontface = 1, lineheight = 1.2, linetype=1, size=0.5),
                            draw_key = function(...){grid::nullGrob()},
 
-                           draw_group = function(data, panel_params, coord, parse=FALSE) {
+                           draw_group = function(data, panel_params, coord, parse=FALSE, extend_line = extend_line) {
                              lab <- as.character(data$annotation)
                              if (parse) {
                                lab <- parse_safe(as.character(lab))
                              }
                              coords <- coord$transform(data, panel_params)
+                             if ( extend_line != 0 ) {
+                               # first vertical segment
+                               coords[1,1] <- coords[1,1] - extend_line
+                               coords[1,2] <- coords[1,2] - extend_line
+                               # horizontal line
+                               coords[2,1] <- coords[2,1] - extend_line
+                               coords[2,2] <- coords[2,2] + extend_line
+                               # second vertical segment
+                               coords[3,1] <- coords[3,1] + extend_line
+                               coords[3,2] <- coords[3,2] + extend_line
+                             }
                              grid::gList(
                                grid::textGrob(
                                  label=lab,
@@ -273,6 +284,7 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                         size=0.5, textsize = 3.88, family="", vjust = 0,
                         parse = FALSE,
                         manual=FALSE,
+                        extend_line = 0,
                         ...) {
   params <- list(na.rm = na.rm, ...)
   if (identical(stat, "signif")) {
@@ -303,7 +315,8 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                    y_position=y_position,xmin=xmin, xmax=xmax,
                    margin_top=margin_top, step_increase=step_increase,
                    tip_length=tip_length, size=size, textsize=textsize,
-                   family=family, vjust=vjust, parse=parse, manual=manual))
+                   family=family, vjust=vjust, parse=parse, manual=manual,
+                   extend_line = extend_line))
   }
   ggplot2::layer(
     stat = stat, geom = GeomSignif, mapping = mapping,  data = data,
