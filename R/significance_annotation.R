@@ -236,7 +236,6 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                lab <- parse_safe(as.character(lab))
                              }
                              coords <- coord$transform(data, panel_params)
-                             message(str(coords))
                              if ( extend_line != 0 & nrow(coords) == 3 ) {
                                if ( coords[2,'x'] < coords[2,'xend'] ) {
                                 # left vertical segment
