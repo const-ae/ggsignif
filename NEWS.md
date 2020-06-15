@@ -1,3 +1,9 @@
+# Development (0.6.0.9000)
+
+- Add `extend_line` parameter to make the brackets shorter or wider (#70). 
+  Thanks to @romanhaa for making the PR.
+
+
 # Version 0.6.0
 
 - Support plotmath expression and add new parameter `parse` to function. Fixes issue #64.
