@@ -159,14 +159,14 @@ StatSignif <- ggplot2::ggproto("StatSignif", ggplot2::Stat,
 #' @param margin_top numeric vector how much higher that the maximum value that bars start as fraction of total height
 #' @param step_increase numeric vector with the increase in fraction of total height for every additional comparison to
 #'   minimize overlap.
+#' @param extend_line Numeric that allows to shorten (negative values) or extend
+#'   (positive value) the horizontal line between groups for each comparison;
+#'   defaults to 0.
 #' @param tip_length numeric vector with the fraction of total height that the bar goes down to indicate the precise column
 #' @param parse If `TRUE`, the labels will be parsed into expressions and
 #'   displayed as described in `?plotmath`.
 #' @param manual boolean flag that indicates that the parameters are provided with a data.frame. This option is necessary if
 #'   one wants to plot different annotations per facet.
-#' @param extend_line Numeric that allows to shorten (negative values) or extend
-#'   (positive value) the horizontal line between groups for each comparison;
-#'   defaults to 0.
 #' @param na.rm If \code{FALSE} (the default), removes missing values with
 #'    a warning.  If \code{TRUE} silently removes missing values.
 #' @param ... other arguments passed on to \code{\link{layer}}. These are
@@ -236,28 +236,19 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                lab <- parse_safe(as.character(lab))
                              }
                              coords <- coord$transform(data, panel_params)
-                             if ( extend_line != 0 & nrow(coords) == 3 ) {
-                               if ( coords[2,'x'] < coords[2,'xend'] ) {
-                                # left vertical segment
-                                coords[1,'x'] <- coords[1,'x'] - extend_line
-                                coords[1,'xend'] <- coords[1,'xend'] - extend_line
-                                # horizontal line
-                                coords[2,'x'] <- coords[2,'x'] - extend_line
-                                coords[2,'xend'] <- coords[2,'xend'] + extend_line
-                                # right vertical segment
-                                coords[3,'x'] <- coords[3,'x'] + extend_line
-                                coords[3,'xend'] <- coords[3,'xend'] + extend_line
-                               } else if ( coords[2,'x'] > coords[2,'xend'] ) {
-                                # left vertical segment
-                                coords[1,'x'] <- coords[1,'x'] + extend_line
-                                coords[1,'xend'] <- coords[1,'xend'] + extend_line
-                                # horizontal line
-                                coords[2,'x'] <- coords[2,'x'] + extend_line
-                                coords[2,'xend'] <- coords[2,'xend'] - extend_line
-                                # right vertical segment
-                                coords[3,'x'] <- coords[3,'x'] - extend_line
-                                coords[3,'xend'] <- coords[3,'xend'] - extend_line
+                             if ( extend_line != 0 && nrow(coords) == 3 ) {
+                               if ( coords[2,'x'] > coords[2,'xend'] ) {
+                                extend_line <- - extend_line
                                }
+                               # left vertical segment
+                               coords[1,'x'] <- coords[1,'x'] - extend_line
+                               coords[1,'xend'] <- coords[1,'xend'] - extend_line
+                               # horizontal line
+                               coords[2,'x'] <- coords[2,'x'] - extend_line
+                               coords[2,'xend'] <- coords[2,'xend'] + extend_line
+                               # right vertical segment
+                               coords[3,'x'] <- coords[3,'x'] + extend_line
+                               coords[3,'xend'] <- coords[3,'xend'] + extend_line
                              }
                              grid::gList(
                                grid::textGrob(
@@ -295,11 +286,10 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                         position = "identity", na.rm = FALSE, show.legend = NA,
                         inherit.aes = TRUE, comparisons=NULL, test="wilcox.test", test.args=NULL,
                         annotations=NULL, map_signif_level=FALSE,y_position=NULL,xmin=NULL, xmax=NULL,
-                        margin_top=0.05, step_increase=0, tip_length=0.03,
+                        margin_top=0.05, step_increase=0, extend_line = 0, tip_length=0.03,
                         size=0.5, textsize = 3.88, family="", vjust = 0,
                         parse = FALSE,
                         manual=FALSE,
-                        extend_line = 0,
                         ...) {
   params <- list(na.rm = na.rm, ...)
   if (identical(stat, "signif")) {
@@ -329,9 +319,9 @@ geom_signif <- function(mapping = NULL, data = NULL, stat = "signif",
                    annotations=annotations, map_signif_level=map_signif_level,
                    y_position=y_position,xmin=xmin, xmax=xmax,
                    margin_top=margin_top, step_increase=step_increase,
-                   tip_length=tip_length, size=size, textsize=textsize,
-                   family=family, vjust=vjust, parse=parse, manual=manual,
-                   extend_line = extend_line))
+                   extend_line = extend_line, tip_length=tip_length, size=size,
+                   textsize=textsize, family=family, vjust=vjust, parse=parse,
+                   manual=manual))
   }
   ggplot2::layer(
     stat = stat, geom = GeomSignif, mapping = mapping,  data = data,
