@@ -230,7 +230,7 @@ GeomSignif <- ggplot2::ggproto("GeomSignif", ggplot2::Geom,
                                              vjust = 0, alpha = NA, family = "", fontface = 1, lineheight = 1.2, linetype=1, size=0.5),
                            draw_key = function(...){grid::nullGrob()},
 
-                           draw_group = function(data, panel_params, coord, parse=FALSE, extend_line = extend_line) {
+                           draw_group = function(data, panel_params, coord, parse=FALSE, extend_line = 0) {
                              lab <- as.character(data$annotation)
                              if (parse) {
                                lab <- parse_safe(as.character(lab))
