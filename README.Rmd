@@ -1,6 +1,5 @@
 ---
-output: 
-  github_document
+output: github_document
 ---
 
 # ggsignif <a href='https://github.com/const-ae/ggsignif'><img src='man/figures/logo.svg' align="right" height="209" /></a>
@@ -16,9 +15,10 @@ Easily add significance bars to your ggplots
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  cache = TRUE,
-  fig.path = "tools/README-fig/",
-  cache.path = "tools/README-cache/",
+  #cache = TRUE,
+  #fig.path = "tools/README-fig/",
+  #cache.path = "tools/README-cache/",
+  fig.path = "man/figures/README-",
   message = FALSE,
   warning = FALSE
 )
