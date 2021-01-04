@@ -40,7 +40,7 @@ ggplot(mpg, aes(class, hwy)) +
   ylim(NA, 48)
 ```
 
-![](tools/README-fig/simpe_comparison-1.png)<!-- -->
+![](man/figures/README-simpe_comparison-1.png)<!-- -->
 
 Setting the precise location
 
@@ -60,7 +60,7 @@ ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Petal.Width > 1)) +
               tip_length = c(0.2, 0.04))
 ```
 
-![](tools/README-fig/dodge_comparison-1.png)<!-- -->
+![](man/figures/README-dodge_comparison-1.png)<!-- -->
 
 Advanced Example
 
@@ -91,7 +91,7 @@ ggplot(diamonds, aes(x=cut, y=carat)) +
   ylim(NA, 5.3)
 ```
 
-![](tools/README-fig/faceted_comparison-1.png)<!-- -->
+![](man/figures/README-faceted_comparison-1.png)<!-- -->
 
 You can ignore the warning about the missing aesthetics.
 

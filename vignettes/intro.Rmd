@@ -13,7 +13,7 @@ This package provides an extension for the popular ggplot2 package.
 
 Often people are looking for a way to quickly annotate if the difference between 2 groups in a plot is
 significantly different 
-([look](http://stackoverflow.com/questions/17084566/put-stars-on-ggplot-barplots-and-boxplots-to-indicate-the-level-of-significanc) [at](http://stackoverflow.com/questions/14958159/indicating-the-statistically-significant-difference-in-bar-graph-using-r) [all](http://stackoverflow.com/questions/29263046/how-to-draw-the-boxplot-with-significant-level) [those](http://stackoverflow.com/questions/29186435/showing-significance-relationships-in-a-ggplot2-bar-graph) [questions](https://groups.google.com/forum/#!topic/ggplot2/ntVlMqTc6PI)). 
+([look](https://stackoverflow.com/questions/17084566/put-stars-on-ggplot-barplots-and-boxplots-to-indicate-the-level-of-significanc) [at](https://stackoverflow.com/questions/14958159/indicating-the-statistically-significant-difference-in-bar-graph-using-r) [all](https://stackoverflow.com/questions/29263046/how-to-draw-the-boxplot-with-significant-level) [those](https://stackoverflow.com/questions/29186435/showing-significance-relationships-in-a-ggplot2-bar-graph) [questions](https://groups.google.com/forum/#!topic/ggplot2/ntVlMqTc6PI)). 
 The usual answer is along the lines of just manually adding lines and annotation to the plot.
 
 But I believe that a fundamental strength of ggplot is that it allows one to quickly make advanced plots by combining layers of visualization, which can encapsulate complex statistical methods (`geom_smooth`, `geom_contour` etc.).

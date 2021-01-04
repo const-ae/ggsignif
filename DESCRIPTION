@@ -1,21 +1,32 @@
-Package: ggsignif
 Type: Package
+Package: ggsignif
 Title: Significance Brackets for 'ggplot2'
 Version: 0.6.0.9000
-Authors@R: person("Constantin", "Ahlmann-Eltze", email = "artjom31415@googlemail.com", role = c("aut", "cre"))
+Authors@R: 
+    person(given = "Constantin",
+           family = "Ahlmann-Eltze",
+           role = c("aut", "cre"),
+           email = "artjom31415@googlemail.com",
+           comment = c(Twitter = "@const_ae"))
 Description: Enrich your 'ggplots' with group-wise comparisons.
-  This package provides an easy way to indicate if two groups are significantly different.
-  Commonly this is shown by a bracket on top connecting the groups of interest which itself is annotated with the level of significance (NS, *, **, ***).
-  The package provides a single layer (geom_signif()) that takes the groups for comparison and the test (t.test(), wilcox.text() etc.) as arguments and adds the annotation
-  to the plot.
-URL: https://github.com/const-ae/ggsignif
+    This package provides an easy way to indicate if two groups are
+    significantly different.  Commonly this is shown by a bracket on top
+    connecting the groups of interest which itself is annotated with the
+    level of significance (NS, *, **, ***).  The package provides a single
+    layer (geom_signif()) that takes the groups for comparison and the
+    test (t.test(), wilcox.text() etc.) as arguments and adds the
+    annotation to the plot.
 License: GPL-3
+URL: https://const-ae.github.io/ggsignif/,
+    https://github.com/const-ae/ggsignif
+Imports:
+    ggplot2 (>= 2.0.0)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
-Imports:
-  ggplot2   (>= 2.0.0)
-Suggests: testthat,
-    knitr,
-    rmarkdown
-RoxygenNote: 7.1.0
-VignetteBuilder: knitr
+RoxygenNote: 7.1.1
