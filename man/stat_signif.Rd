@@ -162,19 +162,27 @@ Create significance layer
 library(ggplot2)
 library(ggsignif)
 ggplot(mpg, aes(class, hwy)) +
- geom_boxplot() +
- geom_signif(comparisons = list(c("compact", "pickup"),
-                                c("subcompact", "suv")))
+  geom_boxplot() +
+  geom_signif(comparisons = list(
+    c("compact", "pickup"),
+    c("subcompact", "suv")
+  ))
 ggplot(mpg, aes(class, hwy)) +
- geom_boxplot() +
- geom_signif(comparisons = list(c("compact", "pickup"),
-                                c("subcompact", "suv")),
-             map_signif_level=function(p)sprintf("p = \%.2g", p))
+  geom_boxplot() +
+  geom_signif(
+    comparisons = list(
+      c("compact", "pickup"),
+      c("subcompact", "suv")
+    ),
+    map_signif_level = function(p) sprintf("p = \%.2g", p)
+  )
 
 ggplot(mpg, aes(class, hwy)) +
   geom_boxplot() +
-  geom_signif(annotations = c("First", "Second"),
-              y_position = c(30, 40), xmin=c(4,1), xmax=c(5,3))
+  geom_signif(
+    annotations = c("First", "Second"),
+    y_position = c(30, 40), xmin = c(4, 1), xmax = c(5, 3)
+  )
 }
 
 }

@@ -22,7 +22,8 @@
 
 - Fix bug that stopped textsize from working
 
-- Add `manual=TRUE` mode, which allows the parameters to be given as a data.frame
+- Add `manual=TRUE` mode, which allows the parameters to be given as a
+  data.frame
 
 # Version 0.3.0
 

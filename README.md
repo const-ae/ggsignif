@@ -2,6 +2,8 @@
 # ggsignif <a href='https://github.com/const-ae/ggsignif'><img src='man/figures/logo.svg' align="right" height="209" /></a>
 
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif)
+[![R build
+status](https://github.com/const-ae/ggsignif/workflows/R-CMD-check/badge.svg)](https://github.com/const-ae/ggsignif)
 [![Downloads](https://cranlogs.r-pkg.org/badges/last-month/ggsignif?color=brightgreen)](https://cran.r-project.org/package=ggsignif)
 
 Easily add significance bars to your ggplots
