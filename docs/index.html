@@ -110,52 +110,63 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggsignif"</span><span class="op">)</span>
 
 <span class="co"># Or for the latest development version</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"const-ae/ggsignif"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"const-ae/ggsignif"</span><span class="op">)</span></code></pre></div>
 <p>Plot significance</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://const-ae.github.io/ggsignif/">ggsignif</a></span><span class="op">)</span>
+
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">class</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-   <span class="fu"><a href="reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>comparisons <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"compact"</span>, <span class="st">"midsize"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"minivan"</span>, <span class="st">"suv"</span><span class="op">)</span><span class="op">)</span>,
-               map_signif_level <span class="op">=</span> <span class="cn">TRUE</span>, textsize<span class="op">=</span><span class="fl">6</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>
+    comparisons <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"compact"</span>, <span class="st">"midsize"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"minivan"</span>, <span class="st">"suv"</span><span class="op">)</span><span class="op">)</span>,
+    map_signif_level <span class="op">=</span> <span class="cn">TRUE</span>, textsize <span class="op">=</span> <span class="fl">6</span>
+  <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">48</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-simpe_comparison-1.png"><!-- --></p>
 <p>Setting the precise location</p>
 <p>This is important if you use <code>position="dodge"</code>, because in that case I cannot calculate the correct position of the bars automatically.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate annotation</span>
-<span class="va">anno</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Petal.Width</span> <span class="op">&gt;</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"versicolor"</span>, <span class="st">"Sepal.Width"</span><span class="op">]</span>, 
-               <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"virginica"</span>, <span class="st">"Sepal.Width"</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">p.value</span>
+<span class="va">anno</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>
+  <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Petal.Width</span> <span class="op">&gt;</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"versicolor"</span>, <span class="st">"Sepal.Width"</span><span class="op">]</span>,
+  <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"virginica"</span>, <span class="st">"Sepal.Width"</span><span class="op">]</span>
+<span class="op">)</span><span class="op">$</span><span class="va">p.value</span>
 
 <span class="co"># Make plot with custom x and y position of the bracket</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Species</span>, y<span class="op">=</span><span class="va">Sepal.Width</span>, fill<span class="op">=</span><span class="va">Petal.Width</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>position<span class="op">=</span><span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>annotation<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">anno</span>, digits<span class="op">=</span><span class="fl">1</span><span class="op">)</span>,
-              y_position<span class="op">=</span><span class="fl">4.05</span>, xmin<span class="op">=</span><span class="fl">2.2</span>, xmax<span class="op">=</span><span class="fl">3</span>, 
-              tip_length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.04</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Species</span>, y <span class="op">=</span> <span class="va">Sepal.Width</span>, fill <span class="op">=</span> <span class="va">Petal.Width</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>
+    annotation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/formatc.html">formatC</a></span><span class="op">(</span><span class="va">anno</span>, digits <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+    y_position <span class="op">=</span> <span class="fl">4.05</span>, xmin <span class="op">=</span> <span class="fl">2.2</span>, xmax <span class="op">=</span> <span class="fl">3</span>,
+    tip_length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.04</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-dodge_comparison-1.png"><!-- --></p>
 <p>Advanced Example</p>
 <p>Sometimes one needs to have a very fine tuned ability to set the location of the the significance bars in combination with <code>facet_wrap</code> or <code>facet_grid</code>. In those cases it you can set the flag <code>manual=TRUE</code> and provide the annotations as a data.frame:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">annotation_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>color<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"E"</span>, <span class="st">"H"</span><span class="op">)</span>, 
-                            start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Good"</span>, <span class="st">"Fair"</span><span class="op">)</span>, 
-                            end<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very Good"</span>, <span class="st">"Good"</span><span class="op">)</span>,
-                            y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.6</span>, <span class="fl">4.7</span><span class="op">)</span>,
-                            label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Comp. 1"</span>, <span class="st">"Comp. 2"</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">annotation_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+  color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"E"</span>, <span class="st">"H"</span><span class="op">)</span>,
+  start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Good"</span>, <span class="st">"Fair"</span><span class="op">)</span>,
+  end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very Good"</span>, <span class="st">"Good"</span><span class="op">)</span>,
+  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.6</span>, <span class="fl">4.7</span><span class="op">)</span>,
+  label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Comp. 1"</span>, <span class="st">"Comp. 2"</span><span class="op">)</span>
+<span class="op">)</span>
 
 <span class="va">annotation_df</span>
 <span class="co">#&gt;   color start       end   y   label</span>
 <span class="co">#&gt; 1     E  Good Very Good 3.6 Comp. 1</span>
 <span class="co">#&gt; 2     H  Fair      Good 4.7 Comp. 2</span>
 
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">cut</span>, y<span class="op">=</span><span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">annotation_df</span>,
-              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xmin<span class="op">=</span><span class="va">start</span>, xmax<span class="op">=</span><span class="va">end</span>, annotations<span class="op">=</span><span class="va">label</span>, y_position<span class="op">=</span><span class="va">y</span><span class="op">)</span>,
-              textsize <span class="op">=</span> <span class="fl">3</span>, vjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span>,
-              manual<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">color</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>
+    data <span class="op">=</span> <span class="va">annotation_df</span>,
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="va">start</span>, xmax <span class="op">=</span> <span class="va">end</span>, annotations <span class="op">=</span> <span class="va">label</span>, y_position <span class="op">=</span> <span class="va">y</span><span class="op">)</span>,
+    textsize <span class="op">=</span> <span class="fl">3</span>, vjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span>,
+    manual <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">color</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">5.3</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-faceted_comparison-1.png"><!-- --></p>
 <p>You can ignore the warning about the missing aesthetics.</p>
@@ -164,7 +175,12 @@
 <div id="maintenance" class="section level2">
 <h2 class="hasAnchor">
 <a href="#maintenance" class="anchor"></a>Maintenance</h2>
-<p><em>This package is provided as is and I currently don’t have any plans and the capacity to add any new features to it. If there is nonetheless a feature which you would like to see in the package, you are always welcome to submit pull request, which I will try to address as soon as possible.</em></p>
+<p>This package is provided as is and I currently don’t have any plans and the capacity to add any new features to it. If there is nonetheless a feature which you would like to see in the package, you are always welcome to submit pull request, which I will try to address as soon as possible.</p>
+</div>
+<div id="code-of-conduct" class="section level2">
+<h2 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<p>Please note that the ggsignif project is released with a <a href="https://const-ae.github.io/ggsignif/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
@@ -185,6 +201,12 @@
 <li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
 </ul>
 </div>
+<div class="community">
+<h2>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
@@ -203,6 +225,7 @@
 <li><a href="https://cran.r-project.org/package=ggsignif"><img src="https://www.r-pkg.org/badges/version/ggsignif" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://github.com/const-ae/ggsignif"><img src="https://github.com/const-ae/ggsignif/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://cran.r-project.org/package=ggsignif"><img src="https://cranlogs.r-pkg.org/badges/last-month/ggsignif?color=brightgreen" alt="Downloads"></a></li>
+<li><a href="https://codecov.io/gh/const-ae/ggsignif?branch=master"><img src="https://codecov.io/gh/const-ae/ggsignif/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 </div>

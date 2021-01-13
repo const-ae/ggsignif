@@ -1,6 +1,3 @@
-context("Plotting tests")
-
-
 library(ggplot2)
 
 test_that("the plotting works", {
@@ -176,7 +173,12 @@ test_that("manually annotated plots work", {
   ) +
     geom_boxplot() +
     geom_signif(
-      data = data.frame(color = c("E", "E", "G"), annotations = c("123", "abc", "xyz"), xmin = c(1, 4, 2), xmax = c(2, 3, 3)),
+      data = data.frame(
+        color = c("E", "E", "G"),
+        annotations = c("123", "abc", "xyz"),
+        xmin = c(1, 4, 2),
+        xmax = c(2, 3, 3)
+      ),
       aes(annotations = annotations, xmin = xmin, xmax = xmax),
       manual = TRUE,
       y_position = 20000
