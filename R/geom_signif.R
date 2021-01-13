@@ -52,12 +52,14 @@
 #' \dontrun{
 #' library(ggplot2)
 #' library(ggsignif)
+#'
 #' ggplot(mpg, aes(class, hwy)) +
 #'   geom_boxplot() +
 #'   geom_signif(comparisons = list(
 #'     c("compact", "pickup"),
 #'     c("subcompact", "suv")
 #'   ))
+#'
 #' ggplot(mpg, aes(class, hwy)) +
 #'   geom_boxplot() +
 #'   geom_signif(
@@ -109,6 +111,7 @@ stat_signif <- function(mapping = NULL,
       stop("If manual mode is selected you need to provide the data and mapping parameters")
     }
   }
+
   ggplot2::layer(
     stat = StatSignif, data = data, mapping = mapping, geom = "signif",
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
@@ -241,10 +244,17 @@ geom_signif <- function(mapping = NULL,
                         manual = FALSE,
                         ...) {
   params <- list(na.rm = na.rm, ...)
+
   if (identical(stat, "signif")) {
-    if (!is.null(data) & !is.null(mapping) & !manual) warning("You have set data and mapping, are you sure that manual = FALSE is correct?")
+    if (!is.null(data) & !is.null(mapping) & !manual) {
+      warning("You have set data and mapping, are you sure that manual = FALSE is correct?")
+    }
+
     if (manual) {
-      if (is.null(mapping$annotations)) stop("Manual mode only works if with 'annotations' is provided in mapping")
+      if (is.null(mapping$annotations)) {
+        stop("Manual mode only works if with 'annotations' is provided in mapping")
+      }
+
       if (!is.null(data) & !is.null(mapping)) {
         if (!"x" %in% names(mapping)) {
           if ("xmin" %in% names(mapping)) {
@@ -253,6 +263,7 @@ geom_signif <- function(mapping = NULL,
             mapping$x <- xmin
           }
         }
+
         if (!"y" %in% names(mapping)) {
           if ("y_position" %in% names(mapping)) {
             mapping$y <- mapping$y_position
@@ -264,6 +275,7 @@ geom_signif <- function(mapping = NULL,
         stop("If manual mode is selected you need to provide the data and mapping parameters")
       }
     }
+
     params <- c(
       params,
       list(
@@ -288,6 +300,7 @@ geom_signif <- function(mapping = NULL,
       )
     )
   }
+
   ggplot2::layer(
     stat = stat,
     geom = GeomSignif,
@@ -316,23 +329,33 @@ StatSignif <- ggplot2::ggproto(
     if (is.null(params$xmin) != is.null(params$xmax) || length(params$xmin) != length(params$xmax)) {
       stop("If xmin or xmax is set, the other one also needs to be set and they need to contain the same number of values")
     }
+
     if (!is.null(params$xmin) && !is.null(params$comparisons)) {
       stop("Set either the xmin, xmax values or the comparisons")
     }
+
     if (!is.null(params$xmin) && is.null(params$y_position)) {
       stop("If xmin, xmax are defined also define y_position")
     }
+
     if (!is.null(params$y_position) && length(params$y_position) == 1) {
       params$y_position <- rep(params$y_position, max(length(params$comparisons), length(params$xmin), 1))
     }
+
     if (length(params$margin_top) == 1) params$margin_top <- rep(params$margin_top, max(length(params$comparisons), length(params$xmin), 1))
+
     if (length(params$step_increase) == 1) params$step_increase <- rep(params$step_increase, max(length(params$comparisons), length(params$xmin), 1))
+
     if (length(params$tip_length) == 1) params$tip_length <- rep(params$tip_length, max(length(params$comparisons), length(params$xmin), 1) * 2)
+
     if (length(params$tip_length) == length(params$comparisons)) params$tip_length <- rep(params$tip_length, each = 2)
+
     if (length(params$tip_length) == length(params$xmin)) params$tip_length <- rep(params$tip_length, each = 2)
+
     if (!is.null(params$annotations) && length(params$annotations) == 1) {
       params$annotations <- rep(params$annotations, max(length(params$comparisons), length(params$xmin), 1))
     }
+
     if (!is.null(params$annotations) && length(params$annotations) != max(length(params$comparisons), length(params$xmin), 1)) {
       stop(paste0(
         "annotations contains a different number of elements (", length(params$annotations),
@@ -371,18 +394,23 @@ StatSignif <- ggplot2::ggproto(
     if ("annotations" %in% colnames(data)) {
       annotations <- data[["annotations"]]
     }
+
     if ("y_position" %in% colnames(data)) {
       y_position <- data[["y_position"]]
     }
+
     if ("xmax" %in% colnames(data)) {
       xmax <- data[["xmax"]]
     }
+
     if ("xmin" %in% colnames(data)) {
       xmin <- data[["xmin"]]
     }
+
     if ("map_signif_level" %in% colnames(data)) {
       map_signif_level <- data[["map_signif_level"]]
     }
+
     if ("tip_length" %in% colnames(data)) {
       tip_length <- rep(data[["tip_length"]], each = 2)
     }
