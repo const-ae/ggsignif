@@ -8,6 +8,8 @@
   
 - Minimum `ggplot2` version needed is bumped to `3.3.3`.
 
+- Minor internal refactoring and more testing infrastructure.
+
 # Version 0.6.0
 
 - Support plotmath expression and add new parameter `parse` to function. Fixes

@@ -1,6 +1,7 @@
 test_that("the plotting works - strict test", {
   # don't run on CRAN; allows ggplot2 people to make changes to internal dataframes
   skip_on_cran()
+  skip_if(getRversion() < "4.0")
 
   library(ggplot2)
 
