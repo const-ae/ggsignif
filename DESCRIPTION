@@ -30,12 +30,15 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
 Language: en-US
 Imports:
-    ggplot2 (>= 2.0.0)
+    ggplot2 (>= 3.3.3)
 Suggests: 
     knitr,
     rmarkdown,
     spelling,
     testthat
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+RoxygenNote: 7.1.1
+Config/testthat/edition: 3
+Config/testthat/parallel: true

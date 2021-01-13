@@ -5,6 +5,10 @@
 
 - Adds a new package website: https://const-ae.github.io/ggsignif/ (PR by
   @IndrajeetPatil).
+  
+- Minimum `ggplot2` version needed is bumped to `3.3.3`.
+
+- Minor internal refactoring and more testing infrastructure.
 
 # Version 0.6.0
 

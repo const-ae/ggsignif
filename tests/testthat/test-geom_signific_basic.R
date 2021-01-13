@@ -1,6 +1,3 @@
-context("Plotting tests")
-
-
 library(ggplot2)
 
 test_that("the plotting works", {
@@ -56,13 +53,33 @@ test_that("geom_signif with identity works", {
   ## Define base plot
   print(
     ggplot(dat, aes(Group, Value)) +
-      geom_bar(aes(fill = Sub), stat = "identity", position = "dodge", width = .5) +
+      geom_bar(aes(fill = Sub),
+        stat = "identity",
+        position = "dodge",
+        width = .5
+      ) +
       geom_signif(
         stat = "identity",
-        data = data.frame(x = c(0.875, 1.875), xend = c(1.125, 2.125), y = c(5.8, 8.5), annotation = c("***", "NS")),
-        aes(x = x, xend = xend, y = y, yend = y, annotation = annotation)
+        data = data.frame(
+          m = c(0.875, 1.875),
+          xend = c(1.125, 2.125),
+          n = c(5.8, 8.5),
+          annotation = c("***", "NS")
+        ),
+        aes(
+          x = m,
+          xend = xend,
+          y = n,
+          yend = n,
+          annotation = annotation
+        )
       ) +
-      geom_signif(comparisons = list(c("S1", "S2")), annotations = "***", y_position = 9.3, tip_length = 0) +
+      geom_signif(
+        comparisons = list(c("S1", "S2")),
+        annotations = "***",
+        y_position = 9.3,
+        tip_length = 0
+      ) +
       scale_fill_manual(values = c("grey80", "grey20"))
   )
   expect_equal(1, 1)
@@ -76,7 +93,12 @@ test_that("you can change the linetype", {
       geom_boxplot() +
       geom_signif(
         comparisons = list(c("versicolor", "virginica")),
-        map_signif_level = TRUE, linetype = 3, alpha = 1, color = "blue", size = 1, textsize = 8
+        map_signif_level = TRUE,
+        linetype = 3,
+        alpha = 1,
+        color = "blue",
+        size = 1,
+        textsize = 8
       ) +
       ylim(c(NA, 8.5))
   )
@@ -104,7 +126,14 @@ test_that("identical annotations are plotted separetly", {
           x = c(0.875, 1.875), xend = c(1.125, 2.125),
           y = c(5.8, 8.5), annotation = c("**", "**")
         ),
-        aes(x = x, xend = xend, y = y, yend = y, annotation = annotation, group = c(1, 2))
+        aes(
+          x = x,
+          xend = xend,
+          y = y,
+          yend = y,
+          annotation = annotation,
+          group = c(1, 2)
+        )
       ) +
       scale_fill_manual(values = c("grey80", "grey20"))
   )
@@ -119,7 +148,10 @@ test_that("multiple comparisons can be made to the same element", {
       aes(x = x, y = y)
     ) +
       geom_boxplot() +
-      geom_signif(comparisons = list(c(1, 2), c(2, 3), c(1, 3), c(1, 4), c(2, 4), c(1, 2)), step_increase = .1)
+      geom_signif(
+        comparisons = list(c(1, 2), c(2, 3), c(1, 3), c(1, 4), c(2, 4), c(1, 2)),
+        step_increase = .1
+      )
   )
   expect_equal(1, 1)
 })
@@ -176,7 +208,12 @@ test_that("manually annotated plots work", {
   ) +
     geom_boxplot() +
     geom_signif(
-      data = data.frame(color = c("E", "E", "G"), annotations = c("123", "abc", "xyz"), xmin = c(1, 4, 2), xmax = c(2, 3, 3)),
+      data = data.frame(
+        color = c("E", "E", "G"),
+        annotations = c("123", "abc", "xyz"),
+        xmin = c(1, 4, 2),
+        xmax = c(2, 3, 3)
+      ),
       aes(annotations = annotations, xmin = xmin, xmax = xmax),
       manual = TRUE,
       y_position = 20000
