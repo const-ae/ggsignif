@@ -6,12 +6,12 @@ Authors@R:
   c(
     person(given = "Constantin",
            family = "Ahlmann-Eltze",
-           role = c("aut", "cre"),
+           role = c("aut", "cre", "ctb"),
            email = "artjom31415@googlemail.com",
            comment = c(Twitter = "@const_ae")),
     person(given = "Indrajeet",
            family = "Patil",
-           role = c("aut"),
+           role = c("aut", "ctb"),
            email = "patilindrajeet.science@gmail.com",
            comment = c(ORCID = "0000-0003-1995-6531", Twitter = "@patilindrajeets"))
   )
@@ -37,7 +37,8 @@ Suggests:
     knitr,
     rmarkdown,
     spelling,
-    testthat
+    testthat,
+    vdiffr,
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.1.1
 Config/testthat/edition: 3
