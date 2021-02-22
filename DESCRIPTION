@@ -8,7 +8,7 @@ Authors@R:
            family = "Ahlmann-Eltze",
            role = c("aut", "cre", "ctb"),
            email = "artjom31415@googlemail.com",
-           comment = c(Twitter = "@const_ae")),
+           comment = c(ORCID = "0000-0002-3762-068X", Twitter = "@const_ae")),
     person(given = "Indrajeet",
            family = "Patil",
            role = c("aut", "ctb"),

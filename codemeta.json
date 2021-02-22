@@ -31,7 +31,8 @@
       "@type": "Person",
       "givenName": "Constantin",
       "familyName": "Ahlmann-Eltze",
-      "email": "artjom31415@googlemail.com"
+      "email": "artjom31415@googlemail.com",
+      "@id": "https://orcid.org/0000-0002-3762-068X"
     },
     {
       "@type": "Person",
@@ -49,7 +50,8 @@
       "@type": "Person",
       "givenName": "Constantin",
       "familyName": "Ahlmann-Eltze",
-      "email": "artjom31415@googlemail.com"
+      "email": "artjom31415@googlemail.com",
+      "@id": "https://orcid.org/0000-0002-3762-068X"
     }
   ],
   "softwareSuggestions": [
