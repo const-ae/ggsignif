@@ -1,5 +1,5 @@
 
-# ggsignif <a href='https://github.com/const-ae/ggsignif'><img src='man/figures/logo.svg' align="right" height="209" /></a>
+# ggsignif: Significance Brackets for ‘ggplot2’ <a href='https://github.com/const-ae/ggsignif'><img src='man/figures/logo.svg' align="right" height="209" /></a>
 
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif)
 [![R build
@@ -7,8 +7,7 @@ status](https://github.com/const-ae/ggsignif/workflows/R-CMD-check/badge.svg)](h
 [![Downloads](https://cranlogs.r-pkg.org/badges/last-month/ggsignif?color=brightgreen)](https://cran.r-project.org/package=ggsignif)
 [![Codecov test
 coverage](https://codecov.io/gh/const-ae/ggsignif/branch/master/graph/badge.svg)](https://codecov.io/gh/const-ae/ggsignif?branch=master)
-
-Easily add significance bars to your ggplots
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 

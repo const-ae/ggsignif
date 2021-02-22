@@ -1,7 +1,5 @@
 #' Create significance layer
 #'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
-#'
 #' @param comparisons A list of length-2 vectors. The entries in the vector are
 #'   either the names of 2 values on the x-axis or the 2 integers that
 #'   correspond to the index of the columns of interest.
