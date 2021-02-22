@@ -169,12 +169,14 @@ defaults to 0.}
 \dontrun{
 library(ggplot2)
 library(ggsignif)
+
 ggplot(mpg, aes(class, hwy)) +
   geom_boxplot() +
   geom_signif(comparisons = list(
     c("compact", "pickup"),
     c("subcompact", "suv")
   ))
+
 ggplot(mpg, aes(class, hwy)) +
   geom_boxplot() +
   geom_signif(
