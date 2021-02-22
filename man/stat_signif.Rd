@@ -163,7 +163,7 @@ layer, as a string.}
 defaults to 0.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
+Create significance layer
 }
 \examples{
 \dontrun{
