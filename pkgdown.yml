@@ -1,0 +1,10 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  intro: intro.html
+last_built: 2021-02-22T13:00Z
+urls:
+  reference: https://const-ae.github.io/ggsignif//reference
+  article: https://const-ae.github.io/ggsignif//articles
+
