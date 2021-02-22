@@ -1,14 +1,18 @@
-# Development (0.6.0.9000)
+# Version 0.6.1
+
+- @IndrajeetPatil is now a `ggsignif` author in recognition of his significant
+  and sustained contributions.
 
 - Add `extend_line` parameter to make the brackets shorter or wider (#70).
   Thanks to @romanhaa for making the PR.
 
-- Adds a new package website: https://const-ae.github.io/ggsignif/ (PR by
-  @IndrajeetPatil).
-  
+- Adds a new package website: https://const-ae.github.io/ggsignif/.
+
 - Minimum `ggplot2` version needed is bumped to `3.3.3`.
 
-- Minor internal refactoring and more testing infrastructure.
+- Minor internal refactoring
+
+- Adds snapshot and visual regression testing infrastructure.
 
 # Version 0.6.0
 
