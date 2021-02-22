@@ -42,5 +42,4 @@ references.bib
 ^\.github/workflows/R\.yaml$
 ^\.github/workflows/pr-commands\.yaml$
 hextools
-^README-cache
 ^WIP/.

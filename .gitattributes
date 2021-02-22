@@ -1,0 +1,5 @@
+docs/* linguist-documentation
+man/* linguist-documentation
+misc/* linguist-documentation
+pkgdown/* linguist-documentation
+*.html linguist-documentation
