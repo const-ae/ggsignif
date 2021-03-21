@@ -1,7 +1,7 @@
 Type: Package
 Package: ggsignif
 Title: Significance Brackets for 'ggplot2'
-Version: 0.6.1
+Version: 0.6.1.9000
 Authors@R: 
   c(
     person(given = "Constantin",
