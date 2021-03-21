@@ -17,8 +17,8 @@ This package provides an easy way to indicate if two groups are
 significantly different. Commonly this is shown by a bar on top
 connecting the groups of interest which itself is annotated with the
 level of significance (NS, \*, \*\*, \*\*\*). The package provides a
-single layer (geom\_signif) that takes the groups for comparison and the
-test (t.test, wilcox etc.) and adds the annotation to the plot.
+single layer (`geom_signif`) that takes the groups for comparison and
+the test (t.test, wilcox etc.) and adds the annotation to the plot.
 
 ## Example
 
