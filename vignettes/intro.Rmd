@@ -24,7 +24,7 @@ Research hypotheses often concern with differences between two or multiple
 groups and significance-based hypothesis testing can provide indices for
 evidence for such differences. Naturally, when people are visualizing such group
 differences, they might also wish to quickly annotate if the difference between
-2 groups in a plot is significantly different
+two levels of group in a plot is significantly different
 ([look](https://stackoverflow.com/questions/17084566/put-stars-on-ggplot-barplots-and-boxplots-to-indicate-the-level-of-significanc)
 [at](https://stackoverflow.com/questions/14958159/indicating-the-statistically-significant-difference-in-bar-graph-using-r)
 [all](https://stackoverflow.com/questions/29263046/how-to-draw-the-boxplot-with-significant-level)
@@ -32,7 +32,7 @@ differences, they might also wish to quickly annotate if the difference between
 [questions](https://groups.google.com/forum/#!topic/ggplot2/ntVlMqTc6PI)). This
 package does exactly that! It provides a single layer `geom_signif` which can
 calculate the significance of a difference between groups and add the annotation
-to the plot in a single line. By doing so, it further extends the fundamental
+to the plot in a single line. In doing so, it further extends the fundamental
 strength of `ggplot`, which allows one to quickly make advanced plots by
 combining layers of visualization, which can encapsulate complex statistical
 methods (`geom_smooth`, `geom_contour` etc.).

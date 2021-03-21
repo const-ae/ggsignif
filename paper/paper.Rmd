@@ -1,0 +1,101 @@
+---
+title: "ggsignif: Displaying Significance Brackets for 'ggplot2'"
+tags:
+  - R
+  - ggplot2
+  - ggplot2-extension
+authors:
+  - name: Constantin Ahlmann-Eltze
+    orcid: 0000-0002-3762-068X
+    affiliation: 1
+  - name: Indrajeet Patil
+    orcid: 0000-0003-1995-6531
+    affiliation: 2
+affiliations:
+  - name: The European Molecular Biology Laboratory, Heidelberg, Germany
+  - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
+citation_author: Ahlmann-Eltze & Patil 
+date: "`r Sys.Date()`"
+year: 2021
+bibliography: paper.bib
+output: rticles::joss_article
+csl: apa.csl
+journal: JOSS
+link-citations: yes
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  dpi = 300,
+  warning = FALSE,
+  message = FALSE,
+  out.width = "100%",
+  comment = "#>"
+)
+```
+
+# Summary
+
+Research hypotheses often concern with differences between two or multiple
+groups and (Frequentist and Bayesian) hypothesis testing can provide indices
+(*p*-value or Bayes Factor) for evidence for such differences. In the context of
+visualizing these group differences, the `ggsignif` package provides a quick way
+to annotate the difference between two levels of groups in a plot. These
+annotations can signify if the group differences are statistically different. It
+provides a single layer `geom_signif` to achieve this. In doing so, it further
+extends the fundamental strength of the `ggplot` package [@Wickham2016]: the
+ability to quickly make advanced plots encapsulating complex statistical methods
+by combining layers of visualization.
+
+# Statement of Need
+
+Often when researchers statistically analyze data, they run a one-way or a
+multi-way ANOVA to assess if *any* of the group means differ from each other,
+and then follow up these global difference-related analysis with more
+fine-grained. *post hoc* multiple comparisons between different levels of the
+grouping variables (also called as design factors). The `ggsignif` package
+provides a way to graphically display all or a few (depending on the context of
+the research hypotheses ) of such comparisons. It is also used by developers of
+other R packages as the back-end for graphical displays of pairwise comparisons,
+such as `ggpubr` [@Kassambara2020], `ggstatsplot` [@Patil2018], and more. These
+packages also highlight how the package can be extended to display results from
+any type of pairwise comparisons test, e.g. Bayesian *t*-test, Dunn test, etc.
+
+# Features
+
+The following is a simple example demonstrating how a group difference can be
+annotated using `geom_signif` layes from `ggsignif` package.
+
+```{r simpe_comparison}
+library(ggplot2)
+library(ggsignif)
+
+ggplot(mpg, aes(class, hwy)) +
+  geom_boxplot() +
+  geom_signif(
+    comparisons = list(c("compact", "midsize"), c("minivan", "suv")),
+    map_signif_level = TRUE
+  ) +
+  ylim(NA, 48)
+```
+
+For more advanced examples, the readers are encouraged to read the package
+website: <https://const-ae.github.io/ggsignif/>.
+
+# Licensing and Availability
+
+`ggsignif` is licensed under the GNU General Public License (v3.0), with all
+source code stored at [GitHub](https://github.com/const-ae/ggsignif), and with a
+corresponding issue tracker for bug reporting and feature enhancements. In the
+spirit of honest and open science, we encourage requests/tips for fixes, feature
+updates, as well as general questions and concerns via direct interaction with
+contributors and developers, by [filing an issue](https://github.com/const-ae/ggsignif/issues). See the
+[*Contribution Guidelines*](https://github.com/const-ae/ggsignif/blob/master/CODE_OF_CONDUCT.md) for this package.
+
+# Acknowledgements
+
+We would like to thanks the users of `ggsignif` package for reporting bugs and
+for providing valuable feedback.
+
+# References
