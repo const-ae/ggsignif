@@ -27,9 +27,9 @@ knitr::opts_chunk$set(
 This package provides an easy way to indicate if two groups are significantly
 different. Commonly this is shown by a bar on top connecting the groups of
 interest which itself is annotated with the level of significance (NS, \*, \*\*,
-\*\*\*). The package provides a single layer (geom_signif) that takes the groups
-for comparison and the test (t.test, wilcox etc.) and adds the annotation to the
-plot.
+\*\*\*). The package provides a single layer (`geom_signif`) that takes the
+groups for comparison and the test (t.test, wilcox etc.) and adds the annotation
+to the plot.
 
 ## Example
 
@@ -79,7 +79,6 @@ ggplot(iris, aes(x = Species, y = Sepal.Width, fill = Petal.Width > 1)) +
   )
 ```
 
-
 Advanced Example
 
 Sometimes one needs to have a very fine tuned ability to set the location of the
@@ -123,4 +122,4 @@ request, which I will try to address as soon as possible.
 
 ## Code of Conduct
   
-  Please note that the ggsignif project is released with a [Contributor Code of Conduct](https://const-ae.github.io/ggsignif/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the ggsignif project is released with a [Contributor Code of Conduct](https://const-ae.github.io/ggsignif/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
