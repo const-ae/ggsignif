@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ggsignif intro • ggsignif</title>
+<title>Introduction to 'ggsignif' package • ggsignif</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="ggsignif intro">
+<meta property="og:title" content="Introduction to 'ggsignif' package">
 <meta property="og:description" content="ggsignif">
 <meta property="og:image" content="https://const-ae.github.io/ggsignif/logo.svg">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggsignif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1.9000</span>
       </span>
     </div>
 
@@ -62,7 +62,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/intro.html">ggsignif intro</a>
+      <a href="../articles/intro.html">Introduction to 'ggsignif' package</a>
     </li>
   </ul>
 </li>
@@ -90,10 +90,10 @@
       </header><script src="intro_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>ggsignif intro</h1>
-                        <h4 class="author">Constantin Ahlmann-Eltze</h4>
+      <h1 data-toc-skip>Introduction to ‘ggsignif’ package</h1>
+                        <h4 class="author">Constantin Ahlmann-Eltze and Indrajeet Patil</h4>
             
-            <h4 class="date">2021-02-22</h4>
+            <h4 class="date">2021-03-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/const-ae/ggsignif/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -102,31 +102,38 @@
 
     
     
-<p>This package provides an extension for the popular ggplot2 package.</p>
-<p>Often people are looking for a way to quickly annotate if the difference between 2 groups in a plot is significantly different (<a href="https://stackoverflow.com/questions/17084566/put-stars-on-ggplot-barplots-and-boxplots-to-indicate-the-level-of-significanc">look</a> <a href="https://stackoverflow.com/questions/14958159/indicating-the-statistically-significant-difference-in-bar-graph-using-r">at</a> <a href="https://stackoverflow.com/questions/29263046/how-to-draw-the-boxplot-with-significant-level">all</a> <a href="https://stackoverflow.com/questions/29186435/showing-significance-relationships-in-a-ggplot2-bar-graph">those</a> <a href="https://groups.google.com/forum/#!topic/ggplot2/ntVlMqTc6PI">questions</a>). The usual answer is along the lines of just manually adding lines and annotation to the plot.</p>
-<p>But I believe that a fundamental strength of ggplot is that it allows one to quickly make advanced plots by combining layers of visualization, which can encapsulate complex statistical methods (<code>geom_smooth</code>, <code>geom_contour</code> etc.).</p>
-<p>So I created this package which provides a single layer <code>geom_signif</code> which can calculate the significance of a difference between groups and add the annotation to the plot in a single line.</p>
+<div id="statement-of-need" class="section level1">
+<h1 class="hasAnchor">
+<a href="#statement-of-need" class="anchor"></a>Statement of Need</h1>
+<p>Research hypotheses often concern with differences between two or multiple groups and significance-based hypothesis testing can provide indices for evidence for such differences. Naturally, when people are visualizing such group differences, they might also wish to quickly annotate if the difference between two levels of group in a plot is significantly different (<a href="https://stackoverflow.com/questions/17084566/put-stars-on-ggplot-barplots-and-boxplots-to-indicate-the-level-of-significanc">look</a> <a href="https://stackoverflow.com/questions/14958159/indicating-the-statistically-significant-difference-in-bar-graph-using-r">at</a> <a href="https://stackoverflow.com/questions/29263046/how-to-draw-the-boxplot-with-significant-level">all</a> <a href="https://stackoverflow.com/questions/29186435/showing-significance-relationships-in-a-ggplot2-bar-graph">those</a> <a href="https://groups.google.com/forum/#!topic/ggplot2/ntVlMqTc6PI">questions</a>). This package does exactly that! It provides a single layer <code>geom_signif</code> which can calculate the significance of a difference between groups and add the annotation to the plot in a single line. In doing so, it further extends the fundamental strength of <code>ggplot</code>, which allows one to quickly make advanced plots by combining layers of visualization, which can encapsulate complex statistical methods (<code>geom_smooth</code>, <code>geom_contour</code> etc.).</p>
+</div>
 <div id="how-to-use-it" class="section level1">
 <h1 class="hasAnchor">
 <a href="#how-to-use-it" class="anchor"></a>How to use it?</h1>
-<p>First load both packages</p>
+<div id="simple-case" class="section level2">
+<h2 class="hasAnchor">
+<a href="#simple-case" class="anchor"></a>Simple case</h2>
+<p>First step: load the needed packages.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://const-ae.github.io/ggsignif/">ggsignif</a></span><span class="op">)</span></code></pre></div>
-<p>Second step: plot your data</p>
+<p>Second step: plot your data.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">iris</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Species</span>, y <span class="op">=</span> <span class="va">Sepal.Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="co"># using `ggsignif` to display comparison of interest</span>
   <span class="fu"><a href="../reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>
     comparisons <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"versicolor"</span>, <span class="st">"virginica"</span><span class="op">)</span><span class="op">)</span>,
     map_signif_level <span class="op">=</span> <span class="cn">TRUE</span>
   <span class="op">)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-2-1.png" width="576"></p>
-<p>That’s it, it is really simple!</p>
+<p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
+<p>That’s it, it is as simple as that!</p>
+<p>Note that, if we were to statistically analyze this data, we would run a one-way ANOVA to assess if <em>any</em> of the group means differ from each other and then follow up with <em>post hoc</em> multiple comparisons to do more fine-grained comparisons between different levels of the group. The <code>ggsignif</code> package provides a way to graphically display all or a few (depending on the research hypotheses context) of such comparisons.</p>
+</div>
 <div id="advanced-options" class="section level2">
 <h2 class="hasAnchor">
 <a href="#advanced-options" class="anchor"></a>Advanced options</h2>
-<p>Sometimes one might need more advanced control over the display. To specify exactly where the bracket is drawn use the <code>y_position</code>, <code>xmin</code> and <code>xmax</code> parameters combined with a custom <code>annotations</code>. This is always necessary if <code>geom_signif</code> is combined with another layer that uses <code>position="dodge"</code>, because it changes the location of the visual elements without updating the data.</p>
+<p>Sometimes one might need more advanced control over the display. For example, instead of a one-way ANOVA design, you can have a complex multiway-ANOVA design. In such instances, you may wish to have a much finer control over which comparisons to include for pairwise comparison displays.</p>
+<p>To specify exactly where the bracket is drawn use the <code>y_position</code>, <code>xmin</code> and <code>xmax</code> parameters combined with a custom <code>annotations</code>. This is always necessary if <code>geom_signif</code> is combined with another layer that uses <code>position="dodge"</code>, because it changes the location of the visual elements <em>without</em> updating the data.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
   Group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"S1"</span>, <span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S2"</span><span class="op">)</span>,
@@ -145,8 +152,8 @@
     y_position <span class="op">=</span> <span class="fl">9.3</span>, tip_length <span class="op">=</span> <span class="fl">0</span>, vjust <span class="op">=</span> <span class="fl">0.2</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"grey80"</span>, <span class="st">"grey20"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
-<p>For more detailed documentation of the available parameters see the man page for the geom_signif function (<code>&gt; ?geom_signif</code>).</p>
+<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
+<p>For more detailed documentation of the available parameters see the manual page for the <code>geom_signif</code> function: <a href="https://const-ae.github.io/ggsignif/reference/stat_signif.html" class="uri">https://const-ae.github.io/ggsignif/reference/stat_signif.html</a></p>
 </div>
 </div>
 <div id="bugs-comments-or-questions" class="section level1">
