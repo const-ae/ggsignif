@@ -97,4 +97,6 @@ contributors and developers, by [filing an issue](https://github.com/const-ae/gg
 We would like to thank the users of `ggsignif` package for reporting bugs and
 for providing valuable feedback.
 
+This work was supported by the EMBL International PhD Programme (C.A.E.).
+
 # References
