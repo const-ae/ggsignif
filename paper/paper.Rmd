@@ -53,7 +53,7 @@ commonly start with a one-way ANOVA to see if there are any differences in the
 group means. This is typically followed up with multiple comparisons to see if
 specific levels of the discrete covariates differ significantly. The `ggsignif`
 package provides a way to graphically display all or a few (depending on the
-context of the research hypotheses ) of such comparisons. It is also used by
+context of the research hypotheses) of such comparisons. It is also used by
 other R package developers as the back-end for graphical display of pairwise
 comparisons, such as `ggpubr` [@Kassambara2020], `ggstatsplot` [@Patil2018], and
 more. These packages demonstrate how `ggsignif` can be extended to display
@@ -94,7 +94,7 @@ contributors and developers, by [filing an issue](https://github.com/const-ae/gg
 
 # Acknowledgements
 
-We would like to thanks the users of `ggsignif` package for reporting bugs and
+We would like to thank the users of `ggsignif` package for reporting bugs and
 for providing valuable feedback.
 
 # References
