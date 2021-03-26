@@ -28,10 +28,10 @@ link-citations: yes
 
 # Summary
 
-Research hypotheses often concern the difference between two groups and
-statistical tests provide indicators (e.g., *p*-values or Bayes factors) about
-the evidence for or against such differences. Our R package, `ggsignif` provides
-a quick way to visualize those pairwise indicators as an annotation in a plot,
+Research hypotheses are often concerned with the difference between two groups and
+statistical tests provide indicators (like *p*-values or Bayes factors) about
+the evidence for or against such differences. The R package, `ggsignif` provides
+a quick way to visualize such pairwise indicators as an annotation in a plot,
 for example showing if a difference is statistically significant. `ggsignif`
 follows the principles of the grammar of graphics [@Wilkinson2012] and provides
 a new layer that can be added to plots made with the `ggplot2` package
@@ -48,8 +48,8 @@ context of the research hypotheses ) of such comparisons. It is also used by
 other R package developers as the back-end for graphical display of pairwise
 comparisons, such as `ggpubr` [@Kassambara2020], `ggstatsplot` [@Patil2018], and
 more. These packages demonstrate how `ggsignif` can be extended to display
-results from any type of pairwise comparisons test (e.g. Bayesian *t*-test or
-Dunn test).
+results from any type of pairwise comparisons test (e.g., Bayesian *t*-test,
+Dunn test, etc.).
 
 # Features
 
