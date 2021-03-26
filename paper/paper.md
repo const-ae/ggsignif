@@ -15,7 +15,7 @@ affiliations:
   - name: The European Molecular Biology Laboratory, Heidelberg, Germany
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
 citation_author: Ahlmann-Eltze & Patil 
-date: "2021-03-21"
+date: "2021-03-26"
 year: 2021
 bibliography: paper.bib
 output: rticles::joss_article
@@ -28,35 +28,31 @@ link-citations: yes
 
 # Summary
 
-Research hypotheses often concern with differences between two or multiple
-groups and (Frequentist and Bayesian) hypothesis testing can provide indices
-(*p*-value or Bayes Factor) for evidence for such differences. In the context of
-visualizing these group differences, the `ggsignif` package provides a quick way
-to annotate the difference between two levels of groups in a plot. These
-annotations can signify if the group differences are statistically different. It
-provides a single layer `geom_signif` to achieve this. In doing so, it further
-extends the fundamental strength of the `ggplot` package [@Wickham2016]: the
-ability to quickly make advanced plots encapsulating complex statistical methods
-by combining layers of visualization.
+Research hypotheses often concern the difference between two
+groups and statistical tests provide indicators
+(e.g., *p*-values or Bayes factors) about the evidence for or against such differences.
+Our R package, `ggsignif` provides a quick way to visualize those pairwise indicators as an 
+annotation in a plot, for example showing if a difference is statistically significant. `ggsignif`
+follows the principles of the grammar of graphics [@Wilkinson2012] and provides a new layer that 
+can be added to plots made with the `ggplot2` package [@Wickham2016].
 
 # Statement of Need
 
-Often when researchers statistically analyze data, they run a one-way or a
-multi-way ANOVA to assess if *any* of the group means differ from each other,
-and then follow up these global difference-related analysis with more
-fine-grained. *post hoc* multiple comparisons between different levels of the
-grouping variables (also called as design factors). The `ggsignif` package
+During the exploratory analysis of data with discrete covariates, 
+researchers commonly start with a one-way ANOVA to see if there are any differences 
+in the group means. This is typically followed up with multiple comparisons to see
+if specific levels of the discrete covariates differ significantly. The `ggsignif` package
 provides a way to graphically display all or a few (depending on the context of
-the research hypotheses ) of such comparisons. It is also used by developers of
-other R packages as the back-end for graphical displays of pairwise comparisons,
-such as `ggpubr` [@Kassambara2020], `ggstatsplot` [@Patil2018], and more. These
-packages also highlight how the package can be extended to display results from
-any type of pairwise comparisons test, e.g. Bayesian *t*-test, Dunn test, etc.
+the research hypotheses ) of such comparisons. It is also used by other R package developers
+as the back-end for graphical display of pairwise comparisons,
+such as `ggpubr` [@Kassambara2020], `ggstatsplot` [@Patil2018], and more. These packages 
+demonstrate how `ggsignif` can be extended to display results from
+any type of pairwise comparisons test (e.g. Bayesian *t*-test or Dunn test).
 
 # Features
 
 The following is a simple example demonstrating how a group difference can be
-annotated using `geom_signif` layes from `ggsignif` package.
+annotated using `geom_signif` layers from `ggsignif` package.
 
 
 ```r
