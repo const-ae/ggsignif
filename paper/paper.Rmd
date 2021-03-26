@@ -37,26 +37,28 @@ knitr::opts_chunk$set(
 
 # Summary
 
-Research hypotheses often concern the difference between two
-groups and statistical tests provide indicators
-(e.g., *p*-values or Bayes factors) about the evidence for or against such differences.
-Our R package, `ggsignif` provides a quick way to visualize those pairwise indicators as an 
-annotation in a plot, for example showing if a difference is statistically significant. `ggsignif`
-follows the principles of the grammar of graphics [@Wilkinson2012] and provides a new layer that 
-can be added to plots made with the `ggplot2` package [@Wickham2016].
+Research hypotheses often concern the difference between two groups and
+statistical tests provide indicators (e.g., *p*-values or Bayes factors) about
+the evidence for or against such differences. Our R package, `ggsignif` provides
+a quick way to visualize those pairwise indicators as an annotation in a plot,
+for example showing if a difference is statistically significant. `ggsignif`
+follows the principles of the grammar of graphics [@Wilkinson2012] and provides
+a new layer that can be added to plots made with the `ggplot2` package
+[@Wickham2016].
 
 # Statement of Need
 
-During the exploratory analysis of data with discrete covariates, 
-researchers commonly start with a one-way ANOVA to see if there are any differences 
-in the group means. This is typically followed up with multiple comparisons to see
-if specific levels of the discrete covariates differ significantly. The `ggsignif` package
-provides a way to graphically display all or a few (depending on the context of
-the research hypotheses ) of such comparisons. It is also used by other R package developers
-as the back-end for graphical display of pairwise comparisons,
-such as `ggpubr` [@Kassambara2020], `ggstatsplot` [@Patil2018], and more. These packages 
-demonstrate how `ggsignif` can be extended to display results from
-any type of pairwise comparisons test (e.g. Bayesian *t*-test or Dunn test).
+During the exploratory analysis of data with discrete covariates, researchers
+commonly start with a one-way ANOVA to see if there are any differences in the
+group means. This is typically followed up with multiple comparisons to see if
+specific levels of the discrete covariates differ significantly. The `ggsignif`
+package provides a way to graphically display all or a few (depending on the
+context of the research hypotheses ) of such comparisons. It is also used by
+other R package developers as the back-end for graphical display of pairwise
+comparisons, such as `ggpubr` [@Kassambara2020], `ggstatsplot` [@Patil2018], and
+more. These packages demonstrate how `ggsignif` can be extended to display
+results from any type of pairwise comparisons test (e.g. Bayesian *t*-test or
+Dunn test).
 
 # Features
 
@@ -64,6 +66,7 @@ The following is a simple example demonstrating how a group difference can be
 annotated using `geom_signif` layers from `ggsignif` package.
 
 ```{r simpe_comparison}
+set.seed(123)
 library(ggplot2)
 library(ggsignif)
 
