@@ -1,5 +1,5 @@
 ---
-title: "ggsignif: Displaying Significance Brackets for 'ggplot2'"
+title: "ggsignif: R Package for Displaying Significance Brackets for 'ggplot2'"
 tags:
   - R
   - ggplot2
