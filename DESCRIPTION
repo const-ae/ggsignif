@@ -23,7 +23,7 @@ Description: Enrich your 'ggplots' with group-wise comparisons.
     layer (geom_signif()) that takes the groups for comparison and the
     test (t.test(), wilcox.text() etc.) as arguments and adds the
     annotation to the plot.
-License: GPL-3
+License: GPL-3 | file LICENSE
 URL: https://const-ae.github.io/ggsignif/,
     https://github.com/const-ae/ggsignif
 VignetteBuilder: 
