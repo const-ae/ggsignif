@@ -12,8 +12,10 @@ authors:
     orcid: 0000-0003-1995-6531
     affiliation: 2
 affiliations:
-  - name: The European Molecular Biology Laboratory, Heidelberg, Germany
-  - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
+  - index: 1
+    name: The European Molecular Biology Laboratory, Heidelberg, Germany
+  - index: 2
+    name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
 date: "2021-03-26"
 bibliography: paper.bib
 ---
