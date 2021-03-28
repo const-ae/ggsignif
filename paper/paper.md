@@ -14,14 +14,8 @@ authors:
 affiliations:
   - name: The European Molecular Biology Laboratory, Heidelberg, Germany
   - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
-citation_author: Ahlmann-Eltze & Patil 
 date: "2021-03-26"
-year: 2021
 bibliography: paper.bib
-output: rticles::joss_article
-csl: apa.csl
-journal: JOSS
-link-citations: yes
 ---
 
 
