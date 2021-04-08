@@ -107,17 +107,42 @@
 <a href="#description" class="anchor"></a>Description</h2>
 <p>This package provides an easy way to indicate if two groups are significantly different. Commonly this is shown by a bar on top connecting the groups of interest which itself is annotated with the level of significance (NS, *, **, ***). The package provides a single layer (<code>geom_signif</code>) that takes the groups for comparison and the test (t.test, wilcox etc.) and adds the annotation to the plot.</p>
 </div>
+<div id="citation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#citation" class="anchor"></a>Citation</h2>
+<p>If you wish to cite this package in a publication, you can run the following command in your R console:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"ggsignif"</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; To cite 'ggsignif' in publications use:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   Ahlmann-Eltze, C., &amp; Patil, I. (2021). ggsignif: R Package for</span>
+<span class="co">#&gt;   Displaying Significance Brackets for 'ggplot2'. PsyArxiv.</span>
+<span class="co">#&gt;   doi:10.31234/osf.io/7awm6</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   @Article{,</span>
+<span class="co">#&gt;     title = {{ggsignif}: R Package for Displaying Significance Brackets for {'ggplot2'}},</span>
+<span class="co">#&gt;     author = {Ahlmann-Eltze Constantin and Indrajeet Patil},</span>
+<span class="co">#&gt;     year = {2021},</span>
+<span class="co">#&gt;     journal = {PsyArxiv},</span>
+<span class="co">#&gt;     url = {https://psyarxiv.com/7awm6},</span>
+<span class="co">#&gt;     doi = {10.31234/osf.io/7awm6},</span>
+<span class="co">#&gt;   }</span></code></pre></div>
+</div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>Install package</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggsignif"</span><span class="op">)</span>
-
-<span class="co"># Or for the latest development version</span>
+<p>You can first install this package from <code>CRAN</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggsignif"</span><span class="op">)</span></code></pre></div>
+<p>Or get the latest development version:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"const-ae/ggsignif"</span><span class="op">)</span></code></pre></div>
 <p>Plot significance</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://const-ae.github.io/ggsignif/">ggsignif</a></span><span class="op">)</span>
 
@@ -131,7 +156,7 @@
 <p><img src="reference/figures/README-simpe_comparison-1.png"><!-- --></p>
 <p>Setting the precise location</p>
 <p>This is important if you use <code>position="dodge"</code>, because in that case I cannot calculate the correct position of the bars automatically.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate annotation</span>
 <span class="va">anno</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>
   <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Petal.Width</span> <span class="op">&gt;</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"versicolor"</span>, <span class="st">"Sepal.Width"</span><span class="op">]</span>,
@@ -149,7 +174,7 @@
 <p><img src="reference/figures/README-dodge_comparison-1.png"><!-- --></p>
 <p>Advanced Example</p>
 <p>Sometimes one needs to have a very fine tuned ability to set the location of the the significance bars in combination with <code>facet_wrap</code> or <code>facet_grid</code>. In those cases it you can set the flag <code>manual=TRUE</code> and provide the annotations as a data.frame:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">annotation_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
   color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"E"</span>, <span class="st">"H"</span><span class="op">)</span>,
   start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Good"</span>, <span class="st">"Fair"</span><span class="op">)</span>,
@@ -211,6 +236,12 @@
 <h2>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
+<div class="citation">
+<h2>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html">Citing ggsignif</a></li>
 </ul>
 </div>
 <div class="developers">
