@@ -1,26 +1,30 @@
 ---
 title: "ggsignif: R Package for Displaying Significance Brackets for 'ggplot2'"
-tags:
+keywords:
   - R
   - ggplot2
   - ggplot2-extension
 authors:
   - name: Constantin Ahlmann-Eltze
     orcid: 0000-0002-3762-068X
-    affiliation: 1
+    affiliation: The European Molecular Biology Laboratory, Heidelberg, Germany
   - name: Indrajeet Patil
     orcid: 0000-0003-1995-6531
-    affiliation: 2
-affiliations:
-  - name: The European Molecular Biology Laboratory, Heidelberg, Germany
-  - name: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
-citation_author: Ahlmann-Eltze & Patil 
-date: "`r Sys.Date()`"
-year: 2021
+    affiliation: Center for Humans and Machines, Max Planck Institute for Human Development, Berlin, Germany
 bibliography: paper.bib
-output: rticles::joss_article
+abstract: |
+  Research hypotheses are often concerned with the difference between two groups and
+  statistical tests provide indicators (like *p*-values or Bayes factors) about
+  the evidence for or against such differences. The R package, `ggsignif` provides
+  a quick way to visualize such pairwise indicators as an annotation in a plot,
+  for example showing if a difference is statistically significant. `ggsignif`
+  follows the principles of the grammar of graphics [@Wilkinson2012] and provides
+  a new layer that can be added to plots made with the `ggplot2` package 
+  [@Wickham2016].
+output: 
+  rticles::arxiv_article:
+    keep_tex: true
 csl: apa.csl
-journal: JOSS
 link-citations: yes
 ---
 
@@ -35,16 +39,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Summary
+<!-- # Summary -->
 
-Research hypotheses are often concerned with the difference between two groups and
-statistical tests provide indicators (like *p*-values or Bayes factors) about
-the evidence for or against such differences. The R package, `ggsignif` provides
-a quick way to visualize such pairwise indicators as an annotation in a plot,
-for example showing if a difference is statistically significant. `ggsignif`
-follows the principles of the grammar of graphics [@Wilkinson2012] and provides
-a new layer that can be added to plots made with the `ggplot2` package
-[@Wickham2016].
+<!-- Research hypotheses are often concerned with the difference between two groups and -->
+<!-- statistical tests provide indicators (like *p*-values or Bayes factors) about -->
+<!-- the evidence for or against such differences. The R package, `ggsignif` provides -->
+<!-- a quick way to visualize such pairwise indicators as an annotation in a plot, -->
+<!-- for example showing if a difference is statistically significant. `ggsignif` -->
+<!-- follows the principles of the grammar of graphics [@Wilkinson2012] and provides -->
+<!-- a new layer that can be added to plots made with the `ggplot2` package -->
+<!-- [@Wickham2016]. -->
 
 # Statement of Need
 
