@@ -31,14 +31,27 @@ interest which itself is annotated with the level of significance (NS, \*, \*\*,
 groups for comparison and the test (t.test, wilcox etc.) and adds the annotation
 to the plot.
 
+## Citation
+
+If you wish to cite this package in a publication, you can run the following
+command in your R console:
+
+```{r citation}
+citation("ggsignif")
+```
+
 ## Example
 
-Install package
+You can first install this package from `CRAN`:
 
 ```{r eval=FALSE}
 install.packages("ggsignif")
+```
 
-# Or for the latest development version
+Or get the latest development version:
+
+```{r eval=FALSE}
+install.packages("remotes")
 remotes::install_github("const-ae/ggsignif")
 ```
 

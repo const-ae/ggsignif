@@ -20,14 +20,44 @@ level of significance (NS, \*, \*\*, \*\*\*). The package provides a
 single layer (`geom_signif`) that takes the groups for comparison and
 the test (t.test, wilcox etc.) and adds the annotation to the plot.
 
+## Citation
+
+If you wish to cite this package in a publication, you can run the
+following command in your R console:
+
+``` r
+citation("ggsignif")
+#> 
+#> To cite 'ggsignif' in publications use:
+#> 
+#>   Ahlmann-Eltze, C., & Patil, I. (2021). ggsignif: R Package for
+#>   Displaying Significance Brackets for 'ggplot2'. PsyArxiv.
+#>   doi:10.31234/osf.io/7awm6
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Article{,
+#>     title = {{ggsignif}: R Package for Displaying Significance Brackets for {'ggplot2'}},
+#>     author = {Ahlmann-Eltze Constantin and Indrajeet Patil},
+#>     year = {2021},
+#>     journal = {PsyArxiv},
+#>     url = {https://psyarxiv.com/7awm6},
+#>     doi = {10.31234/osf.io/7awm6},
+#>   }
+```
+
 ## Example
 
-Install package
+You can first install this package from `CRAN`:
 
 ``` r
 install.packages("ggsignif")
+```
 
-# Or for the latest development version
+Or get the latest development version:
+
+``` r
+install.packages("remotes")
 remotes::install_github("const-ae/ggsignif")
 ```
 
