@@ -9,12 +9,16 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, echo = FALSE}
+```{r, echo=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   message = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  dpi = 300,
+  out.width = "100%",
+  fig.width = 6, 
+  fig.height = 5
 )
 ```
 
@@ -50,7 +54,7 @@ library(ggsignif)
 
 Second step: plot your data.
 
-```{r fig.width = 6, fig.height = 4.8}
+```{r simple}
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
   geom_boxplot() + # using `ggsignif` to display comparison of interest
   geom_signif(
@@ -81,7 +85,7 @@ if `geom_signif` is combined with another layer that uses `position="dodge"`,
 because it changes the location of the visual elements *without* updating the
 data.
 
-```{r fig.width = 6, fig.height = 4.8}
+```{r advanced}
 dat <- data.frame(
   Group = c("S1", "S1", "S2", "S2"),
   Sub = c("A", "B", "A", "B"),

@@ -1,4 +1,8 @@
-# Version 0.6.1.9000
+# Version 0.6.2
+
+- Updates visual regression tests for `vdiffr 1.0.0` release.
+
+- Removes `NOTE` about `lazyData` from CRAN's daily checks.
 
 # Version 0.6.1
 

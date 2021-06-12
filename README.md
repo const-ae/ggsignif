@@ -11,7 +11,7 @@ coverage](https://codecov.io/gh/const-ae/ggsignif/branch/master/graph/badge.svg)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-## Description
+## Introduction
 
 This package provides an easy way to indicate if two groups are
 significantly different. Commonly this is shown by a bar on top
@@ -28,21 +28,20 @@ following command in your R console:
 ``` r
 citation("ggsignif")
 #> 
-#> To cite 'ggsignif' in publications use:
+#> To cite package 'ggsignif' in publications use:
 #> 
-#>   Ahlmann-Eltze, C., & Patil, I. (2021). ggsignif: R Package for
-#>   Displaying Significance Brackets for 'ggplot2'. PsyArxiv.
-#>   doi:10.31234/osf.io/7awm6
+#>   Constantin Ahlmann-Eltze and Indrajeet Patil (2021). ggsignif:
+#>   Significance Brackets for 'ggplot2'. R package version 0.6.1.
+#>   https://CRAN.R-project.org/package=ggsignif
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
-#>   @Article{,
-#>     title = {{ggsignif}: R Package for Displaying Significance Brackets for {'ggplot2'}},
-#>     author = {Ahlmann-Eltze Constantin and Indrajeet Patil},
+#>   @Manual{,
+#>     title = {ggsignif: Significance Brackets for 'ggplot2'},
+#>     author = {Constantin Ahlmann-Eltze and Indrajeet Patil},
 #>     year = {2021},
-#>     journal = {PsyArxiv},
-#>     url = {https://psyarxiv.com/7awm6},
-#>     doi = {10.31234/osf.io/7awm6},
+#>     note = {R package version 0.6.1},
+#>     url = {https://CRAN.R-project.org/package=ggsignif},
 #>   }
 ```
 
@@ -76,7 +75,7 @@ ggplot(mpg, aes(class, hwy)) +
   ylim(NA, 48)
 ```
 
-![](man/figures/README-simpe_comparison-1.png)<!-- -->
+<img src="man/figures/README-simpe_comparison-1.png" width="100%" />
 
 Setting the precise location
 
@@ -100,7 +99,7 @@ ggplot(iris, aes(x = Species, y = Sepal.Width, fill = Petal.Width > 1)) +
   )
 ```
 
-![](man/figures/README-dodge_comparison-1.png)<!-- -->
+<img src="man/figures/README-dodge_comparison-1.png" width="100%" />
 
 Advanced Example
 
@@ -135,7 +134,7 @@ ggplot(diamonds, aes(x = cut, y = carat)) +
   ylim(NA, 5.3)
 ```
 
-![](man/figures/README-faceted_comparison-1.png)<!-- -->
+<img src="man/figures/README-faceted_comparison-1.png" width="100%" />
 
 You can ignore the warning about the missing aesthetics.
 
@@ -144,17 +143,21 @@ page](https://CRAN.R-project.org/package=ggsignif) and check the
 examples in the
 [vignette](https://CRAN.R-project.org/package=ggsignif/vignettes/intro.html).
 
+## Also see
+
+-   [`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
+
 ## Maintenance
 
-This package is provided as is and I currently don’t have any plans and
+This package is provided as is and we currently don’t have any plans and
 the capacity to add any new features to it. If there is nonetheless a
 feature which you would like to see in the package, you are always
-welcome to submit pull request, which I will try to address as soon as
+welcome to submit pull request, which we will try to address as soon as
 possible.
 
 ## Code of Conduct
 
-Please note that the ggsignif project is released with a [Contributor
+Please note that the `ggsignif` project is released with a [Contributor
 Code of
 Conduct](https://const-ae.github.io/ggsignif/CODE_OF_CONDUCT.html). By
 contributing to this project, you agree to abide by its terms.

@@ -1,7 +1,7 @@
 Type: Package
 Package: ggsignif
 Title: Significance Brackets for 'ggplot2'
-Version: 0.6.1.9000
+Version: 0.6.2
 Authors@R: 
   c(
     person(given = "Constantin",
@@ -29,7 +29,6 @@ URL: https://const-ae.github.io/ggsignif/,
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
-LazyData: true
 Language: en-US
 Imports:
     ggplot2 (>= 3.3.3)
@@ -38,7 +37,7 @@ Suggests:
     rmarkdown,
     spelling,
     testthat,
-    vdiffr,
+    vdiffr (>= 1.0.0)
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.1.1.9001
 Config/testthat/edition: 3
