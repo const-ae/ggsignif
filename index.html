@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ggsignif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.2</span>
       </span>
     </div>
 
@@ -102,9 +102,9 @@
 </h1></div>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<div id="description" class="section level2">
+<div id="introduction" class="section level2">
 <h2 class="hasAnchor">
-<a href="#description" class="anchor"></a>Description</h2>
+<a href="#introduction" class="anchor"></a>Introduction</h2>
 <p>This package provides an easy way to indicate if two groups are significantly different. Commonly this is shown by a bar on top connecting the groups of interest which itself is annotated with the level of significance (NS, *, **, ***). The package provides a single layer (<code>geom_signif</code>) that takes the groups for comparison and the test (t.test, wilcox etc.) and adds the annotation to the plot.</p>
 </div>
 <div id="citation" class="section level2">
@@ -114,21 +114,20 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"ggsignif"</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; To cite 'ggsignif' in publications use:</span>
+<span class="co">#&gt; To cite package 'ggsignif' in publications use:</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;   Ahlmann-Eltze, C., &amp; Patil, I. (2021). ggsignif: R Package for</span>
-<span class="co">#&gt;   Displaying Significance Brackets for 'ggplot2'. PsyArxiv.</span>
-<span class="co">#&gt;   doi:10.31234/osf.io/7awm6</span>
+<span class="co">#&gt;   Constantin Ahlmann-Eltze and Indrajeet Patil (2021). ggsignif:</span>
+<span class="co">#&gt;   Significance Brackets for 'ggplot2'. R package version 0.6.1.</span>
+<span class="co">#&gt;   https://CRAN.R-project.org/package=ggsignif</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;   @Article{,</span>
-<span class="co">#&gt;     title = {{ggsignif}: R Package for Displaying Significance Brackets for {'ggplot2'}},</span>
-<span class="co">#&gt;     author = {Ahlmann-Eltze Constantin and Indrajeet Patil},</span>
+<span class="co">#&gt;   @Manual{,</span>
+<span class="co">#&gt;     title = {ggsignif: Significance Brackets for 'ggplot2'},</span>
+<span class="co">#&gt;     author = {Constantin Ahlmann-Eltze and Indrajeet Patil},</span>
 <span class="co">#&gt;     year = {2021},</span>
-<span class="co">#&gt;     journal = {PsyArxiv},</span>
-<span class="co">#&gt;     url = {https://psyarxiv.com/7awm6},</span>
-<span class="co">#&gt;     doi = {10.31234/osf.io/7awm6},</span>
+<span class="co">#&gt;     note = {R package version 0.6.1},</span>
+<span class="co">#&gt;     url = {https://CRAN.R-project.org/package=ggsignif},</span>
 <span class="co">#&gt;   }</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
@@ -153,7 +152,7 @@
     map_signif_level <span class="op">=</span> <span class="cn">TRUE</span>, textsize <span class="op">=</span> <span class="fl">6</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">48</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-simpe_comparison-1.png"><!-- --></p>
+<p><img src="reference/figures/README-simpe_comparison-1.png" width="100%"></p>
 <p>Setting the precise location</p>
 <p>This is important if you use <code>position="dodge"</code>, because in that case I cannot calculate the correct position of the bars automatically.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -171,7 +170,7 @@
     y_position <span class="op">=</span> <span class="fl">4.05</span>, xmin <span class="op">=</span> <span class="fl">2.2</span>, xmax <span class="op">=</span> <span class="fl">3</span>,
     tip_length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>, <span class="fl">0.04</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-dodge_comparison-1.png"><!-- --></p>
+<p><img src="reference/figures/README-dodge_comparison-1.png" width="100%"></p>
 <p>Advanced Example</p>
 <p>Sometimes one needs to have a very fine tuned ability to set the location of the the significance bars in combination with <code>facet_wrap</code> or <code>facet_grid</code>. In those cases it you can set the flag <code>manual=TRUE</code> and provide the annotations as a data.frame:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -198,19 +197,26 @@
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">color</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">5.3</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-faceted_comparison-1.png"><!-- --></p>
+<p><img src="reference/figures/README-faceted_comparison-1.png" width="100%"></p>
 <p>You can ignore the warning about the missing aesthetics.</p>
 <p>For further details go the <a href="https://CRAN.R-project.org/package=ggsignif">CRAN page</a> and check the examples in the <a href="https://CRAN.R-project.org/package=ggsignif/vignettes/intro.html">vignette</a>.</p>
+</div>
+<div id="also-see" class="section level2">
+<h2 class="hasAnchor">
+<a href="#also-see" class="anchor"></a>Also see</h2>
+<ul>
+<li><a href="https://indrajeetpatil.github.io/pairwiseComparisons/"><code>pairwiseComparisons</code></a></li>
+</ul>
 </div>
 <div id="maintenance" class="section level2">
 <h2 class="hasAnchor">
 <a href="#maintenance" class="anchor"></a>Maintenance</h2>
-<p>This package is provided as is and I currently don’t have any plans and the capacity to add any new features to it. If there is nonetheless a feature which you would like to see in the package, you are always welcome to submit pull request, which I will try to address as soon as possible.</p>
+<p>This package is provided as is and we currently don’t have any plans and the capacity to add any new features to it. If there is nonetheless a feature which you would like to see in the package, you are always welcome to submit pull request, which we will try to address as soon as possible.</p>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
 <a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that the ggsignif project is released with a <a href="https://const-ae.github.io/ggsignif/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the <code>ggsignif</code> project is released with a <a href="https://const-ae.github.io/ggsignif/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>

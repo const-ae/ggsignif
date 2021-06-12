@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggsignif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.2</span>
       </span>
     </div>
 
@@ -93,7 +93,7 @@
       <h1 data-toc-skip>Introduction to ‘ggsignif’ package</h1>
                         <h4 class="author">Constantin Ahlmann-Eltze and Indrajeet Patil</h4>
             
-            <h4 class="date">2021-04-08</h4>
+            <h4 class="date">2021-06-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/const-ae/ggsignif/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -125,7 +125,7 @@
     comparisons <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"versicolor"</span>, <span class="st">"virginica"</span><span class="op">)</span><span class="op">)</span>,
     map_signif_level <span class="op">=</span> <span class="cn">TRUE</span>
   <span class="op">)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
+<p><img src="intro_files/figure-html/simple-1.png" width="100%"></p>
 <p>That’s it, it is as simple as that!</p>
 <p>Note that, if we were to statistically analyze this data, we would run a one-way ANOVA to assess if <em>any</em> of the group means differ from each other and then follow up with <em>post hoc</em> multiple comparisons to do more fine-grained comparisons between different levels of the group. The <code>ggsignif</code> package provides a way to graphically display all or a few (depending on the research hypotheses context) of such comparisons.</p>
 </div>
@@ -152,7 +152,7 @@
     y_position <span class="op">=</span> <span class="fl">9.3</span>, tip_length <span class="op">=</span> <span class="fl">0</span>, vjust <span class="op">=</span> <span class="fl">0.2</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"grey80"</span>, <span class="st">"grey20"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
+<p><img src="intro_files/figure-html/advanced-1.png" width="100%"></p>
 <p>For more detailed documentation of the available parameters see the manual page for the <code>geom_signif</code> function: <a href="https://const-ae.github.io/ggsignif/reference/stat_signif.html" class="uri">https://const-ae.github.io/ggsignif/reference/stat_signif.html</a></p>
 </div>
 </div>
