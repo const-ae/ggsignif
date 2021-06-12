@@ -16,13 +16,14 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
+  out.width = "100%",
   fig.path = "man/figures/README-",
   message = FALSE,
   warning = FALSE
 )
 ```
 
-## Description
+## Introduction
 
 This package provides an easy way to indicate if two groups are significantly
 different. Commonly this is shown by a bar on top connecting the groups of
@@ -126,13 +127,17 @@ You can ignore the warning about the missing aesthetics.
 
 For further details go the [CRAN page](https://CRAN.R-project.org/package=ggsignif) and check the examples in the [vignette](https://CRAN.R-project.org/package=ggsignif/vignettes/intro.html).
 
+## Also see
+
+- [`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
+
 ## Maintenance
 
-This package is provided as is and I currently don't have any plans and the
+This package is provided as is and we currently don't have any plans and the
 capacity to add any new features to it. If there is nonetheless a feature which
 you would like to see in the package, you are always welcome to submit pull
-request, which I will try to address as soon as possible.
+request, which we will try to address as soon as possible.
 
 ## Code of Conduct
   
-Please note that the ggsignif project is released with a [Contributor Code of Conduct](https://const-ae.github.io/ggsignif/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the `ggsignif` project is released with a [Contributor Code of Conduct](https://const-ae.github.io/ggsignif/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
