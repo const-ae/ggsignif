@@ -1,4 +1,4 @@
-if (getRversion() < "4.1" && require("vdiffr")) {
+if (getRversion() >= "4.1" && require("vdiffr")) {
   test_that("plots are rendered correctly", {
     skip_on_cran()
     library(ggplot2)

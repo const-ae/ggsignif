@@ -1,5 +1,5 @@
 ## Test environments
-* macOS Mojave: R 4.0.3
+* macOS Mojave: R 4.1.0
 
 * GitHub actions (macOS R-devel, macOS R-release, macOS R-oldrel, Windows
   R-release, Windows R-devel, macOS R-oldrel)
