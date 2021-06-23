@@ -1,7 +1,7 @@
 Type: Package
 Package: ggsignif
 Title: Significance Brackets for 'ggplot2'
-Version: 0.6.2
+Version: 0.6.2.9000
 Authors@R: 
   c(
     person(given = "Constantin",
@@ -31,7 +31,7 @@ VignetteBuilder:
 Encoding: UTF-8
 Language: en-US
 Imports:
-    ggplot2 (>= 3.3.3)
+    ggplot2 (>= 3.3.4)
 Suggests: 
     knitr,
     rmarkdown,
