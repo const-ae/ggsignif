@@ -28,20 +28,21 @@ following command in your R console:
 ``` r
 citation("ggsignif")
 #> 
-#> To cite package 'ggsignif' in publications use:
+#> To cite 'ggsignif' in publications use:
 #> 
-#>   Constantin Ahlmann-Eltze and Indrajeet Patil (2021). ggsignif:
-#>   Significance Brackets for 'ggplot2'. R package version 0.6.1.
-#>   https://CRAN.R-project.org/package=ggsignif
+#>   Ahlmann-Eltze, C., & Patil, I. (2021). ggsignif: R Package for
+#>   Displaying Significance Brackets for 'ggplot2'. PsyArxiv.
+#>   doi:10.31234/osf.io/7awm6
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
-#>   @Manual{,
-#>     title = {ggsignif: Significance Brackets for 'ggplot2'},
-#>     author = {Constantin Ahlmann-Eltze and Indrajeet Patil},
+#>   @Article{,
+#>     title = {{ggsignif}: R Package for Displaying Significance Brackets for {'ggplot2'}},
+#>     author = {Ahlmann-Eltze Constantin and Indrajeet Patil},
 #>     year = {2021},
-#>     note = {R package version 0.6.1},
-#>     url = {https://CRAN.R-project.org/package=ggsignif},
+#>     journal = {PsyArxiv},
+#>     url = {https://psyarxiv.com/7awm6},
+#>     doi = {10.31234/osf.io/7awm6},
 #>   }
 ```
 
