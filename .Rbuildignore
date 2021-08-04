@@ -43,3 +43,6 @@ references.bib
 ^\.github/workflows/pr-commands\.yaml$
 hextools
 ^WIP/.
+^Makefile$
+^README\.md$
+^\.Rproj$
