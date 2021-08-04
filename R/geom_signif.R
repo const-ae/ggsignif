@@ -39,6 +39,10 @@
 #'   annotations per facet.
 #' @param na.rm If `FALSE` (the default), removes missing values with
 #'    a warning.  If `TRUE` silently removes missing values.
+#' @param orientation The orientation of the layer. The default (‘NA’)
+#' automatically determines the orientation from the aesthetic mapping.
+#' In the rare event that this fails it can be given explicitly by setting 
+#' 'orientation' to either "x" or "y"
 #' @param ... other arguments passed on to `layer`. These are
 #'   often aesthetics, used to set an aesthetic to a fixed value, like
 #'   `color = "red"` or `size = 3`. They may also be parameters
@@ -100,6 +104,7 @@ stat_signif <- function(mapping = NULL,
                         vjust = 0,
                         parse = FALSE,
                         manual = FALSE,
+                        orientation = NA,
                         ...) {
   if (manual) {
     if (!is.null(data) & !is.null(mapping)) {
@@ -132,6 +137,7 @@ stat_signif <- function(mapping = NULL,
       parse = parse,
       manual = manual,
       na.rm = na.rm,
+      orientation = orientation,
       ...
     )
   )
@@ -156,6 +162,11 @@ GeomSignif <- ggplot2::ggproto(
     linetype = 1,
     size = 0.5
   ),
+  extra_params = c("na.rm", "orientation"),
+  setup_params = function(data, params) { 
+    params$flipped_aes <- ggplot2::has_flipped_aes(data, params)
+    return(params)
+  },
   draw_key = function(...) {
     grid::nullGrob()
   },
@@ -163,11 +174,14 @@ GeomSignif <- ggplot2::ggproto(
                         panel_params,
                         coord,
                         parse = FALSE,
-                        extend_line = 0) {
+                        extend_line = 0,
+                        flipped_aes = FALSE) {
+    
     lab <- as.character(data$annotation)
     if (parse) {
       lab <- parse_safe(as.character(lab))
     }
+    
     coords <- coord$transform(data, panel_params)
     if (extend_line != 0 && nrow(coords) == 3) {
       if (coords[2, "x"] > coords[2, "xend"]) {
@@ -183,11 +197,23 @@ GeomSignif <- ggplot2::ggproto(
       coords[3, "x"] <- coords[3, "x"] + extend_line
       coords[3, "xend"] <- coords[3, "xend"] + extend_line
     }
+    
+    if (!flipped_aes){
+        text_x <- mean(c(coords$x[1], tail(coords$xend, n = 1)))
+        text_y <- max(c(coords$y, coords$yend)) + 0.01
+    }else{
+        text_x <- max(c(coords$x, coords$xend)) + 0.01
+        text_y <- mean(c(coords$y[1], tail(coords$yend, n=1)))
+        if (all(coords$angle==0)){
+            coords$angle <- 270
+        }
+    }
+
     grid::gList(
       grid::textGrob(
         label = lab,
-        x = mean(c(coords$x[1], tail(coords$xend, n = 1))),
-        y = max(c(coords$y, coords$yend)) + 0.01,
+        x = text_x, #mean(c(coords$x[1], tail(coords$xend, n = 1))),
+        y = text_y, #max(c(coords$y, coords$yend)) + 0.01,
         default.units = "native",
         hjust = coords$hjust, vjust = coords$vjust,
         rot = coords$angle,
@@ -240,6 +266,7 @@ geom_signif <- function(mapping = NULL,
                         vjust = 0,
                         parse = FALSE,
                         manual = FALSE,
+                        orientation = NA,
                         ...) {
   params <- list(na.rm = na.rm, ...)
 
@@ -294,7 +321,8 @@ geom_signif <- function(mapping = NULL,
         family = family,
         vjust = vjust,
         parse = parse,
-        manual = manual
+        manual = manual,
+        orientation = orientation
       )
     )
   }
@@ -316,8 +344,11 @@ StatSignif <- ggplot2::ggproto(
   "StatSignif",
   ggplot2::Stat,
   required_aes = c("x", "y", "group"),
+  extra_params = c("na.rm", "orientation"),
   setup_params = function(data, params) {
     # if(any(data$group == -1)|| any(data$group != data$x)){
+    params$flipped_aes <- ggplot2::has_flipped_aes(data, params)
+    #data <- ggplot2::flip_data(data, params$flipped_aes)
     if (any(data$group == -1)) {
       stop("Can only handle data with groups that are plotted on the x-axis")
     }
@@ -388,7 +419,11 @@ StatSignif <- ggplot2::ggproto(
                            margin_top,
                            step_increase,
                            tip_length,
-                           manual) {
+                           manual,
+                           flipped_aes = FALSE) {
+    data <- ggplot2::flip_data(data, flipped_aes)
+    scales <- ggplot2::flip_data(scales, flipped_aes)
+    complete_data <- ggplot2::flip_data(complete_data, flipped_aes)
     if ("annotations" %in% colnames(data)) {
       annotations <- data[["annotations"]]
     }
@@ -463,7 +498,7 @@ StatSignif <- ggplot2::ggproto(
           )
         }
       })
-      do.call(rbind, result)
+      df <- do.call(rbind, result)
     } else {
       if ((data$x[1] == min(complete_data$x) & data$group[1] == min(complete_data$group)) | manual) {
         y_scale_range <- (scales$y$range$range[2] - scales$y$range$range[1])
@@ -476,7 +511,7 @@ StatSignif <- ggplot2::ggproto(
         if ("expression" %in% class(annotations)) {
           stop("annotations must be a character vector. To use plotmath set parse=TRUE.")
         }
-        data.frame(
+        df <- data.frame(
           x = c(xmin, xmin, xmax),
           xend = c(xmin, xmax, xmax),
           y = c(
@@ -497,5 +532,10 @@ StatSignif <- ggplot2::ggproto(
         )
       }
     }
+    if (!is.null(df)){
+        df$flipped_aes <- flipped_aes
+        df <- ggplot2::flip_data(df, flipped_aes)
+    }
+    return (df)
   }
 )

@@ -29,6 +29,7 @@ stat_signif(
   vjust = 0,
   parse = FALSE,
   manual = FALSE,
+  orientation = NA,
   ...
 )
 
@@ -58,6 +59,7 @@ geom_signif(
   vjust = 0,
   parse = FALSE,
   manual = FALSE,
+  orientation = NA,
   ...
 )
 }
@@ -149,6 +151,11 @@ displayed as described in \code{?plotmath}.}
 \item{manual}{Boolean flag that indicates that the parameters are provided
 with a data.frame. This option is necessary if one wants to plot different
 annotations per facet.}
+
+\item{orientation}{The orientation of the layer. The default (‘NA’)
+automatically determines the orientation from the aesthetic mapping.
+In the rare event that this fails it can be given explicitly by setting
+'orientation' to either "x" or "y"}
 
 \item{...}{other arguments passed on to \code{layer}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
