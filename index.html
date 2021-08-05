@@ -158,27 +158,27 @@
 <p>Control the direction (either <code>x</code> or <code>y</code>) via <code>orientation</code></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>
-        data<span class="op">=</span><span class="va">mpg</span>, 
-        mapping<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>
-                  x<span class="op">=</span><span class="va">hwy</span>, 
-                  y<span class="op">=</span><span class="va">class</span>
-                <span class="op">)</span>
-      <span class="op">)</span> <span class="op">+</span>
-      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>
-        orientation <span class="op">=</span> <span class="st">"y"</span>
-      <span class="op">)</span> <span class="op">+</span>
-      <span class="fu"><a href="reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>
-        comparisons <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-                        <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"compact"</span>, <span class="st">"midsize"</span><span class="op">)</span>, 
-                        <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"minivan"</span>, <span class="st">"suv"</span><span class="op">)</span>
-                      <span class="op">)</span>,
-        map_signif_level <span class="op">=</span> <span class="cn">TRUE</span>,
-        textsize <span class="op">=</span> <span class="fl">6</span>,
-        margin_top <span class="op">=</span> <span class="fl">0.08</span>,
-        step_increase <span class="op">=</span> <span class="fl">0.05</span>,
-        tip_length <span class="op">=</span> <span class="fl">0.01</span>,
-        orientation <span class="op">=</span> <span class="st">"y"</span>
-      <span class="op">)</span>
+  data <span class="op">=</span> <span class="va">mpg</span>,
+  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">hwy</span>,
+    y <span class="op">=</span> <span class="va">class</span>
+  <span class="op">)</span>
+<span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>
+    orientation <span class="op">=</span> <span class="st">"y"</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>
+    comparisons <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"compact"</span>, <span class="st">"midsize"</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"minivan"</span>, <span class="st">"suv"</span><span class="op">)</span>
+    <span class="op">)</span>,
+    map_signif_level <span class="op">=</span> <span class="cn">TRUE</span>,
+    textsize <span class="op">=</span> <span class="fl">6</span>,
+    margin_top <span class="op">=</span> <span class="fl">0.08</span>,
+    step_increase <span class="op">=</span> <span class="fl">0.05</span>,
+    tip_length <span class="op">=</span> <span class="fl">0.01</span>,
+    orientation <span class="op">=</span> <span class="st">"y"</span>
+  <span class="op">)</span>
 <span class="va">p2</span></code></pre></div>
 <p><img src="reference/figures/README-orientation_argument-1.png" width="100%"></p>
 <p>Compatible with coord_flip</p>
