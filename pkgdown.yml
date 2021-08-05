@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   intro: intro.html
-last_built: 2021-06-23T20:19Z
+last_built: 2021-08-05T10:47Z
 urls:
   reference: https://const-ae.github.io/ggsignif//reference
   article: https://const-ae.github.io/ggsignif//articles
