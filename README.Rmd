@@ -62,14 +62,49 @@ Plot significance
 library(ggplot2)
 library(ggsignif)
 
-ggplot(mpg, aes(class, hwy)) +
+p1 <- ggplot(mpg, aes(class, hwy)) +
   geom_boxplot() +
   geom_signif(
     comparisons = list(c("compact", "midsize"), c("minivan", "suv")),
     map_signif_level = TRUE, textsize = 6
   ) +
   ylim(NA, 48)
+p1
 ```
+
+Control the direction (either `x` or `y`) via `orientation` 
+
+```{r orientation_argument}
+p2 <- ggplot(
+        data=mpg, 
+        mapping=aes(
+                  x=hwy, 
+                  y=class
+                )
+      ) +
+      geom_boxplot(
+        orientation = "y"
+      ) +
+      geom_signif(
+        comparisons = list(
+                        c("compact", "midsize"), 
+                        c("minivan", "suv")
+                      ),
+        map_signif_level = TRUE,
+        textsize = 6,
+        margin_top = 0.08,
+        step_increase = 0.05,
+        tip_length = 0.01,
+        orientation = "y"
+      )
+p2
+```
+
+Compatible with coord_flip
+
+```{r coord_flip}
+p1 + coord_flip()
+``` 
 
 Setting the precise location
 
