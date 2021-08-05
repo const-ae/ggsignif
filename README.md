@@ -1,7 +1,7 @@
 
 # ggsignif: Significance Brackets for ‘ggplot2’ <a href='https://github.com/const-ae/ggsignif'><img src='man/figures/logo.svg' align="right" height="209" /></a>
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif)
 [![R build
 status](https://github.com/const-ae/ggsignif/workflows/R-CMD-check/badge.svg)](https://github.com/const-ae/ggsignif)
 [![Downloads](https://cranlogs.r-pkg.org/badges/last-month/ggsignif?color=brightgreen)](https://cran.r-project.org/package=ggsignif)
@@ -83,33 +83,33 @@ Control the direction (either `x` or `y`) via `orientation`
 
 ``` r
 p2 <- ggplot(
-        data=mpg, 
-        mapping=aes(
-                  x=hwy, 
-                  y=class
-                )
-      ) +
-      geom_boxplot(
-        orientation = "y"
-      ) +
-      geom_signif(
-        comparisons = list(
-                        c("compact", "midsize"), 
-                        c("minivan", "suv")
-                      ),
-        map_signif_level = TRUE,
-        textsize = 6,
-        margin_top = 0.08,
-        step_increase = 0.05,
-        tip_length = 0.01,
-        orientation = "y"
-      )
+  data = mpg,
+  mapping = aes(
+    x = hwy,
+    y = class
+  )
+) +
+  geom_boxplot(
+    orientation = "y"
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("compact", "midsize"),
+      c("minivan", "suv")
+    ),
+    map_signif_level = TRUE,
+    textsize = 6,
+    margin_top = 0.08,
+    step_increase = 0.05,
+    tip_length = 0.01,
+    orientation = "y"
+  )
 p2
 ```
 
 <img src="man/figures/README-orientation_argument-1.png" width="100%" />
 
-Compatible with coord\_flip
+Compatible with coord_flip
 
 ``` r
 p1 + coord_flip()
@@ -185,7 +185,7 @@ examples in the
 
 ## Also see
 
-  - [`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
+-   [`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
 
 ## Maintenance
 

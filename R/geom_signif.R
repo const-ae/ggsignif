@@ -16,8 +16,8 @@
 #'   For example: `c("***"=0.001, "**"=0.01, "*"=0.05)`.
 #'   Alternatively, one can provide a function that takes a numeric argument
 #'   (the p-value) and returns a string.
-#' @param xmin numeric vector with the positions of the left sides of the brackets
-#' @param xmax numeric vector with the positions of the right sides of the brackets
+#' @param xmin,xmax numeric vector with the positions of the left and right
+#'   sides of the brackets, respectively
 #' @param y_position numeric vector with the y positions of the brackets
 #' @param size change the width of the lines of the bracket
 #' @param textsize change the size of the text
@@ -41,7 +41,7 @@
 #'    a warning.  If `TRUE` silently removes missing values.
 #' @param orientation The orientation of the layer. The default (‘NA’)
 #' automatically determines the orientation from the aesthetic mapping.
-#' In the rare event that this fails it can be given explicitly by setting 
+#' In the rare event that this fails it can be given explicitly by setting
 #' 'orientation' to either "x" or "y"
 #' @param ... other arguments passed on to `layer`. These are
 #'   often aesthetics, used to set an aesthetic to a fixed value, like
@@ -163,7 +163,7 @@ GeomSignif <- ggplot2::ggproto(
     size = 0.5
   ),
   extra_params = c("na.rm", "orientation"),
-  setup_params = function(data, params) { 
+  setup_params = function(data, params) {
     params$flipped_aes <- ggplot2::has_flipped_aes(data, params)
     return(params)
   },
@@ -176,12 +176,11 @@ GeomSignif <- ggplot2::ggproto(
                         parse = FALSE,
                         extend_line = 0,
                         flipped_aes = FALSE) {
-    
     lab <- as.character(data$annotation)
     if (parse) {
       lab <- parse_safe(as.character(lab))
     }
-    
+
     coords <- coord$transform(data, panel_params)
     if (extend_line != 0 && nrow(coords) == 3) {
       if (coords[2, "x"] > coords[2, "xend"]) {
@@ -198,22 +197,22 @@ GeomSignif <- ggplot2::ggproto(
       coords[3, "xend"] <- coords[3, "xend"] + extend_line
     }
     clp_flag <- inherits(coord, "CoordFlip")
-    if (!any(flipped_aes, clp_flag) || all(flipped_aes, clp_flag)){
-        text_x <- mean(c(coords$x[1], tail(coords$xend, n = 1)))
-        text_y <- max(c(coords$y, coords$yend)) + 0.01
-    }else{
-        text_x <- max(c(coords$x, coords$xend)) + 0.01
-        text_y <- mean(c(coords$y[1], tail(coords$yend, n=1)))
-        if (all(coords$angle==0)){
-            coords$angle <- 270
-        }
+    if (!any(flipped_aes, clp_flag) || all(flipped_aes, clp_flag)) {
+      text_x <- mean(c(coords$x[1], tail(coords$xend, n = 1)))
+      text_y <- max(c(coords$y, coords$yend)) + 0.01
+    } else {
+      text_x <- max(c(coords$x, coords$xend)) + 0.01
+      text_y <- mean(c(coords$y[1], tail(coords$yend, n = 1)))
+      if (all(coords$angle == 0)) {
+        coords$angle <- 270
+      }
     }
 
     grid::gList(
       grid::textGrob(
         label = lab,
-        x = text_x, #mean(c(coords$x[1], tail(coords$xend, n = 1))),
-        y = text_y, #max(c(coords$y, coords$yend)) + 0.01,
+        x = text_x, # mean(c(coords$x[1], tail(coords$xend, n = 1))),
+        y = text_y, # max(c(coords$y, coords$yend)) + 0.01,
         default.units = "native",
         hjust = coords$hjust, vjust = coords$vjust,
         rot = coords$angle,
@@ -529,14 +528,14 @@ StatSignif <- ggplot2::ggproto(
             rep(seq_along(xmin), times = 3)
           }
         )
-      }else{
+      } else {
         df <- NULL
       }
     }
-    if (!is.null(df)){
-        df$flipped_aes <- flipped_aes
-        df <- ggplot2::flip_data(df, flipped_aes)
+    if (!is.null(df)) {
+      df$flipped_aes <- flipped_aes
+      df <- ggplot2::flip_data(df, flipped_aes)
     }
-    return (df)
+    return(df)
   }
 )

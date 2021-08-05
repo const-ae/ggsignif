@@ -99,32 +99,45 @@
       30      1 grey20 white  0.5    NA    19    solid
       
       [[2]]
-          x xend     y  yend annotation            group PANEL shape colour textsize
-      1   1    1 6.549 6.598     1.9***      audi-ford-1     1    19  black     3.88
-      2   1    4 6.598 6.598     1.9***      audi-ford-1     1    19  black     3.88
-      3   4    4 6.598 6.549     1.9***      audi-ford-1     1    19  black     3.88
-      4   6    6 6.549 6.598       1.3* hyundai-nissan-2     1    19  black     3.88
-      5   6   11 6.598 6.598       1.3* hyundai-nissan-2     1    19  black     3.88
-      6  11   11 6.598 6.549       1.3* hyundai-nissan-2     1    19  black     3.88
-      7   1    1 7.052 7.104     1.7***      audi-ford-1     2    19  black     3.88
-      8   1    4 7.104 7.104     1.7***      audi-ford-1     2    19  black     3.88
-      9   4    4 7.104 7.052     1.7***      audi-ford-1     2    19  black     3.88
-      10  6    6 7.052 7.104       1.4* hyundai-nissan-2     2    19  black     3.88
-      11  6   11 7.104 7.104       1.4* hyundai-nissan-2     2    19  black     3.88
-      12 11   11 7.104 7.052       1.4* hyundai-nissan-2     2    19  black     3.88
-         angle hjust vjust alpha family fontface lineheight linetype size
-      1      0   0.5     0    NA               1        1.2        1  0.5
-      2      0   0.5     0    NA               1        1.2        1  0.5
-      3      0   0.5     0    NA               1        1.2        1  0.5
-      4      0   0.5     0    NA               1        1.2        1  0.5
-      5      0   0.5     0    NA               1        1.2        1  0.5
-      6      0   0.5     0    NA               1        1.2        1  0.5
-      7      0   0.5     0    NA               1        1.2        1  0.5
-      8      0   0.5     0    NA               1        1.2        1  0.5
-      9      0   0.5     0    NA               1        1.2        1  0.5
-      10     0   0.5     0    NA               1        1.2        1  0.5
-      11     0   0.5     0    NA               1        1.2        1  0.5
-      12     0   0.5     0    NA               1        1.2        1  0.5
+          x xend     y  yend annotation            group flipped_aes PANEL shape
+      1   1    1 6.549 6.598     1.9***      audi-ford-1       FALSE     1    19
+      2   1    4 6.598 6.598     1.9***      audi-ford-1       FALSE     1    19
+      3   4    4 6.598 6.549     1.9***      audi-ford-1       FALSE     1    19
+      4   6    6 6.549 6.598       1.3* hyundai-nissan-2       FALSE     1    19
+      5   6   11 6.598 6.598       1.3* hyundai-nissan-2       FALSE     1    19
+      6  11   11 6.598 6.549       1.3* hyundai-nissan-2       FALSE     1    19
+      7   1    1 7.052 7.104     1.7***      audi-ford-1       FALSE     2    19
+      8   1    4 7.104 7.104     1.7***      audi-ford-1       FALSE     2    19
+      9   4    4 7.104 7.052     1.7***      audi-ford-1       FALSE     2    19
+      10  6    6 7.052 7.104       1.4* hyundai-nissan-2       FALSE     2    19
+      11  6   11 7.104 7.104       1.4* hyundai-nissan-2       FALSE     2    19
+      12 11   11 7.104 7.052       1.4* hyundai-nissan-2       FALSE     2    19
+         colour textsize angle hjust vjust alpha family fontface lineheight linetype
+      1   black     3.88     0   0.5     0    NA               1        1.2        1
+      2   black     3.88     0   0.5     0    NA               1        1.2        1
+      3   black     3.88     0   0.5     0    NA               1        1.2        1
+      4   black     3.88     0   0.5     0    NA               1        1.2        1
+      5   black     3.88     0   0.5     0    NA               1        1.2        1
+      6   black     3.88     0   0.5     0    NA               1        1.2        1
+      7   black     3.88     0   0.5     0    NA               1        1.2        1
+      8   black     3.88     0   0.5     0    NA               1        1.2        1
+      9   black     3.88     0   0.5     0    NA               1        1.2        1
+      10  black     3.88     0   0.5     0    NA               1        1.2        1
+      11  black     3.88     0   0.5     0    NA               1        1.2        1
+      12  black     3.88     0   0.5     0    NA               1        1.2        1
+         size
+      1   0.5
+      2   0.5
+      3   0.5
+      4   0.5
+      5   0.5
+      6   0.5
+      7   0.5
+      8   0.5
+      9   0.5
+      10  0.5
+      11  0.5
+      12  0.5
       
 
 # identical annotations are plotted separetly - snapshot
@@ -145,14 +158,14 @@
       4        1    NA
       
       [[2]]
-        x xend     y  yend annotation   group PANEL shape colour textsize angle hjust
-      1 1    1 9.575 9.575        *** S1-S2-1     1    19  black     3.88     0   0.5
-      2 1    2 9.575 9.575        *** S1-S2-1     1    19  black     3.88     0   0.5
-      3 2    2 9.575 9.575        *** S1-S2-1     1    19  black     3.88     0   0.5
-        vjust alpha family fontface lineheight linetype size
-      1   0.4    NA               1        1.2        1  0.5
-      2   0.4    NA               1        1.2        1  0.5
-      3   0.4    NA               1        1.2        1  0.5
+        x xend     y  yend annotation   group flipped_aes PANEL shape colour textsize
+      1 1    1 9.575 9.575        *** S1-S2-1       FALSE     1    19  black     3.88
+      2 1    2 9.575 9.575        *** S1-S2-1       FALSE     1    19  black     3.88
+      3 2    2 9.575 9.575        *** S1-S2-1       FALSE     1    19  black     3.88
+        angle hjust vjust alpha family fontface lineheight linetype size
+      1     0   0.5   0.4    NA               1        1.2        1  0.5
+      2     0   0.5   0.4    NA               1        1.2        1  0.5
+      3     0   0.5   0.4    NA               1        1.2        1  0.5
       
       [[3]]
             x  xend   y yend annotation group PANEL shape colour textsize angle hjust
