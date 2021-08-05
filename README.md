@@ -67,16 +67,55 @@ Plot significance
 library(ggplot2)
 library(ggsignif)
 
-ggplot(mpg, aes(class, hwy)) +
+p1 <- ggplot(mpg, aes(class, hwy)) +
   geom_boxplot() +
   geom_signif(
     comparisons = list(c("compact", "midsize"), c("minivan", "suv")),
     map_signif_level = TRUE, textsize = 6
   ) +
   ylim(NA, 48)
+p1
 ```
 
 <img src="man/figures/README-simpe_comparison-1.png" width="100%" />
+
+Control the direction (either `x` or `y`) via `orientation`
+
+``` r
+p2 <- ggplot(
+        data=mpg, 
+        mapping=aes(
+                  x=hwy, 
+                  y=class
+                )
+      ) +
+      geom_boxplot(
+        orientation = "y"
+      ) +
+      geom_signif(
+        comparisons = list(
+                        c("compact", "midsize"), 
+                        c("minivan", "suv")
+                      ),
+        map_signif_level = TRUE,
+        textsize = 6,
+        margin_top = 0.08,
+        step_increase = 0.05,
+        tip_length = 0.01,
+        orientation = "y"
+      )
+p2
+```
+
+<img src="man/figures/README-orientation_argument-1.png" width="100%" />
+
+Compatible with coord\_flip
+
+``` r
+p1 + coord_flip()
+```
+
+<img src="man/figures/README-coord_flip-1.png" width="100%" />
 
 Setting the precise location
 
@@ -146,7 +185,7 @@ examples in the
 
 ## Also see
 
--   [`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
+  - [`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
 
 ## Maintenance
 
