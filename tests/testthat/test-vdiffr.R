@@ -18,6 +18,19 @@ if (getRversion() >= "4.1" && require("vdiffr")) {
         facet_wrap(~ as.factor(year), scale = "free")
     )
 
+
+    set.seed(123)
+    vdiffr::expect_doppelganger(
+      title = "flipping aesthetics works - vdiffr",
+      fig = ggplot(mpg, aes(class, hwy)) +
+        geom_boxplot() +
+        geom_signif(comparisons = list(
+          c("compact", "pickup"),
+          c("subcompact", "suv")
+        )) +
+        coord_flip()
+    )
+
     set.seed(123)
     vdiffr::expect_doppelganger(
       title = "geom works the same way as stat - vdiffr",
@@ -26,9 +39,11 @@ if (getRversion() >= "4.1" && require("vdiffr")) {
         geom_signif(
           comparisons = list(c("audi", "ford"), c("hyundai", "nissan")),
           annotations = c("Interesting", "Too far apart"),
-          # map_signif_level=TRUE,
-          test = "wilcox.test", test.args = list(alternative = "two.sided"),
-          margin_top = 0.02, step_increase = 0, tip_length = 0.01
+          test = "wilcox.test",
+          test.args = list(alternative = "two.sided"),
+          margin_top = 0.02,
+          step_increase = 0,
+          tip_length = 0.01
         ) +
         theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
         facet_wrap(~ as.factor(year), scale = "free")

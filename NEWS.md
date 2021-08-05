@@ -1,7 +1,7 @@
 # Version 0.6.2.9000
 
-+ Introducing `orientation` argument to control the direction (either `x` or `y`) 
-  of the layer and better compatible with `coord_flip()`. (@xiangpin, #104) 
++ Introducing `orientation` argument to control the direction (either `x` or
+  `y`) of the layer and better compatible with `coord_flip()`. (@xiangpin, #104)
 
 # Version 0.6.2
 
@@ -17,7 +17,7 @@
 - Add `extend_line` parameter to make the brackets shorter or wider (#70).
   Thanks to @romanhaa for making the PR.
 
-- Adds a new package website: https://const-ae.github.io/ggsignif/.
+- Adds a new package website: <https://const-ae.github.io/ggsignif/>.
 
 - Minimum `ggplot2` version needed is bumped to `3.3.3`.
 

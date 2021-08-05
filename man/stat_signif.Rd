@@ -124,9 +124,8 @@ Alternatively, one can provide a function that takes a numeric argument
 
 \item{y_position}{numeric vector with the y positions of the brackets}
 
-\item{xmin}{numeric vector with the positions of the left sides of the brackets}
-
-\item{xmax}{numeric vector with the positions of the right sides of the brackets}
+\item{xmin, xmax}{numeric vector with the positions of the left and right
+sides of the brackets, respectively}
 
 \item{margin_top}{numeric vector how much higher that the maximum value that
 bars start as fraction of total height}
