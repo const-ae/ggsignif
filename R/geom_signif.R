@@ -197,8 +197,8 @@ GeomSignif <- ggplot2::ggproto(
       coords[3, "x"] <- coords[3, "x"] + extend_line
       coords[3, "xend"] <- coords[3, "xend"] + extend_line
     }
-    
-    if (!flipped_aes){
+    clp_flag <- inherits(coord, "CoordFlip")
+    if (!any(flipped_aes, clp_flag) || all(flipped_aes, clp_flag)){
         text_x <- mean(c(coords$x[1], tail(coords$xend, n = 1)))
         text_y <- max(c(coords$y, coords$yend)) + 0.01
     }else{
@@ -348,7 +348,7 @@ StatSignif <- ggplot2::ggproto(
   setup_params = function(data, params) {
     # if(any(data$group == -1)|| any(data$group != data$x)){
     params$flipped_aes <- ggplot2::has_flipped_aes(data, params)
-    #data <- ggplot2::flip_data(data, params$flipped_aes)
+    data <- ggplot2::flip_data(data, params$flipped_aes)
     if (any(data$group == -1)) {
       stop("Can only handle data with groups that are plotted on the x-axis")
     }
@@ -423,7 +423,6 @@ StatSignif <- ggplot2::ggproto(
                            flipped_aes = FALSE) {
     data <- ggplot2::flip_data(data, flipped_aes)
     scales <- ggplot2::flip_data(scales, flipped_aes)
-    complete_data <- ggplot2::flip_data(complete_data, flipped_aes)
     if ("annotations" %in% colnames(data)) {
       annotations <- data[["annotations"]]
     }
@@ -530,6 +529,8 @@ StatSignif <- ggplot2::ggproto(
             rep(seq_along(xmin), times = 3)
           }
         )
+      }else{
+        df <- NULL
       }
     }
     if (!is.null(df)){
