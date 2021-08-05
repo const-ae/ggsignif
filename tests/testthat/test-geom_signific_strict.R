@@ -153,6 +153,7 @@ test_that("the plotting works - strict test", {
             "***", "***"
           ),
           group = c("S1-S2-1", "S1-S2-1", "S1-S2-1"),
+          flipped_aes = c(FALSE, FALSE, FALSE),
           PANEL = structure(c(1L, 1L, 1L), .Label = "1", class = "factor"),
           shape = c(19, 19, 19),
           colour = c("black", "black", "black"),
