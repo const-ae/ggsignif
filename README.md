@@ -1,7 +1,7 @@
 
 # ggsignif: Significance Brackets for ‘ggplot2’ <a href='https://github.com/const-ae/ggsignif'><img src='man/figures/logo.svg' align="right" height="209" /></a>
 
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif)
 [![R build
 status](https://github.com/const-ae/ggsignif/workflows/R-CMD-check/badge.svg)](https://github.com/const-ae/ggsignif)
 [![Downloads](https://cranlogs.r-pkg.org/badges/last-month/ggsignif?color=brightgreen)](https://cran.r-project.org/package=ggsignif)
@@ -109,7 +109,7 @@ p2
 
 <img src="man/figures/README-orientation_argument-1.png" width="100%" />
 
-Compatible with coord_flip
+Compatible with coord\_flip
 
 ``` r
 p1 + coord_flip()
@@ -178,14 +178,8 @@ ggplot(diamonds, aes(x = cut, y = carat)) +
 
 You can ignore the warning about the missing aesthetics.
 
-For further details go the [CRAN
-page](https://CRAN.R-project.org/package=ggsignif) and check the
-examples in the
-[vignette](https://CRAN.R-project.org/package=ggsignif/vignettes/intro.html).
-
-## Also see
-
--   [`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
+For further details, see:
+<https://const-ae.github.io/ggsignif/articles/intro.html>
 
 ## Maintenance
 

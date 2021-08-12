@@ -420,8 +420,10 @@ StatSignif <- ggplot2::ggproto(
                            tip_length,
                            manual,
                            flipped_aes = FALSE) {
+
     data <- ggplot2::flip_data(data, flipped_aes)
     scales <- ggplot2::flip_data(scales, flipped_aes)
+
     if ("annotations" %in% colnames(data)) {
       annotations <- data[["annotations"]]
     }
@@ -532,10 +534,12 @@ StatSignif <- ggplot2::ggproto(
         df <- NULL
       }
     }
+
     if (!is.null(df)) {
       df$flipped_aes <- flipped_aes
       df <- ggplot2::flip_data(df, flipped_aes)
     }
+
     return(df)
   }
 )
