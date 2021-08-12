@@ -1,6 +1,6 @@
-# Version 0.6.2.9000
+# Version 0.6.3
 
-+ Introducing `orientation` argument to control the direction (either `x` or
+- Introducing `orientation` argument to control the direction (either `x` or
   `y`) of the layer and better compatible with `coord_flip()`. (@xiangpin, #104)
 
 # Version 0.6.2
