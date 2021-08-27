@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "ggsignif",
-  "description": "Enrich your 'ggplots' with group-wise comparisons.\n    This package provides an easy way to indicate if two groups are\n    significantly different.  Commonly this is shown by a bracket on top\n    connecting the groups of interest which itself is annotated with the\n    level of significance (NS, *, **, ***).  The package provides a single\n    layer (geom_signif()) that takes the groups for comparison and the\n    test (t.test(), wilcox.text() etc.) as arguments and adds the\n    annotation to the plot.",
+  "description": "Enrich your 'ggplots' with group-wise comparisons.\n    This package provides an easy way to indicate if two groups are\n    significantly different. Commonly this is shown by a bracket on top\n    connecting the groups of interest which itself is annotated with the\n    level of significance (NS, *, **, ***).  The package provides a single\n    layer (geom_signif()) that takes the groups for comparison and the\n    test (t.test(), wilcox.text() etc.) as arguments and adds the\n    annotation to the plot.",
   "name": "ggsignif: Significance Brackets for 'ggplot2'",
   "codeRepository": "https://github.com/const-ae/ggsignif",
   "relatedLink": [
@@ -13,13 +13,13 @@
     "https://CRAN.R-project.org/package=ggsignif"
   ],
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6.0.9000",
+  "version": "0.6.3",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2021-01-02 r79767)",
+  "runtimePlatform": "R version 4.1.0 (2021-05-18)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -42,7 +42,22 @@
       "@id": "https://orcid.org/0000-0003-1995-6531"
     }
   ],
-  "contributor": {},
+  "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Constantin",
+      "familyName": "Ahlmann-Eltze",
+      "email": "artjom31415@googlemail.com",
+      "@id": "https://orcid.org/0000-0002-3762-068X"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Indrajeet",
+      "familyName": "Patil",
+      "email": "patilindrajeet.science@gmail.com",
+      "@id": "https://orcid.org/0000-0003-1995-6531"
+    }
+  ],
   "copyrightHolder": {},
   "funder": {},
   "maintainer": [
@@ -102,6 +117,19 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "vdiffr",
+      "name": "vdiffr",
+      "version": ">= 1.0.2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=vdiffr"
     }
   ],
   "softwareRequirements": [
@@ -109,7 +137,7 @@
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
-      "version": ">= 3.3.3",
+      "version": ">= 3.3.5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -121,7 +149,7 @@
   ],
   "releaseNotes": "https://github.com/const-ae/ggsignif/blob/master/NEWS.md",
   "readme": "https://github.com/const-ae/ggsignif/blob/master/README.md",
-  "fileSize": "914.066KB",
+  "fileSize": "899.244KB",
   "keywords": [
     "rstats",
     "ggplot-extension",
@@ -129,5 +157,37 @@
     "ggplot2",
     "asterisk"
   ],
-  "contIntegration": "https://codecov.io/gh/const-ae/ggsignif?branch=master"
+  "contIntegration": "https://codecov.io/gh/const-ae/ggsignif?branch=master",
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html",
+  "citation": [
+    {
+      "@type": "ScholarlyArticle",
+      "datePublished": "2021",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Ahlmann-Eltze",
+          "familyName": "Constantin"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Indrajeet",
+          "familyName": "Patil"
+        }
+      ],
+      "name": "{ggsignif}: R Package for Displaying Significance Brackets for {'ggplot2'}",
+      "identifier": "10.31234/osf.io/7awm6",
+      "url": "https://psyarxiv.com/7awm6",
+      "@id": "https://doi.org/10.31234/osf.io/7awm6",
+      "sameAs": "https://doi.org/10.31234/osf.io/7awm6",
+      "isPartOf": {
+        "@type": "PublicationIssue",
+        "datePublished": "2021",
+        "isPartOf": {
+          "@type": ["PublicationVolume", "Periodical"],
+          "name": "PsyArxiv"
+        }
+      }
+    }
+  ]
 }
