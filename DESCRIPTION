@@ -39,6 +39,6 @@ Suggests:
     testthat,
     vdiffr (>= 1.0.2)
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.1.1.9001
+RoxygenNote: 7.1.2
 Config/testthat/edition: 3
 Config/testthat/parallel: true
