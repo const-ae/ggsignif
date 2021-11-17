@@ -420,7 +420,6 @@ StatSignif <- ggplot2::ggproto(
                            tip_length,
                            manual,
                            flipped_aes = FALSE) {
-
     data <- ggplot2::flip_data(data, flipped_aes)
     scales <- ggplot2::flip_data(scales, flipped_aes)
 
