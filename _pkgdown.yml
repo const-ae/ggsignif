@@ -3,7 +3,6 @@ url: https://const-ae.github.io/ggsignif/
 template:
   bootstrap: 5
   bootswatch: flatly
-  theme: arrow-dark
 
 authors:
   Constantin Ahlmann-Eltze:
