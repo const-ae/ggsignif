@@ -1,5 +1,10 @@
 url: https://const-ae.github.io/ggsignif/
 
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  theme: arrow-dark
+
 authors:
   Constantin Ahlmann-Eltze:
     href: https://twitter.com/const_ae
