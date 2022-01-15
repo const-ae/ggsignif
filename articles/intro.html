@@ -27,19 +27,21 @@
 <![endif]-->
 </head>
 <body>
-    <a href="#container" class="visually-hidden-focusable">Skip to contents</a>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    
     <a class="navbar-brand me-2" href="../index.html">ggsignif</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.3</small>
 
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
@@ -67,15 +69,20 @@
 </li>
       </ul>
 </div>
+
+    
   </div>
-</nav><div class="container template-article" id="container">
-<script src="intro_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header">
+</nav><div class="container template-article">
+
+
+
+
+<div class="row">
+  <main id="main"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Introduction to 'ggsignif' package</h1>
                         <h4 data-toc-skip class="author">Constantin Ahlmann-Eltze and Indrajeet Patil</h4>
             
-            <h4 data-toc-skip class="date">2021-11-17</h4>
+            <h4 data-toc-skip class="date">2022-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/const-ae/ggsignif/blob/HEAD/vignettes/intro.Rmd" class="external-link"><code>vignettes/intro.Rmd</code></a></small>
       <div class="d-none name"><code>intro.Rmd</code></div>
@@ -83,17 +90,17 @@
 
     
     
-<div class="section level1">
-<h1 id="statement-of-need">Statement of Need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a>
-</h1>
+<div class="section level2">
+<h2 id="statement-of-need">Statement of Need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a>
+</h2>
 <p>Research hypotheses often concern with differences between two or multiple groups and significance-based hypothesis testing can provide indices for evidence for such differences. Naturally, when people are visualizing such group differences, they might also wish to quickly annotate if the difference between two levels of group in a plot is significantly different (<a href="https://stackoverflow.com/questions/17084566/put-stars-on-ggplot-barplots-and-boxplots-to-indicate-the-level-of-significanc" class="external-link">look</a> <a href="https://stackoverflow.com/questions/14958159/indicating-the-statistically-significant-difference-in-bar-graph-using-r" class="external-link">at</a> <a href="https://stackoverflow.com/questions/29263046/how-to-draw-the-boxplot-with-significant-level" class="external-link">all</a> <a href="https://stackoverflow.com/questions/29186435/showing-significance-relationships-in-a-ggplot2-bar-graph" class="external-link">those</a> <a href="https://groups.google.com/forum/#!topic/ggplot2/ntVlMqTc6PI" class="external-link">questions</a>). This package does exactly that! It provides a single layer <code>geom_signif</code> which can calculate the significance of a difference between groups and add the annotation to the plot in a single line. In doing so, it further extends the fundamental strength of <code>ggplot</code>, which allows one to quickly make advanced plots by combining layers of visualization, which can encapsulate complex statistical methods (<code>geom_smooth</code>, <code>geom_contour</code> etc.).</p>
 </div>
-<div class="section level1">
-<h1 id="how-to-use-it">How to use it?<a class="anchor" aria-label="anchor" href="#how-to-use-it"></a>
-</h1>
 <div class="section level2">
-<h2 id="simple-case">Simple case<a class="anchor" aria-label="anchor" href="#simple-case"></a>
+<h2 id="how-to-use-it">How to use it?<a class="anchor" aria-label="anchor" href="#how-to-use-it"></a>
 </h2>
+<div class="section level3">
+<h3 id="simple-case">Simple case<a class="anchor" aria-label="anchor" href="#simple-case"></a>
+</h3>
 <p>First step: load the needed packages.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
@@ -110,9 +117,9 @@
 <p>That’s it, it is as simple as that!</p>
 <p>Note that, if we were to statistically analyze this data, we would run a one-way ANOVA to assess if <em>any</em> of the group means differ from each other and then follow up with <em>post hoc</em> multiple comparisons to do more fine-grained comparisons between different levels of the group. The <code>ggsignif</code> package provides a way to graphically display all or a few (depending on the research hypotheses context) of such comparisons.</p>
 </div>
-<div class="section level2">
-<h2 id="advanced-options">Advanced options<a class="anchor" aria-label="anchor" href="#advanced-options"></a>
-</h2>
+<div class="section level3">
+<h3 id="advanced-options">Advanced options<a class="anchor" aria-label="anchor" href="#advanced-options"></a>
+</h3>
 <p>Sometimes one might need more advanced control over the display. For example, instead of a one-way ANOVA design, you can have a complex multiway-ANOVA design. In such instances, you may wish to have a much finer control over which comparisons to include for pairwise comparison displays.</p>
 <p>To specify exactly where the bracket is drawn use the <code>y_position</code>, <code>xmin</code> and <code>xmax</code> parameters combined with a custom <code>annotations</code>. This is always necessary if <code>geom_signif</code> is combined with another layer that uses <code>position="dodge"</code>, because it changes the location of the visual elements <em>without</em> updating the data.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -137,17 +144,13 @@
 <p>For more detailed documentation of the available parameters see the manual page for the <code>geom_signif</code> function: <a href="https://const-ae.github.io/ggsignif/reference/stat_signif.html" class="uri">https://const-ae.github.io/ggsignif/reference/stat_signif.html</a></p>
 </div>
 </div>
-<div class="section level1">
-<h1 id="bugs-comments-or-questions">Bugs, Comments or Questions?<a class="anchor" aria-label="anchor" href="#bugs-comments-or-questions"></a>
-</h1>
+<div class="section level2">
+<h2 id="bugs-comments-or-questions">Bugs, Comments or Questions?<a class="anchor" aria-label="anchor" href="#bugs-comments-or-questions"></a>
+</h2>
 <p>If you have any problems with the package, just file an issue at <a href="https://github.com/const-ae/ggsignif" class="external-link uri">https://github.com/const-ae/ggsignif</a>.</p>
 </div>
-  </div>
- <div class="col-md-3" id="pkgdown-sidebar">
-        <nav id="toc"><h2>On this page</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
@@ -159,7 +162,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
     </footer>
