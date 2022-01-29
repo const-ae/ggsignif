@@ -1,0 +1,188 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.2.1
+# See also: https://docs.ropensci.org/cffr/
+# -----------------------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "ggsignif" in publications use:'
+type: software
+license: GPL-3.0-only
+title: 'ggsignif: Significance Brackets for ''ggplot2'''
+version: 0.6.3
+doi: 10.31234/osf.io/7awm6
+abstract: Enrich your 'ggplots' with group-wise comparisons. This package provides
+  an easy way to indicate if two groups are significantly different. Commonly this
+  is shown by a bracket on top connecting the groups of interest which itself is annotated
+  with the level of significance (NS, *, **, ***). The package provides a single layer
+  (geom_signif()) that takes the groups for comparison and the test (t.test(), wilcox.text()
+  etc.) as arguments and adds the annotation to the plot.
+authors:
+- family-names: Ahlmann-Eltze
+  given-names: Constantin
+  email: artjom31415@googlemail.com
+  orcid: https://orcid.org/0000-0002-3762-068X
+- family-names: Patil
+  given-names: Indrajeet
+  email: patilindrajeet.science@gmail.com
+  orcid: https://orcid.org/0000-0003-1995-6531
+preferred-citation:
+  type: article
+  title: 'ggsignif: R Package for Displaying Significance Brackets for ''ggplot2'''
+  authors:
+  - family-names: Constantin
+    given-names: Ahlmann-Eltze
+  - family-names: Patil
+    given-names: Indrajeet
+    email: patilindrajeet.science@gmail.com
+    orcid: https://orcid.org/0000-0003-1995-6531
+  year: '2021'
+  journal: PsyArxiv
+  url: https://psyarxiv.com/7awm6
+  doi: 10.31234/osf.io/7awm6
+repository: https://CRAN.R-project.org/package=ggsignif
+repository-code: https://github.com/const-ae/ggsignif
+url: https://const-ae.github.io/ggsignif/
+contact:
+- family-names: Ahlmann-Eltze
+  given-names: Constantin
+  email: artjom31415@googlemail.com
+  orcid: https://orcid.org/0000-0002-3762-068X
+keywords:
+- asterisk
+- ggplot-extension
+- ggplot2
+- rstats
+- significance-stars
+references:
+- type: software
+  title: ggplot2
+  abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  notes: Imports
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: Chang
+    given-names: Winston
+    orcid: https://orcid.org/0000-0002-1576-2126
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Pedersen
+    given-names: Thomas Lin
+    email: thomas.pedersen@rstudio.com
+    orcid: https://orcid.org/0000-0002-5147-4711
+  - family-names: Takahashi
+    given-names: Kohske
+  - family-names: Wilke
+    given-names: Claus
+    orcid: https://orcid.org/0000-0002-7470-9261
+  - family-names: Woo
+    given-names: Kara
+    orcid: https://orcid.org/0000-0002-5125-4188
+  - family-names: Yutani
+    given-names: Hiroaki
+    orcid: https://orcid.org/0000-0002-3385-7233
+  - family-names: Dunnington
+    given-names: Dewey
+    orcid: https://orcid.org/0000-0002-9415-4582
+  year: '2022'
+  url: https://CRAN.R-project.org/package=ggplot2
+  version: '>= 3.3.5'
+- type: software
+  title: knitr
+  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  notes: Suggests
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2022'
+  url: https://CRAN.R-project.org/package=knitr
+- type: software
+  title: rmarkdown
+  abstract: 'rmarkdown: Dynamic Documents for R'
+  notes: Suggests
+  authors:
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@rstudio.com
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@rstudio.com
+  - family-names: Luraschi
+    given-names: Javier
+    email: javier@rstudio.com
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@rstudio.com
+  - family-names: Atkins
+    given-names: Aron
+    email: aron@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@rstudio.com
+  - family-names: Chang
+    given-names: Winston
+    email: winston@rstudio.com
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@rstudio.com
+    orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2022'
+- type: software
+  title: spelling
+  abstract: 'spelling: Tools for Spell Checking in R'
+  notes: Suggests
+  authors:
+  - family-names: Ooms
+    given-names: Jeroen
+    email: jeroen@berkeley.edu
+    orcid: https://orcid.org/0000-0002-4035-0289
+  - family-names: Hester
+    given-names: Jim
+    email: james.hester@rstudio.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=spelling
+- type: software
+  title: testthat
+  abstract: 'testthat: Unit Testing for R'
+  notes: Suggests
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=testthat
+- type: software
+  title: vdiffr
+  abstract: 'vdiffr: Visual Regression Testing and Graphical Diffing'
+  notes: Suggests
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@rstudio.com
+  - family-names: Pedersen
+    given-names: Thomas Lin
+    email: thomas.pedersen@rstudio.com
+    orcid: https://orcid.org/0000-0002-5147-4711
+  - family-names: Luciani
+    given-names: T Jake
+    email: jake@apache.org
+  - family-names: Decorde
+    given-names: Matthieu
+    email: matthieu.decorde@ens-lyon.fr
+  - family-names: Lise
+    given-names: Vaudor
+    email: lise.vaudor@ens-lyon.fr
+  year: '2022'
+  url: https://CRAN.R-project.org/package=vdiffr
+  version: '>= 1.0.2'

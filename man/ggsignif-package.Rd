@@ -6,14 +6,7 @@
 \alias{ggsignif-package}
 \title{ggsignif: Significance Brackets for 'ggplot2'}
 \description{
-Enrich your 'ggplots' with group-wise comparisons.
-    This package provides an easy way to indicate if two groups are
-    significantly different. Commonly this is shown by a bracket on top
-    connecting the groups of interest which itself is annotated with the
-    level of significance (NS, *, **, ***).  The package provides a single
-    layer (geom_signif()) that takes the groups for comparison and the
-    test (t.test(), wilcox.text() etc.) as arguments and adds the
-    annotation to the plot.
+Enrich your 'ggplots' with group-wise comparisons. This package provides an easy way to indicate if two groups are significantly different. Commonly this is shown by a bracket on top connecting the groups of interest which itself is annotated with the level of significance (NS, *, **, ***). The package provides a single layer (geom_signif()) that takes the groups for comparison and the test (t.test(), wilcox.text() etc.) as arguments and adds the annotation to the plot.
 }
 \seealso{
 Useful links:

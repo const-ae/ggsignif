@@ -32,7 +32,6 @@ tests\^spelling
 ^\.lintr$
 ^\.circleci$
 ^tests/manual$
-^revdep$
 ^\.covrignore$
 ^\.github/ISSUE_TEMPLATE$
 ^paper.*$
@@ -46,3 +45,4 @@ hextools
 ^Makefile$
 ^README\.md$
 ^\.Rproj$
+^CITATION\.cff$
