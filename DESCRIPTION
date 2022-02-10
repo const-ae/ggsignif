@@ -35,7 +35,6 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    spelling,
     testthat,
     vdiffr (>= 1.0.2)
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
