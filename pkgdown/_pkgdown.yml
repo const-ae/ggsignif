@@ -3,6 +3,8 @@ url: https://const-ae.github.io/ggsignif/
 template:
   bootstrap: 5
   bootswatch: flatly
+  bslib:
+    code_font: {google: "JetBrains Mono"}
 
 authors:
   Constantin Ahlmann-Eltze:
