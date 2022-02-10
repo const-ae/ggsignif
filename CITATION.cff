@@ -8,7 +8,7 @@ message: 'To cite package "ggsignif" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'ggsignif: Significance Brackets for ''ggplot2'''
-version: 0.6.3
+version: 0.6.3.9000
 doi: 10.31234/osf.io/7awm6
 abstract: Enrich your 'ggplots' with group-wise comparisons. This package provides
   an easy way to indicate if two groups are significantly different. Commonly this
@@ -138,20 +138,6 @@ references:
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2022'
-- type: software
-  title: spelling
-  abstract: 'spelling: Tools for Spell Checking in R'
-  notes: Suggests
-  authors:
-  - family-names: Ooms
-    given-names: Jeroen
-    email: jeroen@berkeley.edu
-    orcid: https://orcid.org/0000-0002-4035-0289
-  - family-names: Hester
-    given-names: Jim
-    email: james.hester@rstudio.com
-  year: '2022'
-  url: https://CRAN.R-project.org/package=spelling
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
