@@ -1,4 +1,6 @@
 test_that("should not work", {
+  library(ggplot2)
+
   expect_snapshot_error(
     print(ggplot(mpg, aes(x = manufacturer, y = displ)) +
       geom_boxplot() +
