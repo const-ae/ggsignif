@@ -348,12 +348,14 @@ StatSignif <- ggplot2::ggproto(
     # if(any(data$group == -1)|| any(data$group != data$x)){
     params$flipped_aes <- ggplot2::has_flipped_aes(data, params)
     data <- ggplot2::flip_data(data, params$flipped_aes)
+
     if (any(data$group == -1)) {
       stop("Can only handle data with groups that are plotted on the x-axis")
     }
 
     if (is.character(params$test)) params$test <- match.fun(params$test)
     params$complete_data <- data
+
     if (is.null(params$xmin) != is.null(params$xmax) || length(params$xmin) != length(params$xmax)) {
       stop("If xmin or xmax is set, the other one also needs to be set and they need to contain the same number of values")
     }
@@ -488,6 +490,7 @@ StatSignif <- ggplot2::ggproto(
           } else {
             y_pos <- y_position[i] + y_scale_range * margin_top[i] + y_scale_range * step_increase[i] * (i - 1)
           }
+
           data.frame(
             x = c(min(comp[1], comp[2]), min(comp[1], comp[2]), max(comp[1], comp[2])),
             xend = c(min(comp[1], comp[2]), max(comp[1], comp[2]), max(comp[1], comp[2])),
@@ -510,6 +513,7 @@ StatSignif <- ggplot2::ggproto(
         if ("expression" %in% class(annotations)) {
           stop("annotations must be a character vector. To use plotmath set parse=TRUE.")
         }
+
         df <- data.frame(
           x = c(xmin, xmin, xmax),
           xend = c(xmin, xmax, xmax),
