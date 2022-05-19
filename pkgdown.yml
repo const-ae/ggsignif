@@ -3,7 +3,7 @@ pkgdown: 2.0.3.9000
 pkgdown_sha: 9dee019f9983b86585a77a3b1a1459b9f0390fe6
 articles:
   intro: intro.html
-last_built: 2022-05-19T19:33Z
+last_built: 2022-05-19T19:40Z
 urls:
   reference: https://const-ae.github.io/ggsignif/reference
   article: https://const-ae.github.io/ggsignif/articles
