@@ -3,7 +3,8 @@
 # Version 0.6.3
 
 - Introducing `orientation` argument to control the direction (either `x` or
-  `y`) of the layer and better compatible with `coord_flip()`. (@xiangpin, #104)
+  `y`) of the layer and better compatible with `coord_flip()`. (@xiangpin,
+  #104)
 
 # Version 0.6.2
 
@@ -65,8 +66,7 @@
 
 - Fixed bug when multiple comparisons referenced the same block (issue #8)
 
-# Initial Release (0.1.0)
+# Version 0.1.0
 
-The package has been made publicly available on CRAN:
-https://CRAN.R-project.org/package=ggsignif
+- Initial release on CRAN: https://CRAN.R-project.org/package=ggsignif
 
