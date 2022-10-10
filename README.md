@@ -7,7 +7,7 @@ status](https://github.com/const-ae/ggsignif/workflows/R-CMD-check/badge.svg)](h
 [![Total downloads
 badge](https://cranlogs.r-pkg.org/badges/grand-total/ggsignif?color=blue)](https://CRAN.R-project.org/package=ggsignif)
 [![Codecov test
-coverage](https://codecov.io/gh/const-ae/ggsignif/branch/master/graph/badge.svg)](https://codecov.io/gh/const-ae/ggsignif?branch=master)
+coverage](https://codecov.io/gh/const-ae/ggsignif/branch/main/graph/badge.svg)](https://app.codecov.io/gh/const-ae/ggsignif?branch=main)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->

@@ -1,4 +1,6 @@
-# Version 0.6.3.9000
+# Version 0.6.4
+
+- Gets rid of `NOTE` in CRAN checks.
 
 # Version 0.6.3
 
