@@ -46,8 +46,8 @@ gignore:
 
 update:
 	git fetch --all;\
-	git checkout master;\
-	git merge origin/master
+	git checkout main;\
+	git merge origin/main
 
 push:
-	git push origin master
+	git push origin main
