@@ -7,13 +7,13 @@
   "relatedLink": ["https://const-ae.github.io/ggsignif/", "https://CRAN.R-project.org/package=ggsignif"],
   "codeRepository": "https://github.com/const-ae/ggsignif",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6.3.9000",
+  "version": "0.6.4",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -88,18 +88,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "spelling",
-      "name": "spelling",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=spelling"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
       "provider": {
@@ -140,7 +128,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "495.7KB",
+  "fileSize": "906.037KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -173,8 +161,8 @@
     }
   ],
   "releaseNotes": "https://github.com/const-ae/ggsignif/blob/master/NEWS.md",
-  "readme": "https://github.com/const-ae/ggsignif/blob/master/README.md",
-  "contIntegration": "https://codecov.io/gh/const-ae/ggsignif?branch=master",
+  "readme": "https://github.com/const-ae/ggsignif/blob/main/README.md",
+  "contIntegration": "https://app.codecov.io/gh/const-ae/ggsignif?branch=main",
   "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html",
   "keywords": ["rstats", "ggplot-extension", "significance-stars", "ggplot2", "asterisk"]
 }
