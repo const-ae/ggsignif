@@ -80,9 +80,10 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Introduction to 'ggsignif' package</h1>
-                        <h4 data-toc-skip class="author">Constantin Ahlmann-Eltze and Indrajeet Patil</h4>
+                        <h4 data-toc-skip class="author">Constantin
+Ahlmann-Eltze and Indrajeet Patil</h4>
             
-            <h4 data-toc-skip class="date">2022-10-13</h4>
+            <h4 data-toc-skip class="date">2022-10-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/const-ae/ggsignif/blob/HEAD/vignettes/intro.Rmd" class="external-link"><code>vignettes/intro.Rmd</code></a></small>
       <div class="d-none name"><code>intro.Rmd</code></div>
@@ -93,7 +94,24 @@
 <div class="section level2">
 <h2 id="statement-of-need">Statement of Need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a>
 </h2>
-<p>Research hypotheses often concern with differences between two or multiple groups and significance-based hypothesis testing can provide indices for evidence for such differences. Naturally, when people are visualizing such group differences, they might also wish to quickly annotate if the difference between two levels of group in a plot is significantly different (<a href="https://stackoverflow.com/questions/17084566/put-stars-on-ggplot-barplots-and-boxplots-to-indicate-the-level-of-significanc" class="external-link">look</a> <a href="https://stackoverflow.com/questions/14958159/indicating-the-statistically-significant-difference-in-bar-graph-using-r" class="external-link">at</a> <a href="https://stackoverflow.com/questions/29263046/how-to-draw-the-boxplot-with-significant-level" class="external-link">all</a> <a href="https://stackoverflow.com/questions/29186435/showing-significance-relationships-in-a-ggplot2-bar-graph" class="external-link">those</a> <a href="https://groups.google.com/forum/#!topic/ggplot2/ntVlMqTc6PI" class="external-link">questions</a>). This package does exactly that! It provides a single layer <code>geom_signif</code> which can calculate the significance of a difference between groups and add the annotation to the plot in a single line. In doing so, it further extends the fundamental strength of <code>ggplot</code>, which allows one to quickly make advanced plots by combining layers of visualization, which can encapsulate complex statistical methods (<code>geom_smooth</code>, <code>geom_contour</code> etc.).</p>
+<p>Research hypotheses often concern with differences between two or
+multiple groups and significance-based hypothesis testing can provide
+indices for evidence for such differences. Naturally, when people are
+visualizing such group differences, they might also wish to quickly
+annotate if the difference between two levels of group in a plot is
+significantly different (<a href="https://stackoverflow.com/questions/17084566/put-stars-on-ggplot-barplots-and-boxplots-to-indicate-the-level-of-significanc" class="external-link">look</a>
+<a href="https://stackoverflow.com/questions/14958159/indicating-the-statistically-significant-difference-in-bar-graph-using-r" class="external-link">at</a>
+<a href="https://stackoverflow.com/questions/29263046/how-to-draw-the-boxplot-with-significant-level" class="external-link">all</a>
+<a href="https://stackoverflow.com/questions/29186435/showing-significance-relationships-in-a-ggplot2-bar-graph" class="external-link">those</a>
+<a href="https://groups.google.com/forum/#!topic/ggplot2/ntVlMqTc6PI" class="external-link">questions</a>).
+This package does exactly that! It provides a single layer
+<code>geom_signif</code> which can calculate the significance of a
+difference between groups and add the annotation to the plot in a single
+line. In doing so, it further extends the fundamental strength of
+<code>ggplot</code>, which allows one to quickly make advanced plots by
+combining layers of visualization, which can encapsulate complex
+statistical methods (<code>geom_smooth</code>, <code>geom_contour</code>
+etc.).</p>
 </div>
 <div class="section level2">
 <h2 id="how-to-use-it">How to use it?<a class="anchor" aria-label="anchor" href="#how-to-use-it"></a>
@@ -115,13 +133,28 @@
 <span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="intro_files/figure-html/simple-1.png" width="100%"></p>
 <p>That’s it, it is as simple as that!</p>
-<p>Note that, if we were to statistically analyze this data, we would run a one-way ANOVA to assess if <em>any</em> of the group means differ from each other and then follow up with <em>post hoc</em> multiple comparisons to do more fine-grained comparisons between different levels of the group. The <code>ggsignif</code> package provides a way to graphically display all or a few (depending on the research hypotheses context) of such comparisons.</p>
+<p>Note that, if we were to statistically analyze this data, we would
+run a one-way ANOVA to assess if <em>any</em> of the group means differ
+from each other and then follow up with <em>post hoc</em> multiple
+comparisons to do more fine-grained comparisons between different levels
+of the group. The <code>ggsignif</code> package provides a way to
+graphically display all or a few (depending on the research hypotheses
+context) of such comparisons.</p>
 </div>
 <div class="section level3">
 <h3 id="advanced-options">Advanced options<a class="anchor" aria-label="anchor" href="#advanced-options"></a>
 </h3>
-<p>Sometimes one might need more advanced control over the display. For example, instead of a one-way ANOVA design, you can have a complex multiway-ANOVA design. In such instances, you may wish to have a much finer control over which comparisons to include for pairwise comparison displays.</p>
-<p>To specify exactly where the bracket is drawn use the <code>y_position</code>, <code>xmin</code> and <code>xmax</code> parameters combined with a custom <code>annotations</code>. This is always necessary if <code>geom_signif</code> is combined with another layer that uses <code>position="dodge"</code>, because it changes the location of the visual elements <em>without</em> updating the data.</p>
+<p>Sometimes one might need more advanced control over the display. For
+example, instead of a one-way ANOVA design, you can have a complex
+multiway-ANOVA design. In such instances, you may wish to have a much
+finer control over which comparisons to include for pairwise comparison
+displays.</p>
+<p>To specify exactly where the bracket is drawn use the
+<code>y_position</code>, <code>xmin</code> and <code>xmax</code>
+parameters combined with a custom <code>annotations</code>. This is
+always necessary if <code>geom_signif</code> is combined with another
+layer that uses <code>position="dodge"</code>, because it changes the
+location of the visual elements <em>without</em> updating the data.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  Group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"S1"</span>, <span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S2"</span><span class="op">)</span>,</span>
@@ -141,7 +174,8 @@
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grey80"</span>, <span class="st">"grey20"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro_files/figure-html/advanced-1.png" width="100%"></p>
-<p>For more detailed documentation of the available parameters see the manual page for the <code>geom_signif</code> function: <a href="https://const-ae.github.io/ggsignif/reference/stat_signif.html" class="uri">https://const-ae.github.io/ggsignif/reference/stat_signif.html</a></p>
+<p>For more detailed documentation of the available parameters see the
+manual page for the <code>geom_signif</code> function: <a href="https://const-ae.github.io/ggsignif/reference/stat_signif.html" class="uri">https://const-ae.github.io/ggsignif/reference/stat_signif.html</a></p>
 </div>
 </div>
 <div class="section level2">
