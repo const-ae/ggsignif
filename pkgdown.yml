@@ -1,9 +1,9 @@
 pandoc: 2.19.2
 pkgdown: 2.0.6.9000
-pkgdown_sha: 0183403320bf81d68a14ab062e746de87fe24ebc
+pkgdown_sha: 4d7f0f8620fc6b9c80932cac0c7ec7946678bbd3
 articles:
   intro: intro.html
-last_built: 2022-10-27T16:21Z
+last_built: 2022-11-25T14:59Z
 urls:
   reference: https://const-ae.github.io/ggsignif/reference
   article: https://const-ae.github.io/ggsignif/articles
