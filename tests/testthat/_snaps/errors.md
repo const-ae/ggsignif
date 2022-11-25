@@ -1,10 +1,16 @@
 # should not work
 
-    Can only handle data with groups that are plotted on the x-axis
+    Problem while computing stat.
+    i Error occurred in the 2nd layer.
+    Caused by error in `setup_params()`:
+    ! Can only handle data with groups that are plotted on the x-axis
 
 ---
 
-    Can only handle data with groups that are plotted on the x-axis
+    Problem while computing stat.
+    i Error occurred in the 2nd layer.
+    Caused by error in `setup_params()`:
+    ! Can only handle data with groups that are plotted on the x-axis
 
 ---
 
@@ -20,7 +26,10 @@
 
 ---
 
-    Can only handle data with groups that are plotted on the x-axis
+    Problem while computing stat.
+    i Error occurred in the 1st layer.
+    Caused by error in `setup_params()`:
+    ! Can only handle data with groups that are plotted on the x-axis
 
 ---
 
