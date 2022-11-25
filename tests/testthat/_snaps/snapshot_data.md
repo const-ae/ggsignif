@@ -35,68 +35,68 @@
       28  2.5 2.500   2.50 2.500 2.50            2.500000   2.500000 13       FALSE
       29  1.8 2.400   3.00 4.000 5.70            3.675636   2.324364 14       FALSE
       30  2.0 2.000   2.00 2.500 2.50      3.6   2.238194   1.761806 15       FALSE
-         PANEL group   y ymin_final ymax_final   xmin   xmax xid newx new_width
-      1      1     1  NA        1.8        2.8  0.625  1.375   1    1      0.75
-      2      1     2  NA        2.4        6.5  1.625  2.375   2    2      0.75
-      3      1     3  NA        2.4        5.9  2.625  3.375   3    3      0.75
-      4      1     4  NA        3.8        5.4  3.625  4.375   4    4      0.75
-      5      1     5 1.6        1.6        1.6  4.625  5.375   5    5      0.75
-      6      1     6  NA        2.0        2.5  5.625  6.375   6    6      0.75
-      7      1     7  NA        4.0        4.7  6.625  7.375   7    7      0.75
-      8      1     8  NA        4.0        4.6  7.625  8.375   8    8      0.75
-      9      1     9 5.4        5.4        5.4  8.625  9.375   9    9      0.75
-      10     1    10  NA        4.0        5.0  9.625 10.375  10   10      0.75
-      11     1    11  NA        2.4        3.3 10.625 11.375  11   11      0.75
-      12     1    12  NA        3.1        3.8 11.625 12.375  12   12      0.75
-      13     1    13  NA        2.2        2.5 12.625 13.375  13   13      0.75
-      14     1    14  NA        1.8        4.7 13.625 14.375  14   14      0.75
-      15     1    15  NA        1.8        2.8 14.625 15.375  15   15      0.75
-      16     2     1  NA        2.0        4.2  0.625  1.375   1    1      0.75
-      17     2     2  NA        2.4        7.0  1.625  2.375   2    2      0.75
-      18     2     3  NA        3.3        5.7  2.625  3.375   3    3      0.75
-      19     2     4  NA        4.0        5.4  3.625  4.375   4    4      0.75
-      20     2     5  NA        1.8        2.0  4.625  5.375   5    5      0.75
-      21     2     6  NA        2.0        3.3  5.625  6.375   6    6      0.75
-      22     2     7  NA        3.0        6.1  6.625  7.375   7    7      0.75
-      23     2     8  NA        4.2        4.4  7.625  8.375   8    8      0.75
-      24     2     9 5.4        5.4        5.4  8.625  9.375   9    9      0.75
-      25     2    10  NA        4.0        4.6  9.625 10.375  10   10      0.75
-      26     2    11  NA        2.5        5.6 10.625 11.375  11   11      0.75
-      27     2    12  NA        3.8        5.3 11.625 12.375  12   12      0.75
-      28     2    13 2.5        2.5        2.5 12.625 13.375  13   13      0.75
-      29     2    14  NA        1.8        5.7 13.625 14.375  14   14      0.75
-      30     2    15  NA        2.0        3.6 14.625 15.375  15   15      0.75
-         weight colour  fill size alpha shape linetype
-      1       1 grey20 white  0.5    NA    19    solid
-      2       1 grey20 white  0.5    NA    19    solid
-      3       1 grey20 white  0.5    NA    19    solid
-      4       1 grey20 white  0.5    NA    19    solid
-      5       1 grey20 white  0.5    NA    19    solid
-      6       1 grey20 white  0.5    NA    19    solid
-      7       1 grey20 white  0.5    NA    19    solid
-      8       1 grey20 white  0.5    NA    19    solid
-      9       1 grey20 white  0.5    NA    19    solid
-      10      1 grey20 white  0.5    NA    19    solid
-      11      1 grey20 white  0.5    NA    19    solid
-      12      1 grey20 white  0.5    NA    19    solid
-      13      1 grey20 white  0.5    NA    19    solid
-      14      1 grey20 white  0.5    NA    19    solid
-      15      1 grey20 white  0.5    NA    19    solid
-      16      1 grey20 white  0.5    NA    19    solid
-      17      1 grey20 white  0.5    NA    19    solid
-      18      1 grey20 white  0.5    NA    19    solid
-      19      1 grey20 white  0.5    NA    19    solid
-      20      1 grey20 white  0.5    NA    19    solid
-      21      1 grey20 white  0.5    NA    19    solid
-      22      1 grey20 white  0.5    NA    19    solid
-      23      1 grey20 white  0.5    NA    19    solid
-      24      1 grey20 white  0.5    NA    19    solid
-      25      1 grey20 white  0.5    NA    19    solid
-      26      1 grey20 white  0.5    NA    19    solid
-      27      1 grey20 white  0.5    NA    19    solid
-      28      1 grey20 white  0.5    NA    19    solid
-      29      1 grey20 white  0.5    NA    19    solid
-      30      1 grey20 white  0.5    NA    19    solid
+         PANEL group ymin_final ymax_final   xmin   xmax xid newx new_width weight
+      1      1     1        1.8        2.8  0.625  1.375   1    1      0.75      1
+      2      1     2        2.4        6.5  1.625  2.375   2    2      0.75      1
+      3      1     3        2.4        5.9  2.625  3.375   3    3      0.75      1
+      4      1     4        3.8        5.4  3.625  4.375   4    4      0.75      1
+      5      1     5        1.6        1.6  4.625  5.375   5    5      0.75      1
+      6      1     6        2.0        2.5  5.625  6.375   6    6      0.75      1
+      7      1     7        4.0        4.7  6.625  7.375   7    7      0.75      1
+      8      1     8        4.0        4.6  7.625  8.375   8    8      0.75      1
+      9      1     9        5.4        5.4  8.625  9.375   9    9      0.75      1
+      10     1    10        4.0        5.0  9.625 10.375  10   10      0.75      1
+      11     1    11        2.4        3.3 10.625 11.375  11   11      0.75      1
+      12     1    12        3.1        3.8 11.625 12.375  12   12      0.75      1
+      13     1    13        2.2        2.5 12.625 13.375  13   13      0.75      1
+      14     1    14        1.8        4.7 13.625 14.375  14   14      0.75      1
+      15     1    15        1.8        2.8 14.625 15.375  15   15      0.75      1
+      16     2     1        2.0        4.2  0.625  1.375   1    1      0.75      1
+      17     2     2        2.4        7.0  1.625  2.375   2    2      0.75      1
+      18     2     3        3.3        5.7  2.625  3.375   3    3      0.75      1
+      19     2     4        4.0        5.4  3.625  4.375   4    4      0.75      1
+      20     2     5        1.8        2.0  4.625  5.375   5    5      0.75      1
+      21     2     6        2.0        3.3  5.625  6.375   6    6      0.75      1
+      22     2     7        3.0        6.1  6.625  7.375   7    7      0.75      1
+      23     2     8        4.2        4.4  7.625  8.375   8    8      0.75      1
+      24     2     9        5.4        5.4  8.625  9.375   9    9      0.75      1
+      25     2    10        4.0        4.6  9.625 10.375  10   10      0.75      1
+      26     2    11        2.5        5.6 10.625 11.375  11   11      0.75      1
+      27     2    12        3.8        5.3 11.625 12.375  12   12      0.75      1
+      28     2    13        2.5        2.5 12.625 13.375  13   13      0.75      1
+      29     2    14        1.8        5.7 13.625 14.375  14   14      0.75      1
+      30     2    15        2.0        3.6 14.625 15.375  15   15      0.75      1
+         colour  fill alpha shape linetype linewidth
+      1  grey20 white    NA    19    solid       0.5
+      2  grey20 white    NA    19    solid       0.5
+      3  grey20 white    NA    19    solid       0.5
+      4  grey20 white    NA    19    solid       0.5
+      5  grey20 white    NA    19    solid       0.5
+      6  grey20 white    NA    19    solid       0.5
+      7  grey20 white    NA    19    solid       0.5
+      8  grey20 white    NA    19    solid       0.5
+      9  grey20 white    NA    19    solid       0.5
+      10 grey20 white    NA    19    solid       0.5
+      11 grey20 white    NA    19    solid       0.5
+      12 grey20 white    NA    19    solid       0.5
+      13 grey20 white    NA    19    solid       0.5
+      14 grey20 white    NA    19    solid       0.5
+      15 grey20 white    NA    19    solid       0.5
+      16 grey20 white    NA    19    solid       0.5
+      17 grey20 white    NA    19    solid       0.5
+      18 grey20 white    NA    19    solid       0.5
+      19 grey20 white    NA    19    solid       0.5
+      20 grey20 white    NA    19    solid       0.5
+      21 grey20 white    NA    19    solid       0.5
+      22 grey20 white    NA    19    solid       0.5
+      23 grey20 white    NA    19    solid       0.5
+      24 grey20 white    NA    19    solid       0.5
+      25 grey20 white    NA    19    solid       0.5
+      26 grey20 white    NA    19    solid       0.5
+      27 grey20 white    NA    19    solid       0.5
+      28 grey20 white    NA    19    solid       0.5
+      29 grey20 white    NA    19    solid       0.5
+      30 grey20 white    NA    19    solid       0.5
       
       [[2]]
           x xend     y  yend annotation            group flipped_aes PANEL shape
@@ -146,11 +146,11 @@
       pb$data
     Output
       [[1]]
-          fill     x y PANEL group flipped_aes ymin ymax xmin xmax colour size
-      1 grey80 0.875 3     1     1       FALSE    0    3 0.75 1.00     NA  0.5
-      2 grey20 1.125 5     1     3       FALSE    0    5 1.00 1.25     NA  0.5
-      3 grey80 1.875 7     1     2       FALSE    0    7 1.75 2.00     NA  0.5
-      4 grey20 2.125 8     1     4       FALSE    0    8 2.00 2.25     NA  0.5
+          fill     x y PANEL group flipped_aes ymin ymax xmin xmax colour linewidth
+      1 grey80 0.875 3     1     1       FALSE    0    3 0.75 1.00     NA       0.5
+      2 grey20 1.125 5     1     3       FALSE    0    5 1.00 1.25     NA       0.5
+      3 grey80 1.875 7     1     2       FALSE    0    7 1.75 2.00     NA       0.5
+      4 grey20 2.125 8     1     4       FALSE    0    8 2.00 2.25     NA       0.5
         linetype alpha
       1        1    NA
       2        1    NA
@@ -168,9 +168,9 @@
       3     0   0.5   0.4    NA               1        1.2        1  0.5
       
       [[3]]
-            x  xend   y yend annotation group PANEL shape colour textsize angle hjust
-      1 0.875 1.125 5.8  5.8         **     1     1    19  black     3.88     0   0.5
-      2 1.875 2.125 8.5  8.5         **     2     1    19  black     3.88     0   0.5
+            x   y  xend yend annotation group PANEL shape colour textsize angle hjust
+      1 0.875 5.8 1.125  5.8         **     1     1    19  black     3.88     0   0.5
+      2 1.875 8.5 2.125  8.5         **     2     1    19  black     3.88     0   0.5
         vjust alpha family fontface lineheight linetype size
       1     0    NA               1        1.2        1  0.5
       2     0    NA               1        1.2        1  0.5

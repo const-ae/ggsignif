@@ -1,3 +1,7 @@
+# Version 0.6.4.9000
+
+- Updates docs and tests for `{ggplot2}` release (`3.4.0`).
+
 # Version 0.6.4
 
 - Gets rid of `NOTE` in CRAN checks.

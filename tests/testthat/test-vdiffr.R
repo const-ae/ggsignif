@@ -2,12 +2,11 @@ test_that("plots are rendered correctly", {
   skip_on_cran()
   skip_if_not_installed("vdiffr")
   skip_if(getRversion() < "4.1")
-  skip_if(getRversion() >= "4.2") # TODO: remove once https://github.com/r-lib/vdiffr/issues/117 is resolved
   library(ggplot2)
 
   set.seed(123)
   vdiffr::expect_doppelganger(
-    title = "basic plot - vdiffr",
+    title = "basic plot",
     fig = ggplot(mpg, aes(x = manufacturer, y = displ)) +
       geom_boxplot() +
       stat_signif(
@@ -23,7 +22,7 @@ test_that("plots are rendered correctly", {
 
   set.seed(123)
   vdiffr::expect_doppelganger(
-    title = "flipping aesthetics works - vdiffr",
+    title = "flipping aesthetics works",
     fig = ggplot(mpg, aes(class, hwy)) +
       geom_boxplot() +
       geom_signif(comparisons = list(
@@ -35,7 +34,7 @@ test_that("plots are rendered correctly", {
 
   set.seed(123)
   vdiffr::expect_doppelganger(
-    title = "geom works the same way as stat - vdiffr",
+    title = "geom works the same way as stat",
     fig = ggplot(mpg, aes(x = manufacturer, y = displ)) +
       geom_boxplot() +
       geom_signif(
@@ -59,7 +58,7 @@ test_that("plots are rendered correctly", {
 
   set.seed(123)
   vdiffr::expect_doppelganger(
-    title = "geom works with identity - vdiffr",
+    title = "geom works with identity",
     fig = ggplot(dat, aes(Group, Value)) +
       geom_bar(aes(fill = Sub),
         stat = "identity",
