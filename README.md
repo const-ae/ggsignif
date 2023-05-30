@@ -28,7 +28,6 @@ following command in your R console:
 
 ``` r
 citation("ggsignif")
-#> 
 #> To cite 'ggsignif' in publications use:
 #> 
 #>   Ahlmann-Eltze, C., & Patil, I. (2021). ggsignif: R Package for
@@ -142,7 +141,26 @@ ggplot(iris, aes(x = Species, y = Sepal.Width, fill = Petal.Width > 1)) +
 
 <img src="man/figures/README-dodge_comparison-1.png" width="100%" />
 
-Advanced Example
+`ggsignif` is compatible with facetting (`facet_wrap` or `facet_grid`).
+The significance label is calculated for each facet where the axis
+labels listed in `comparisons` occur. Note that `ggsignif` fails to
+calculate the significance if the data is grouped globally (e.g., by
+setting `color`, `fill`, or `group` in `ggplot(aes(...))`). It is fine
+to group the data per geom (e.g., set the fill within
+`geom_boxplot(aes(fill = ...)))`.
+
+``` r
+ggplot(diamonds, aes(x = cut, y = carat)) +
+  geom_boxplot(aes(fill = color)) +
+  geom_signif(comparisons = list(c("Fair", "Good"), 
+                                 c("Very Good", "Ideal"))) +
+  facet_wrap(~color) +
+  ylim(NA, 6.3)
+```
+
+<img src="man/figures/README-faceted_simple-1.png" width="100%" />
+
+## Advanced Example
 
 Sometimes one needs to have a very fine tuned ability to set the
 location of the the significance bars in combination with `facet_wrap`
