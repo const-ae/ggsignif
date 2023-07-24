@@ -134,8 +134,10 @@ ggplot(iris, aes(x = Species, y = Sepal.Width, fill = Petal.Width > 1)) +
 ```{r faceted_simple}
 ggplot(diamonds, aes(x = cut, y = carat)) +
   geom_boxplot(aes(fill = color)) +
-  geom_signif(comparisons = list(c("Fair", "Good"), 
-                                 c("Very Good", "Ideal"))) +
+  geom_signif(comparisons = list(
+    c("Fair", "Good"),
+    c("Very Good", "Ideal")
+  )) +
   facet_wrap(~color) +
   ylim(NA, 6.3)
 ```
