@@ -39,7 +39,7 @@
 #'   annotations per facet.
 #' @param na.rm If `FALSE` (the default), removes missing values with
 #'    a warning.  If `TRUE` silently removes missing values.
-#' @param FDR logical. Should the p value be corrected for multiple testing? TRUE by default.
+#' @param FDR logical. Should the p value be corrected for multiple testing by false discovery rate ? FALSE by default.
 #' @param orientation The orientation of the layer. The default (‘NA’)
 #' automatically determines the orientation from the aesthetic mapping.
 #' In the rare event that this fails it can be given explicitly by setting
