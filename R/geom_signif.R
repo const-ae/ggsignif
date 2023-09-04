@@ -39,6 +39,7 @@
 #'   annotations per facet.
 #' @param na.rm If `FALSE` (the default), removes missing values with
 #'    a warning.  If `TRUE` silently removes missing values.
+#' @param FDR logical. Should the p value be corrected for multiple testing? TRUE by default.
 #' @param orientation The orientation of the layer. The default (‘NA’)
 #' automatically determines the orientation from the aesthetic mapping.
 #' In the rare event that this fails it can be given explicitly by setting
@@ -104,6 +105,7 @@ stat_signif <- function(mapping = NULL,
                         vjust = 0,
                         parse = FALSE,
                         manual = FALSE,
+                        FDR=FALSE,
                         orientation = NA,
                         ...) {
   if (manual) {
@@ -137,6 +139,7 @@ stat_signif <- function(mapping = NULL,
       parse = parse,
       manual = manual,
       na.rm = na.rm,
+      FDR=FDR,
       orientation = orientation,
       ...
     )
@@ -271,6 +274,7 @@ geom_signif <- function(mapping = NULL,
                         vjust = 0,
                         parse = FALSE,
                         manual = FALSE,
+                        FDR=FALSE,
                         orientation = NA,
                         ...) {
   params <- list(na.rm = na.rm, ...)
@@ -327,6 +331,7 @@ geom_signif <- function(mapping = NULL,
         vjust = vjust,
         parse = parse,
         manual = manual,
+        FDR=FDR,
         orientation = orientation
       )
     )
@@ -427,6 +432,7 @@ StatSignif <- ggplot2::ggproto(
                            step_increase,
                            tip_length,
                            manual,
+                           FDR,
                            flipped_aes = FALSE) {
     data <- ggplot2::flip_data(data, flipped_aes)
     scales <- ggplot2::flip_data(scales, flipped_aes)
@@ -467,6 +473,9 @@ StatSignif <- ggplot2::ggproto(
             group_2 <- complete_data$y[complete_data$x == scales$x$map(comp[2]) &
               complete_data$PANEL == data$PANEL[1]]
             p_value <- do.call(test, c(list(group_1, group_2), test.args))$p.value
+            if(FDR==TRUE){
+                              p_value = p.adjust(p_value, method="fdr", n=length(comparisons))
+            }
             if (is.numeric(map_signif_level)) {
               temp_value <- names(which.min(map_signif_level[which(map_signif_level > p_value)]))
               if (is.null(temp_value)) {
