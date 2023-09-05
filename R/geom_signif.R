@@ -477,7 +477,7 @@ StatSignif <- ggplot2::ggproto(
             print(p_value)
             print(comparisons)
             if(FDR==TRUE){
-                              p_value = p.adjust(p_value, method="fdr") #, n=length(comparisons))
+                              p_value = p.adjust(p_value, method="fdr", n=length(comparisons))
               print("new")
               print(p_value)
             }
