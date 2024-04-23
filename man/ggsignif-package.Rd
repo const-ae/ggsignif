@@ -13,6 +13,7 @@ Useful links:
 \itemize{
   \item \url{https://const-ae.github.io/ggsignif/}
   \item \url{https://github.com/const-ae/ggsignif}
+  \item Report bugs at \url{https://github.com/const-ae/ggsignif/issues}
 }
 
 }

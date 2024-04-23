@@ -152,8 +152,10 @@ to group the data per geom (e.g., set the fill within
 ``` r
 ggplot(diamonds, aes(x = cut, y = carat)) +
   geom_boxplot(aes(fill = color)) +
-  geom_signif(comparisons = list(c("Fair", "Good"), 
-                                 c("Very Good", "Ideal"))) +
+  geom_signif(comparisons = list(
+    c("Fair", "Good"),
+    c("Very Good", "Ideal")
+  )) +
   facet_wrap(~color) +
   ylim(NA, 6.3)
 ```

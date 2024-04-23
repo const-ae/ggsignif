@@ -115,11 +115,11 @@
 <line x1='350.31' y1='460.23' x2='350.31' y2='468.74' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polygon points='342.03,383.69 342.03,460.23 358.59,460.23 358.59,383.69 342.03,383.69 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFFFF;' />
 <line x1='342.03' y1='451.73' x2='358.59' y2='451.73' style='stroke-width: 2.13; stroke: #333333; stroke-linecap: butt; stroke-linejoin: miter;' />
-<text x='74.27' y='56.01' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='12.90px' lengthAdjust='spacingAndGlyphs'>***</text>
+<text x='74.27' y='56.01' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='28.24px' lengthAdjust='spacingAndGlyphs'>1.9***</text>
 <line x1='41.15' y1='64.85' x2='41.15' y2='60.69' style='stroke-width: 1.07;' />
 <line x1='41.15' y1='60.69' x2='107.40' y2='60.69' style='stroke-width: 1.07;' />
 <line x1='107.40' y1='60.69' x2='107.40' y2='64.85' style='stroke-width: 1.07;' />
-<text x='206.77' y='56.01' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='18.41px' lengthAdjust='spacingAndGlyphs'>NS.</text>
+<text x='206.77' y='56.01' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='19.65px' lengthAdjust='spacingAndGlyphs'>1.3*</text>
 <line x1='151.56' y1='64.85' x2='151.56' y2='60.69' style='stroke-width: 1.07;' />
 <line x1='151.56' y1='60.69' x2='261.98' y2='60.69' style='stroke-width: 1.07;' />
 <line x1='261.98' y1='60.69' x2='261.98' y2='64.85' style='stroke-width: 1.07;' />
@@ -223,11 +223,11 @@
 <line x1='701.27' y1='469.72' x2='701.27' y2='469.72' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polygon points='692.99,429.65 692.99,469.72 709.55,469.72 709.55,429.65 692.99,429.65 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFFFF;' />
 <line x1='692.99' y1='469.72' x2='709.55' y2='469.72' style='stroke-width: 2.13; stroke: #333333; stroke-linecap: butt; stroke-linejoin: miter;' />
-<text x='425.24' y='56.01' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='12.90px' lengthAdjust='spacingAndGlyphs'>***</text>
+<text x='425.24' y='56.01' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='28.24px' lengthAdjust='spacingAndGlyphs'>1.7***</text>
 <line x1='392.11' y1='64.85' x2='392.11' y2='60.69' style='stroke-width: 1.07;' />
 <line x1='392.11' y1='60.69' x2='458.36' y2='60.69' style='stroke-width: 1.07;' />
 <line x1='458.36' y1='60.69' x2='458.36' y2='64.85' style='stroke-width: 1.07;' />
-<text x='557.73' y='56.01' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='4.30px' lengthAdjust='spacingAndGlyphs'>*</text>
+<text x='557.73' y='56.01' text-anchor='middle' style='font-size: 11.04px; font-family: sans;' textLength='19.65px' lengthAdjust='spacingAndGlyphs'>1.4*</text>
 <line x1='502.53' y1='64.85' x2='502.53' y2='60.69' style='stroke-width: 1.07;' />
 <line x1='502.53' y1='60.69' x2='612.94' y2='60.69' style='stroke-width: 1.07;' />
 <line x1='612.94' y1='60.69' x2='612.94' y2='64.85' style='stroke-width: 1.07;' />
@@ -339,6 +339,6 @@
 <polyline points='25.16,111.54 27.90,111.54 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <text x='371.21' y='568.24' text-anchor='middle' style='font-size: 11.00px; font-family: sans;' textLength='64.82px' lengthAdjust='spacingAndGlyphs'>manufacturer</text>
 <text transform='translate(13.05,273.22) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: sans;' textLength='22.62px' lengthAdjust='spacingAndGlyphs'>displ</text>
-<text x='27.90' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='55.77px' lengthAdjust='spacingAndGlyphs'>basic plot</text>
+<text x='27.90' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='122.54px' lengthAdjust='spacingAndGlyphs'>stat-signif-magnitude</text>
 </g>
 </svg>
