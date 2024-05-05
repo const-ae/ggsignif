@@ -1,6 +1,5 @@
 test_that("plots are rendered correctly", {
   skip_on_cran()
-  skip_if_not_installed("vdiffr")
   library(ggplot2)
 
   set.seed(123)
