@@ -31,13 +31,15 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 Language: en-US
+Depends: 
+    R (>= 3.6.0)
 Imports:
     ggplot2 (>= 3.5.0)
 Suggests: 
     knitr,
     rmarkdown,
     testthat,
-    vdiffr (>= 1.0.5)
+    vdiffr (>= 1.0.7)
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.3.1
 Config/testthat/edition: 3
