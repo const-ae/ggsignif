@@ -3,7 +3,7 @@
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ggsignif)](https://cran.r-project.org/package=ggsignif)
 [![R build
-status](https://github.com/const-ae/ggsignif/workflows/R-CMD-check/badge.svg)](https://github.com/const-ae/ggsignif)
+status](https://github.com/const-ae/ggsignif/workflows/R-CMD-check/badge.svg)](https://github.com/const-ae/ggsignif/actions)
 [![Total downloads
 badge](https://cranlogs.r-pkg.org/badges/grand-total/ggsignif?color=blue)](https://CRAN.R-project.org/package=ggsignif)
 [![Codecov test
