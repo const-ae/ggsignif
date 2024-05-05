@@ -1,6 +1,4 @@
 test_that("the plotting works - strict test", {
-  skip_on_cran()
-
   library(ggplot2)
 
   dat <- data.frame(

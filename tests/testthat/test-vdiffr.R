@@ -1,5 +1,4 @@
 test_that("plots are rendered correctly", {
-  skip_on_cran()
   library(ggplot2)
 
   set.seed(123)
