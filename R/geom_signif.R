@@ -107,7 +107,7 @@ stat_signif <- function(mapping = NULL,
                         orientation = NA,
                         ...) {
   if (manual) {
-    if (!is.null(data) & !is.null(mapping)) {
+    if (!is.null(data) && !is.null(mapping)) {
       if (!"x" %in% names(data)) mapping$x <- 1
       if (!"y" %in% names(data)) mapping$y <- 1
     } else {
@@ -276,7 +276,7 @@ geom_signif <- function(mapping = NULL,
   params <- list(na.rm = na.rm, ...)
 
   if (identical(stat, "signif")) {
-    if (!is.null(data) & !is.null(mapping) & !manual) {
+    if (!is.null(data) && !is.null(mapping) && !manual) {
       warning("You have set data and mapping, are you sure that manual = FALSE is correct?")
     }
 
@@ -285,7 +285,7 @@ geom_signif <- function(mapping = NULL,
         stop("Manual mode only works if with 'annotations' is provided in mapping")
       }
 
-      if (!is.null(data) & !is.null(mapping)) {
+      if (!is.null(data) && !is.null(mapping)) {
         if (!"x" %in% names(mapping)) {
           if ("xmin" %in% names(mapping)) {
             mapping$x <- mapping$xmin
@@ -460,7 +460,7 @@ StatSignif <- ggplot2::ggproto(
       result <- lapply(comparisons, function(comp) {
         i <<- i + 1
         # All entries in group should be the same
-        if (scales$x$map(comp[1]) == data$group[1] | manual) {
+        if (scales$x$map(comp[1]) == data$group[1] || manual) {
           test_result <- if (is.null(annotations)) {
             group_1 <- complete_data$y[complete_data$x == scales$x$map(comp[1]) &
               complete_data$PANEL == data$PANEL[1]]
