@@ -38,6 +38,7 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
+    scales,
     testthat,
     vdiffr (>= 1.0.7)
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
