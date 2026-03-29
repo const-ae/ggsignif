@@ -32,7 +32,7 @@ VignetteBuilder:
 Encoding: UTF-8
 Language: en-US
 Depends: 
-    R (>= 3.6.0)
+    R (>= 4.1.0)
 Imports:
     ggplot2 (>= 3.5.0)
 Suggests: 
