@@ -6,6 +6,10 @@ on:
 
 name: R-CMD-check
 
+concurrency:
+  group: ${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
@@ -16,30 +20,25 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          # CRAN doesn't provide binaries for macOS on R-devel, so skip because
-          # it will be too slow otherwise
-          #- {os: macOS-latest, r: 'devel'}
-          - { os: macOS-latest, r: "release" }
+          - {os: macOS-latest,   r: 'release'}
 
-          - { os: windows-latest, r: "devel" }
-          - { os: windows-latest, r: "release" }
-          - { os: windows-latest, r: "oldrel" }
+          - {os: windows-latest, r: 'release'}
           # use 4.1 to check with rtools40's older compiler
-          - { os: windows-latest, r: "4.1" }
+          - {os: windows-latest, r: '4.1'}
 
-          - { os: ubuntu-latest, r: "devel" }
-          - { os: ubuntu-latest, r: "release" }
-          - { os: ubuntu-latest, r: "4.3" }
-          - { os: ubuntu-latest, r: "4.2" }
-          - { os: ubuntu-latest, r: "4.1" }
+          - {os: ubuntu-latest,  r: 'devel', http-user-agent: 'release'}
+          - {os: ubuntu-latest,  r: 'release'}
+          - {os: ubuntu-latest,  r: 'oldrel-1'}
+          - {os: ubuntu-latest,  r: 'oldrel-2'}
+          - {os: ubuntu-latest,  r: 'oldrel-3'}
+          - {os: ubuntu-latest,  r: 'oldrel-4'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: r-lib/actions/setup-pandoc@v2
 
