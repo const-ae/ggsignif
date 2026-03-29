@@ -1,4 +1,5 @@
 test_that("the plotting works - strict test", {
+  skip_if(grepl("devel", R.version[["status"]], ignore.case = TRUE), "Skipping snapshot on R-devel: graphics engine may have changed")
   library(ggplot2)
 
   dat <- data.frame(
