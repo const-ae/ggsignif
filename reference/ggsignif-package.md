@@ -21,11 +21,9 @@ Useful links:
 ## Author
 
 **Maintainer**: Constantin Ahlmann-Eltze <artjom31415@googlemail.com>
-([ORCID](https://orcid.org/0000-0002-3762-068X)) (@const_ae)
-\[contributor\]
+([ORCID](https://orcid.org/0000-0002-3762-068X)) \[contributor\]
 
 Authors:
 
 - Indrajeet Patil <patilindrajeet.science@gmail.com>
-  ([ORCID](https://orcid.org/0000-0003-1995-6531)) (@patilindrajeets)
-  \[contributor\]
+  ([ORCID](https://orcid.org/0000-0003-1995-6531)) \[contributor\]

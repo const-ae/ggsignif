@@ -3,12 +3,10 @@
 ## Authors
 
 - **[Constantin Ahlmann-Eltze](https://twitter.com/const_ae)**. Author,
-  maintainer, contributor. [](https://orcid.org/0000-0002-3762-068X)  
-  @const_ae
+  maintainer, contributor. [](https://orcid.org/0000-0002-3762-068X)
 
 - **[Indrajeet Patil](https://indrajeetpatil.github.io/)**. Author,
-  contributor. [](https://orcid.org/0000-0003-1995-6531)  
-  @patilindrajeets
+  contributor. [](https://orcid.org/0000-0003-1995-6531)
 
 ## Citation
 
