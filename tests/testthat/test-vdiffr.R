@@ -1,4 +1,5 @@
 test_that("plots are rendered correctly", {
+  skip_if(grepl("devel", R.version[["status"]], ignore.case = TRUE), "Skipping snapshot on R-devel: graphics engine may have changed")
   library(ggplot2)
 
   set.seed(123)
@@ -89,6 +90,7 @@ test_that("plots are rendered correctly", {
 })
 
 test_that("method which return text works - snapshot", {
+  skip_if(grepl("devel", R.version[["status"]], ignore.case = TRUE), "Skipping snapshot on R-devel: graphics engine may have changed")
   magnitude_test <- function(x, y, ...) {
     change <- mean(y) / mean(x)
     p <- t.test(x, y)$p.value
@@ -122,6 +124,7 @@ test_that("method which return text works - snapshot", {
 
 
 test_that("identical annotations are plotted separetly - snapshot", {
+  skip_if(grepl("devel", R.version[["status"]], ignore.case = TRUE), "Skipping snapshot on R-devel: graphics engine may have changed")
   dat <- data.frame(
     Group = c("S1", "S1", "S2", "S2"),
     Sub = c("A", "B", "A", "B"),

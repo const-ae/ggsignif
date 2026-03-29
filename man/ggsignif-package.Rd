@@ -18,11 +18,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Constantin Ahlmann-Eltze \email{artjom31415@googlemail.com} (\href{https://orcid.org/0000-0002-3762-068X}{ORCID}) (@const_ae) [contributor]
+\strong{Maintainer}: Constantin Ahlmann-Eltze \email{artjom31415@googlemail.com} (\href{https://orcid.org/0000-0002-3762-068X}{ORCID}) [contributor]
 
 Authors:
 \itemize{
-  \item Indrajeet Patil \email{patilindrajeet.science@gmail.com} (\href{https://orcid.org/0000-0003-1995-6531}{ORCID}) (@patilindrajeets) [contributor]
+  \item Indrajeet Patil \email{patilindrajeet.science@gmail.com} (\href{https://orcid.org/0000-0003-1995-6531}{ORCID}) [contributor]
 }
 
 }
