@@ -16,6 +16,23 @@ test_that("the plotting works", {
   expect_equal(1, 1)
 })
 
+test_that("comparisons with missing groups do not remove other brackets", {
+  dat <- data.frame(
+    panel = rep(c("complete", "missing"), each = 9),
+    group = rep(rep(c("A", "B", "C"), each = 3), times = 2),
+    value = c(seq_len(15), rep(NA_real_, 3))
+  )
+  plot <- ggplot(dat, aes(group, value)) +
+    geom_point(na.rm = TRUE) +
+    facet_wrap(~ panel) +
+    geom_signif(comparisons = list(c("A", "B"), c("A", "C")), na.rm = TRUE)
+
+  expect_no_warning(layer <- layer_data(plot, 2))
+  brackets <- layer[layer$x != layer$xend, ]
+  expect_identical(as.integer(brackets$PANEL), c(1L, 1L, 2L))
+  expect_identical(as.numeric(brackets$xend), c(2, 3, 2))
+})
+
 test_that("geom works as well as stat works", {
   print(
     ggplot(mpg, aes(x = manufacturer, y = displ)) +

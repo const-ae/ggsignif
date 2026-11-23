@@ -2,7 +2,9 @@
 #'
 #' @param comparisons A list of length-2 vectors. The entries in the vector are
 #'   either the names of 2 values on the x-axis or the 2 integers that
-#'   correspond to the index of the columns of interest.
+#'   correspond to the index of the columns of interest. When computing a
+#'   p-value, a comparison is skipped in any panel where either group has no
+#'   non-missing values.
 #' @param test the name of the statistical test that is applied to the values of
 #'   the 2 columns (e.g. `t.test`, `wilcox.test` etc.). If you implement a
 #'   custom test make sure that it returns a list that has an entry called
@@ -466,6 +468,9 @@ StatSignif <- ggplot2::ggproto(
               complete_data$PANEL == data$PANEL[1]]
             group_2 <- complete_data$y[complete_data$x == scales$x$map(comp[2]) &
               complete_data$PANEL == data$PANEL[1]]
+            if (all(is.na(group_1)) || all(is.na(group_2))) {
+              return(NULL)
+            }
             p_value <- do.call(test, c(list(group_1, group_2), test.args))$p.value
             if (is.numeric(map_signif_level)) {
               temp_value <- names(which.min(map_signif_level[which(map_signif_level > p_value)]))

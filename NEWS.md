@@ -1,5 +1,7 @@
 # Version 0.6.4.9000
 
+- Keeps other brackets in a panel when a comparison has no non-missing values
+  in one of its groups (#126).
 - Updates docs and tests for `{ggplot2}` release (`3.4.0`).
 
 # Version 0.6.4
