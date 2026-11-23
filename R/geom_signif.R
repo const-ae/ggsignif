@@ -525,25 +525,32 @@ StatSignif <- ggplot2::ggproto(
           stop("annotations must be a character vector. To use plotmath set parse=TRUE.")
         }
 
-        df <- data.frame(
-          x = c(xmin, xmin, xmax),
-          xend = c(xmin, xmax, xmax),
-          y = c(
-            y_position - y_scale_range * tip_length[seq_len(length(tip_length)) %% 2 == 1],
-            y_position,
-            y_position
-          ),
-          yend = c(
-            y_position,
-            y_position,
-            y_position - y_scale_range * tip_length[seq_len(length(tip_length)) %% 2 == 0]
-          ),
-          annotation = rep(annotations, times = 3), group = if (manual) {
-            rep(data$group, times = 3)
-          } else {
-            rep(seq_along(xmin), times = 3)
-          }
+        brackets <- data.frame(
+          xmin = xmin,
+          xmax = xmax,
+          height = y_position,
+          left_tip = y_position - y_scale_range * tip_length[seq_along(tip_length) %% 2 == 1],
+          right_tip = y_position - y_scale_range * tip_length[seq_along(tip_length) %% 2 == 0],
+          annotation = annotations,
+          group = if (manual) data$group else seq_along(xmin)
         )
+        df <- data.frame(
+          x = c(brackets$xmin, brackets$xmin, brackets$xmax),
+          xend = c(brackets$xmin, brackets$xmax, brackets$xmax),
+          y = c(brackets$left_tip, brackets$height, brackets$height),
+          yend = c(brackets$height, brackets$height, brackets$right_tip),
+          annotation = rep(brackets$annotation, times = 3),
+          group = rep(brackets$group, times = 3)
+        )
+        if (manual) {
+          # Keep each bracket's group and aesthetics through position adjustments.
+          n <- nrow(brackets)
+          offsets <- (seq_len(n) - 1L) / n
+          df$group <- df$group + rep(offsets, times = 3)
+          input_rows <- rep_len(seq_len(nrow(data)), n)
+          extra_aes <- setdiff(names(data), names(df))
+          df[extra_aes] <- data[rep(input_rows, times = 3), extra_aes, drop = FALSE]
+        }
       } else {
         df <- NULL
       }

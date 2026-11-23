@@ -223,6 +223,47 @@ test_that("manually annotated plots work", {
   expect_equal(1, 1)
 })
 
+test_that("manual brackets keep separate groups when their labels match", {
+  points <- data.frame(
+    panel = rep(c("A", "B"), each = 3),
+    category = rep(letters[1:3], times = 2),
+    value = 1:6,
+    stringsAsFactors = FALSE
+  )
+  annotations <- data.frame(
+    panel = c("A", "A", "B"),
+    start = c(1, 2, 1),
+    end = c(2, 3, 3),
+    height = c(7, 8, 9),
+    label = "*",
+    stringsAsFactors = FALSE
+  )
+  plot <- suppressWarnings(
+    ggplot(points, aes(category, value)) +
+      geom_point() +
+      facet_wrap(~panel) +
+      geom_signif(
+        data = annotations,
+        aes(xmin = start, xmax = end, y_position = height, annotations = label, colour = height),
+        manual = TRUE
+      )
+  )
+
+  layer <- suppressWarnings(layer_data(plot, 2))
+  expect_type(layer$group, "double")
+  brackets <- split(layer, list(layer$PANEL, layer$group), drop = TRUE, lex.order = TRUE)
+  expect_length(brackets, nrow(annotations))
+  expect_length(unique(layer$colour), nrow(annotations))
+  for (i in seq_along(brackets)) {
+    bracket <- brackets[[i]]
+    expect_identical(nrow(bracket), 3L)
+    expect_identical(as.integer(unique(bracket$PANEL)), match(annotations$panel[i], c("A", "B")))
+    expect_identical(as.numeric(range(c(bracket$x, bracket$xend))), c(annotations$start[i], annotations$end[i]))
+    expect_identical(max(c(bracket$y, bracket$yend)), annotations$height[i])
+    expect_identical(unique(bracket$annotation), "*")
+  }
+})
+
 test_that("test method which return text work", {
   magnitude_test <- function(x, y, ...) {
     change <- mean(y) / mean(x)

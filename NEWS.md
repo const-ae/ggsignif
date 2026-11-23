@@ -1,6 +1,8 @@
 # Version 0.6.4.9000
 
 - Updates docs and tests for `{ggplot2}` release (`3.4.0`).
+- Draws manual significance brackets separately when they share an annotation
+  label (#63, #140).
 
 # Version 0.6.4
 
