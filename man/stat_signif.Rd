@@ -113,7 +113,9 @@ the default plot specification, e.g. \code{\link[ggplot2:annotation_borders]{ann
 
 \item{comparisons}{A list of length-2 vectors. The entries in the vector are
 either the names of 2 values on the x-axis or the 2 integers that
-correspond to the index of the columns of interest.}
+correspond to the index of the columns of interest. When computing a
+p-value, a comparison is skipped in any panel where either group has no
+non-missing values.}
 
 \item{test}{the name of the statistical test that is applied to the values of
 the 2 columns (e.g. \code{t.test}, \code{wilcox.test} etc.). If you implement a
