@@ -455,17 +455,25 @@ StatSignif <- ggplot2::ggproto(
       tip_length <- rep(data[["tip_length"]], each = 2)
     }
 
+    # Scale positions and group IDs can differ after reordering the axis.
+    in_panel <- complete_data$PANEL == data$PANEL[1]
+    panel_rows <- which(in_panel & is.finite(complete_data$x) & is.finite(complete_data$y))
+    panel_groups <- complete_data$group[panel_rows]
+    panel_x <- complete_data$x[panel_rows]
+
     if (!is.null(comparisons)) {
       i <- 0
       result <- lapply(comparisons, function(comp) {
         i <<- i + 1
-        # All entries in group should be the same
-        if (scales$x$map(comp[1]) == data$group[1] || manual) {
+        comparison_x <- scales$x$map(comp[1])
+        group <- comparison_x
+        if (scales$x$is_discrete()) {
+          group <- panel_groups[match(group, panel_x, nomatch = 0L)]
+        }
+        if (manual || (length(group) > 0L && group == data$group[1])) {
           test_result <- if (is.null(annotations)) {
-            group_1 <- complete_data$y[complete_data$x == scales$x$map(comp[1]) &
-              complete_data$PANEL == data$PANEL[1]]
-            group_2 <- complete_data$y[complete_data$x == scales$x$map(comp[2]) &
-              complete_data$PANEL == data$PANEL[1]]
+            group_1 <- complete_data$y[which(in_panel & complete_data$x == comparison_x)]
+            group_2 <- complete_data$y[which(in_panel & complete_data$x == scales$x$map(comp[2]))]
             p_value <- do.call(test, c(list(group_1, group_2), test.args))$p.value
             if (is.numeric(map_signif_level)) {
               temp_value <- names(which.min(map_signif_level[which(map_signif_level > p_value)]))
@@ -510,7 +518,7 @@ StatSignif <- ggplot2::ggproto(
 
       df <- do.call(rbind, result)
     } else {
-      if ((data$x[1] == min(complete_data$x) & data$group[1] == min(complete_data$group)) | manual) {
+      if (manual || data$group[1] == min(panel_groups)) {
         y_scale_range <- (scales$y$range$range[2] - scales$y$range$range[1])
 
         if (is.character(xmin)) {

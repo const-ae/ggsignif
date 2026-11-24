@@ -1,5 +1,6 @@
 # Version 0.6.4.9000
 
+- Keep significance brackets when the discrete axis is reordered (#60).
 - Updates docs and tests for `{ggplot2}` release (`3.4.0`).
 
 # Version 0.6.4
