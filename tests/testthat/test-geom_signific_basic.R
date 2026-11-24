@@ -1,5 +1,36 @@
 library(ggplot2)
 
+test_that("automatic brackets use the visible discrete positions", {
+  dat <- data.frame(x = rep(c("a", "b", "c"), each = 3), y = seq_len(9), stringsAsFactors = FALSE)
+  check_samples <- function(x, y) {
+    expect_identical(as.numeric(x), c(4, 5, 6))
+    expect_identical(as.numeric(y), c(7, 8, 9))
+    stats::wilcox.test(x, y)
+  }
+  bracket <- layer_data(
+    ggplot(dat, aes(x, y)) +
+      geom_signif(comparisons = list(c("b", "c")), test = check_samples, na.rm = TRUE) +
+      scale_x_discrete(limits = c("b", "c"))
+  )
+
+  expect_identical(as.numeric(bracket$x), c(1, 1, 2))
+  expect_identical(as.numeric(bracket$xend), c(1, 2, 2))
+  expect_identical(bracket$annotation, rep("0.1", 3))
+})
+
+test_that("explicit brackets render with reversed discrete positions", {
+  dat <- data.frame(x = c("a", "b", "c"), y = c(2, 4, 3), stringsAsFactors = FALSE)
+  bracket <- layer_data(
+    ggplot(dat, aes(x, y)) +
+      geom_signif(xmin = "b", xmax = "a", annotations = "*", y_position = 5) +
+      scale_x_discrete(limits = c("c", "b", "a"))
+  )
+
+  expect_identical(as.numeric(bracket$x), c(2, 2, 3))
+  expect_identical(as.numeric(bracket$xend), c(2, 3, 3))
+  expect_identical(bracket$annotation, rep("*", 3))
+})
+
 test_that("the plotting works", {
   print(
     ggplot(mpg, aes(x = manufacturer, y = displ)) +
